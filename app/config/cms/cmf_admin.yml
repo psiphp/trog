@@ -1,8 +1,8 @@
 cmf_admin:
     menu:
         items:
-            tree:
-                label: Tree
+            site:
+                label: Site
                 route: _cmf_column_browser
             resource:
                 type: reference
