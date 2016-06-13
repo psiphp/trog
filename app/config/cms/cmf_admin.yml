@@ -1,0 +1,8 @@
+cmf_admin:
+    menu:
+        items:
+            tree:
+                label: Tree
+                route: _cmf_column_browser
+            resource:
+                type: reference

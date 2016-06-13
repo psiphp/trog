@@ -1,0 +1,7 @@
+imports:
+    - { resource: doctrine_phpcr.yml }
+    - { resource: sylius_grid.yml }
+    - { resource: sylius_resource.yml }
+    - { resource: cmf_admin.yml }
+    - { resource: cmf_resource.yml }
+

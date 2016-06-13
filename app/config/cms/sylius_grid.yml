@@ -1,0 +1,70 @@
+sylius_grid:
+    drivers:
+        - doctrine/phpcr-odm
+    templates:
+        action:
+            update: 'CmfAdminBundle:Link:_update.html.twig'
+            delete: 'CmfAdminBundle:Link:_delete.html.twig'
+            create: 'CmfAdminBundle:Link:_create.html.twig'
+        filter:
+            string: 'CmfAdminBundle:Grid:Filter/string.html.twig'
+            boolean: 'CmfAdminBundle:Grid:Filter/boolean.html.twig'
+    grids:
+        acme_post:
+            driver:
+                name: doctrine/phpcr-odm
+                options:
+                    class: AppBundle\Document\Post
+            fields:
+                title:
+                    type: string
+                published:
+                    type: string
+                path:
+                    type: string
+            actions:
+                main:
+                    create:
+                        type: create
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete
+        acme_page:
+            sorting:
+                title: desc
+            driver:
+                name: doctrine/phpcr-odm
+                options:
+                    class: AppBundle\Document\Page
+            fields:
+                title:
+                    type: string
+                    options: {  }
+                published:
+                    type: string
+                    options: {  }
+                path:
+                    type: string
+                    options: {  }
+            actions:
+                main:
+                    create:
+                        type: create
+                        options: {  }
+                item:
+                    update:
+                        type: update
+                        options: {  }
+                    delete:
+                        type: delete
+                        options: {  }
+            filters:
+                title:
+                    type: string
+                    options: {  }
+                published:
+                    type: boolean
+                    options: {  }
+

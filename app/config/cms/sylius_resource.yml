@@ -1,0 +1,17 @@
+sylius_resource:
+    resources:
+        acme.post:
+            driver: doctrine/phpcr-odm
+            classes:
+                model: AppBundle\Document\Post
+            options:
+                parent_path_default: /cms/posts
+                parent_path_autocreate: true
+        acme.page:
+            driver: doctrine/phpcr-odm
+            classes:
+                model: AppBundle\Document\Page
+            options:
+                parent_path_default: /cms/pages
+                parent_path_autocreate: true
+

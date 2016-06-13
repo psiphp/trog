@@ -1,0 +1,8 @@
+cmf_resource:
+    repositories:
+        default:
+            type: doctrine_phpcr_odm
+            basepath: /cms
+    description:
+        enhancers:
+            - sylius_resource

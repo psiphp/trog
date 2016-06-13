@@ -1,0 +1,20 @@
+page:
+    resource: |
+        alias: acme.page
+        grid: acme_page
+        redirect: update
+        templates: CmfAdminBundle:Crud
+        except: [ 'show ']
+    type: sylius.resource
+    prefix: /admin
+
+post:
+    resource: |
+        alias: acme.post
+        grid: acme_post
+        templates: CmfAdminBundle:Crud
+        redirect: update
+        except: [ 'show ']
+    type: sylius.resource
+    prefix: /admin
+

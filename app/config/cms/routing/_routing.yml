@@ -1,0 +1,9 @@
+cms:
+    resource: "resources.yml"
+
+tree:
+    resource: "@CmfColumnBrowserBundle/Resources/config/routing.xml"
+    prefix: /admin
+    defaults:
+        repository: default
+        template: ::column_browser.html.twig
