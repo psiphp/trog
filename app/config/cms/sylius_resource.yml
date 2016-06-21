@@ -1,5 +1,9 @@
 sylius_resource:
     resources:
+        acme.post_folder:
+            driver: doctrine/phpcr-odm
+            classes:
+                model: AppBundle\Document\PostFolder
         acme.post:
             driver: doctrine/phpcr-odm
             classes:

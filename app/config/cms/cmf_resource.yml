@@ -2,10 +2,11 @@ cmf_resource:
     repositories:
         default:
             type: doctrine_phpcr_odm
-            basepath: /cms
+            basepath: /sycms
         filesystem:
             type: filesystem
             base_dir: %kernel.root_dir%
     description:
         enhancers:
+            - doctrine_phpcr_odm
             - sylius_resource

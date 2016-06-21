@@ -6,7 +6,10 @@ use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
 /**
- * @PHPCR\Document(referenceable=true)
+ * @PHPCR\Document(
+ *     referenceable=true,
+ *     childClasses={"AppBundle\Document\Post"}
+ * )
  */
 class Post implements ResourceInterface
 {
@@ -96,6 +99,5 @@ class Post implements ResourceInterface
     {
         return $this->path;
     }
-    
 }
 
