@@ -13,10 +13,8 @@
 !var/sessions/.gitkeep
 !var/SymfonyRequirements.php
 /vendor/
-/web/bundles/
 /web/assets
-/web/semantic/dist
-/web/semantic/src
-composer.lock
+/web/bundles
+/composer.lock
 
 node_modules
