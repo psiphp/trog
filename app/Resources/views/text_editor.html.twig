@@ -1,0 +1,7 @@
+{% extends "CmfAdminBundle::layout.html.twig" %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('/assets/admin/ace/ace.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/assets/admin/ace/ext-modelist.js') }}"></script>
+{% endblock %}

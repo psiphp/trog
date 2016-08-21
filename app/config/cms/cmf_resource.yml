@@ -10,3 +10,4 @@ cmf_resource:
         enhancers:
             - doctrine_phpcr_odm
             - sylius_resource
+            #- sycms_text_editor

@@ -28,6 +28,11 @@ class PageFolder implements ResourceInterface
      */
     protected $parent;
 
+    /**
+     * @PHPCR\Uuid()
+     */
+    protected $uuid;
+
     public function getId()
     {
         return $this->uuid;

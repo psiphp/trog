@@ -1,11 +1,10 @@
 {
-  "name": "symfony-cmf-sylius",
+  "name": "sycms",
   "version": "0.0.1",
-  "description": "Admin with Sylius",
+  "description": "Sycms CMS system that may or may not suck",
   "main": "Gulpfile.js",
   "dependencies": {
-    "jquery": "^2.2.0",
-    "semantic-ui-css": "^2.1.8"
+    "semantic-ui": "^2.2.2"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
@@ -20,14 +19,10 @@
     "gulp-uglifycss": "^1.0.5",
     "merge-stream": "^1.0.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Sylius/Sylius.git"
-  },
-  "author": "Paweł Jędrzejewski",
+  "author": "Daniel Leech",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Sylius/Sylius/issues"
+    "url": "https://github.com/sycms/sycms"
   },
-  "homepage": "http://sylius.org"
+  "homepage": "http://github.com/sycms"
 }

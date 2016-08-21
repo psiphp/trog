@@ -2,8 +2,14 @@ cms:
     resource: "resources.yml"
 
 tree:
-    resource: "@CmfColumnBrowserBundle/Resources/config/routing.xml"
+    resource: "@SycmsColumnBrowserBundle/Resources/config/routing.xml"
     prefix: /admin
     defaults:
         repository: default
         template: ::column_browser.html.twig
+
+text_editor:
+    resource: "@SycmsTextEditorBundle/Resources/config/routing/main.yml"
+    prefix: /admin/text-editor
+    defaults:
+        layout: ::text_editor.html.twig

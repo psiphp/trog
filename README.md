@@ -1,4 +1,9 @@
-sycms
+SyCMS
 =====
 
-A Symfony project created on June 12, 2016, 2:14 pm.
+Experimental CMS system based on the Symfony CMF and Sylius.
+
+Aims:
+
+- Hierarchical content management.
+- Minimum client-side javascript.

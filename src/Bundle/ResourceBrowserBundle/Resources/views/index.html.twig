@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <script type="text/javascript" src="{{ asset('assets/main.js') }}"></script>
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/main.css') }}">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Column Browser Demo</h1>
+            {% include "@SycmsColumnBrowser/browser.html.twig" %}
+<script type="text/javascript">
+$(document).ready(function () {
+    $('.sortable').sycmsColumnBrowser({
+        update_path: "{{ path('_cmf_column_browser_update') }}"
+    });
+});
+</script>
+
+        </div>
+    </body>
+</html>

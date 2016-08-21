@@ -1,8 +1,0 @@
-cmf_admin:
-    menu:
-        items:
-            site:
-                label: Site
-                route: _cmf_column_browser
-            resource:
-                type: reference

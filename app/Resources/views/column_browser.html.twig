@@ -1,5 +1,16 @@
 {% extends "CmfAdminBundle::layout.html.twig" %}
 
 {% block content %}
-    {% include "CmfColumnBrowserBundle::browser.html.twig" %}
+    {% include "SycmsColumnBrowserBundle::browser.html.twig" %}
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script type="text/javascript">
+$(document).ready(function () {
+    $('.sortable').sycmsColumnBrowser({
+        update_path: "{{ path('_cmf_column_browser_update') }}"
+    });
+});
+</script>
 {% endblock %}

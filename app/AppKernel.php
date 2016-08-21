@@ -29,11 +29,13 @@ class AppKernel extends Kernel
             new Sylius\Bundle\UiBundle\SyliusUiBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new winzou\Bundle\StateMachineBundle\winzouStateMachineBundle(),
-            new Symfony\Cmf\Bundle\ColumnBrowserBundle\CmfColumnBrowserBundle(),
+            new Sycms\Bundle\ColumnBrowserBundle\SycmsColumnBrowserBundle(),
 
             // Symfoiny CMF
             new Symfony\Cmf\Bundle\AdminBundle\CmfAdminBundle(),
             new Symfony\Cmf\Bundle\ResourceBundle\CmfResourceBundle(),
+
+            new Sycms\Bundle\TextEditor\SycmsTextEditorBundle(),
 
         ];
 

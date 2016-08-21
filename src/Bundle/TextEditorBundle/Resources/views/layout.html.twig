@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <script type="text/javascript" src="{{ asset('js/ace/ace.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/ace/ext-modelist.js') }}"></script>
+  <style type="text/css" media="screen">
+    body {
+        overflow: hidden;
+    }
+    #editor {
+        height: 400px;
+        width: 1000px;
+    }
+  </style>
+    </head>
+    <h1>Sycms Text Editor</h1>
+    <p>This is a demo layout. You will want to override the <code>layout</code> request attribute</p>
+    {% block editor %}
+    {% endblock %}
+</html>

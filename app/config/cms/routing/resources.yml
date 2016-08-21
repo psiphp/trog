@@ -18,3 +18,21 @@ post:
     type: sylius.resource
     prefix: /admin
 
+post_folder:
+    resource: |
+        alias: acme.post_folder
+        templates: CmfAdminBundle:Crud
+        redirect: update
+        except: [ 'show ']
+    type: sylius.resource
+    prefix: /admin
+
+page_folder:
+    resource: |
+        alias: acme.page_folder
+        templates: CmfAdminBundle:Crud
+        redirect: update
+        except: [ 'show ']
+    type: sylius.resource
+    prefix: /admin
+

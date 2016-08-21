@@ -14,5 +14,9 @@
 !var/SymfonyRequirements.php
 /vendor/
 /web/bundles/
+/web/assets
+/web/semantic/dist
+/web/semantic/src
+composer.lock
 
 node_modules

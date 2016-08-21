@@ -1,0 +1,94 @@
+{% macro breadcrumb(resources, repositoryName) %}
+    {% if resources|length == 1 %}/{% else %}
+
+        {% for resource in resources %}
+
+            {% if loop.last %}
+                {{ resource.name }}
+            {% else %}
+                <a href="{{ path('_cmf_column_browser_repository', { path: resource.path, repository: repositoryName}) }}" class="browsing ui right floated">{{ resource.name }}</a>&nbsp;/&nbsp;
+            {% endif %}
+
+        {% endfor %}
+    {% endif %}
+
+{% endmacro %}
+
+{% import _self as macros %}
+
+<div class="ui one column grid">
+    <h3></h3>
+</div>
+
+<div class="browsing">
+    <div class="ui pointing menu">
+
+        <div class="browsing ui simple dropdown item">
+            {{ repositoryName }}
+            <i class="dropdown icon"></i>
+            <div class="menu">
+                {% for repository in repositories %}
+                    {% if repository != repositoryName %}
+                    <div class="item"><a href="{{ path('_cmf_column_browser', { repository: repository }) }}">{{ repository }}</a></div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <a id="browser_move_button" href="#" class="item"><i class="move icon"></i></a>
+        <div class="header item"><a href="{{ path('_cmf_column_browser_repository', { path: '/', repository: repositoryName}) }}"><i class="icon home large"></i></a>{{ macros.breadcrumb(browser.columns, repositoryName) }}</div>
+    </div>
+</div>
+
+<div class="moving">
+    <div class="ui pointing menu">
+        <div class="header item">Move items</div>
+
+        <div class="ui buttons">
+          <button id="moving_cancel_button" class="ui button">Cancel</button>
+          <div class="or"></div>
+          <button id="moving_save_button" class="ui positive button">Save</button>
+        </div>
+    </div>
+</div>
+<div class="ui four column grid padded columnbrowser">
+    {% for column in browser.columnsForDisplay %}
+        {% set description = cmf_resource_description(column) %}
+
+        <div class="column">
+            <div class="ui segment">
+                <div class="ui two column grid">
+                    <div class="column">
+                        <h2>{{ column.name == '' ? 'root' : column.name }}</h2>
+                    </div>
+                    <div class="column right aligned">
+                        {% if description.has('links.create_child.html') %}
+                            <div class="ui compact menu">
+                                <div class="browsing ui simple dropdown item">
+                                    <i class="plus icon"></i>
+                                    <i class="dropdown icon"></i>
+                                    <div class="menu">
+                                        {% for childAlias, childLink in description.get('links.create_child.html') %}
+                                            <div class="item"><a href="{{ childLink }}">{{ childAlias }}</a></div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="ui divided items sortable">
+                    <div></div>
+
+                    {% for resource in column.listChildren %}
+                        {% include "@SycmsColumnBrowser/browser/_item.html.twig" %}
+                    {% endfor %}
+
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+</script>
