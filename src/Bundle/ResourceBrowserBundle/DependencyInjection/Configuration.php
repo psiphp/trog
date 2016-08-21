@@ -1,6 +1,6 @@
 <?php
 
-namespace Sycms\Bundle\ColumnBrowserBundle\DependencyInjection;
+namespace Sycms\Bundle\ResourceBrowserBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

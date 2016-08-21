@@ -5,12 +5,12 @@
     </head>
     <body>
         <div class="container">
-            <h1>Column Browser Demo</h1>
-            {% include "@SycmsColumnBrowser/browser.html.twig" %}
+            <h1>Resource Browser Demo</h1>
+            {% include "@SycmsResourceBrowser/browser.html.twig" %}
 <script type="text/javascript">
 $(document).ready(function () {
-    $('.sortable').sycmsColumnBrowser({
-        update_path: "{{ path('_cmf_column_browser_update') }}"
+    $('.sortable').sycmsResourceBrowser({
+        update_path: "{{ path('_cmf_resource_browser_update') }}"
     });
 });
 </script>

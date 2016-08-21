@@ -1,6 +1,6 @@
 <?php
 
-namespace Sycms\Bundle\TextEditor\Controller;
+namespace Sycms\Bundle\TextEditorBundle\Controller;
 
 use Symfony\Cmf\Component\Resource\RepositoryRegistryInterface;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;

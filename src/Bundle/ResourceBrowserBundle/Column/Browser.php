@@ -1,6 +1,6 @@
 <?php
 
-namespace Sycms\Bundle\ColumnBrowserBundle\Column;
+namespace Sycms\Bundle\ResourceBrowserBundle\Column;
 
 use Puli\Repository\Api\ResourceRepository;
 use Sycms\Bundle\ColumnBrowserBundle\Column\Column;

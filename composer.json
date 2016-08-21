@@ -35,7 +35,8 @@
         "jackalope/jackalope-doctrine-dbal": "^1.2",
         "knplabs/knp-menu-bundle": "2.1 as 1.2",
 
-        "puli/repository": "@beta"
+        "puli/repository": "@beta",
+        "phpcr/phpcr-shell": "@beta"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

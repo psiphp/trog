@@ -1,4 +1,0 @@
-imports:
-    - { resource: doctrine_phpcr.yml }
-    - { resource: cmf_resource.yml }
-

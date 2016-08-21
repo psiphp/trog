@@ -1,6 +1,6 @@
 <?php
 
-namespace Sycms\Bundle\TextEditorBundle\DependencyInjection;
+namespace Sycms\Bundle\ResourceBrowserBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\Loader;
  *
  * @link http://symfony.com/doc/current/cookbook/bundles/extension.html
  */
-class SycmsTextEditorExtension extends Extension
+class SycmsResourceBrowserExtension extends Extension
 {
     /**
      * {@inheritdoc}

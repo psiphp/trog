@@ -1,6 +1,6 @@
 <?php
 
-namespace Sycms\Bundle\TextEditor;
+namespace Sycms\Bundle\TextEditorBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

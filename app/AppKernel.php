@@ -8,35 +8,22 @@ class AppKernel extends Kernel
     public function registerBundles()
     {
         $bundles = [
-            new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
-            new Symfony\Bundle\SecurityBundle\SecurityBundle(),
-            new Symfony\Bundle\TwigBundle\TwigBundle(),
-            new Symfony\Bundle\MonologBundle\MonologBundle(),
-            new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-            new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new AppBundle\AppBundle(),
-
             new Doctrine\Bundle\PHPCRBundle\DoctrinePHPCRBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
-            // Sylius Resource and dependencies
-            new Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
-            new FOS\RestBundle\FOSRestBundle(),
-            new JMS\SerializerBundle\JMSSerializerBundle($this),
-            new Sylius\Bundle\GridBundle\SyliusGridBundle(),
-            new Sylius\Bundle\ResourceBundle\SyliusResourceBundle(),
-            new Sylius\Bundle\UiBundle\SyliusUiBundle(),
-            new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
-            new winzou\Bundle\StateMachineBundle\winzouStateMachineBundle(),
-            new Sycms\Bundle\ColumnBrowserBundle\SycmsColumnBrowserBundle(),
+            new Sycms\Bundle\AdminBundle\SycmsAdminBundle(),
+            new Sycms\Bundle\ResourceBrowserBundle\SycmsResourceBrowserBundle(),
+            new Sycms\Bundle\TextEditorBundle\SycmsTextEditorBundle(),
 
-            // Symfoiny CMF
-            new Symfony\Cmf\Bundle\AdminBundle\CmfAdminBundle(),
+            new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
+            new Symfony\Bundle\MonologBundle\MonologBundle(),
+            new Symfony\Bundle\SecurityBundle\SecurityBundle(),
+            new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
+            new Symfony\Bundle\TwigBundle\TwigBundle(),
+
             new Symfony\Cmf\Bundle\ResourceBundle\CmfResourceBundle(),
-
-            new Sycms\Bundle\TextEditor\SycmsTextEditorBundle(),
-
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

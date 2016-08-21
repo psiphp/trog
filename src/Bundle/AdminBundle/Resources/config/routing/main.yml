@@ -1,0 +1,10 @@
+tree:
+    resource: "@SycmsResourceBrowserBundle/Resources/config/routing.xml"
+    prefix: /admin
+    defaults:
+        repository: default
+        template: "@SycmsAdmin/ResourceBrowser/index.html.twig"
+
+text_editor:
+    resource: "@SycmsTextEditorBundle/Resources/config/routing/main.yml"
+    prefix: /admin/text-editor

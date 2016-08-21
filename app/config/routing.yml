@@ -1,6 +1,2 @@
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
-
 cms:
-    resource: "cms/routing/_routing.yml"
+    resource: "@SycmsAdminBundle/Resources/config/routing/main.yml"

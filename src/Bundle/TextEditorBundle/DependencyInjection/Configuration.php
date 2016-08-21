@@ -1,6 +1,6 @@
 <?php
 
-namespace Sycms\Bundle\TextEditor\DependencyInjection;
+namespace Sycms\Bundle\TextEditorBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

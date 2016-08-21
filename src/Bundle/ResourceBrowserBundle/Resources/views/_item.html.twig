@@ -1,0 +1,27 @@
+{% set description = cmf_resource_description(resource) %}
+
+<div class="item {% if resource.path == browser.path %} current{% endif %}{{ resource.path == browser.path|slice(0, resource.path|length) ? ' active' : '' }}">
+    <div class="content">
+        <span class="grippy moving"></span>
+        {% if resource.hasChildren %}
+            <i class="{{ browser.path|slice(0, resource.path|length) == resource.path ? 'folder open' : 'folder closed' }} icon"></i>
+        {% else %}
+            <i class="file icon"></i>
+        {% endif %}
+
+        <a class="browser-item" href="{{ path('_cmf_resource_browser_repository', { path: resource.path, repository: repositoryName}) }}">
+            {{ resource.name }}
+        </a>
+    </div>
+    <div class="browsing">
+        {% if description.has('link.edit.html') %}
+            <a href="{{ description.get('link.edit.html') }}"><i class="icon large edit"></i></a>
+        {% endif %}
+    </div>
+    <div>
+        <a href="{{ path('_cmf_resource_browser_repository', { path: resource.path, repository: repositoryName}) }}" class="browsing ui right floated">
+            <i class="large angle double right icon"></i>
+        </a>
+    </div>
+</div>
+
