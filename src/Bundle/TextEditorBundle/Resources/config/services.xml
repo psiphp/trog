@@ -5,10 +5,16 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="sycms.controller.text_editor" class="Sycms\Bundle\TextEditor\Controller\EditorController">
+        <service id="sycms.controller.text_editor" class="Sycms\Bundle\TextEditorBundle\Controller\EditorController">
             <argument type="service" id="cmf_resource.registry" />
             <argument type="service" id="templating" />
             <argument type="service" id="router" />
+        </service>
+
+        <service id="sycms_text_editor.resource.enhancer" class="Sycms\Bundle\TextEditorBundle\Resource\TextEditorEnhancer">
+            <argument type="service" id="router" />
+            <argument type="service" id="cmf_resource.registry" />
+            <tag name="cmf_resource.description.enhancer" alias="text_editor" />
         </service>
     </services>
 </container>

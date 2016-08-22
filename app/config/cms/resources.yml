@@ -6,7 +6,10 @@ cmf_resource:
         filesystem:
             type: filesystem
             base_dir: %kernel.root_dir%
+        media:
+            type: doctrine_phpcr_odm
+            basepath: /sycms
     description:
         enhancers:
             - doctrine_phpcr_odm
-            #- sycms_text_editor
+            - text_editor

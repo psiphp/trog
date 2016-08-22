@@ -29,8 +29,8 @@ class EditorController
 
     public function edit(Request $request)
     {
-        $repositoryName = $request->query->get('repository') ?: 'default';
-        $layout = $request->attributes->get('layout') ?: '@SycmsTextEditor/layout.html.twig';
+        $repositoryName = $request->attributes->get('repository') ?: 'default';
+        $template = $request->attributes->get('template') ?: '@SycmsTextEditor/index.html.twig';
         $path = $request->query->get('path') ?: '/';
 
         $repository = $this->registry->get($repositoryName);
@@ -38,7 +38,12 @@ class EditorController
 
         if ($request->getMethod() === 'POST') {
             file_put_contents($resource->getFilesystemPath(), $request->request->get('text'));
-            return new RedirectResponse($this->urlGenerator->generate($request->attributes->get('_route'), $request->query->all()));
+            return new RedirectResponse(
+                $this->urlGenerator->generate('sycms_text_editor', [
+                    'repository' => $repositoryName,
+                    'path' => $path
+                ])
+            );
         }
 
         if (!$resource instanceof FileResource) {
@@ -49,10 +54,9 @@ class EditorController
         }
 
         return new Response($this->templating->render(
-            '@SycmsTextEditor/editor.html.twig',
+            $template,
             [
                 'resource' => $resource,
-                'layout' => $layout,
                 'repositoryName' => $repositoryName,
             ]
         ));

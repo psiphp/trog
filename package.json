@@ -4,6 +4,7 @@
   "description": "Sycms CMS system that may or may not suck",
   "main": "Gulpfile.js",
   "dependencies": {
+    "ace-builds": "^1.2.2",
     "gulp-add-src": "^0.2.0",
     "gulp-less": "^3.1.0",
     "jquery-ui-dist": "^1.12.0",

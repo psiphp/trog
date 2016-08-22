@@ -1,5 +1,5 @@
 sycms_text_editor:
-    path: /
+    path: /{repository}
     defaults:
         _controller: sycms.controller.text_editor:edit
 

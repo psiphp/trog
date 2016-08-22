@@ -1,0 +1,22 @@
+{% extends "@SycmsAdmin/layout.html.twig" %}
+{% block main %}
+    {% include "@SycmsTextEditor/editor.html.twig" %}
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script type="text/javascript">
+    var modelist = ace.require('ace/ext/modelist')
+    var filePath = '{{ resource.path }}';
+    var mode = modelist.getModeForPath(filePath).mode
+
+    var editor = ace.edit("editor");
+    var textarea = document.getElementById('editor_textarea');
+    editor.setTheme("ace/theme/twilight");
+    editor.session.setMode(mode);
+    editor.getSession().on('change', function(){
+        textarea.value = editor.getSession().getValue();
+    });
+</script>
+
+{% endblock %}

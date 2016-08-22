@@ -14,6 +14,19 @@
     </head>
     <h1>Sycms Text Editor</h1>
     <p>This is a demo layout. You will want to override the <code>layout</code> request attribute</p>
-    {% block editor %}
-    {% endblock %}
+
+    <script>
+        var modelist = ace.require('ace/ext/modelist')
+        var filePath = '{{ resource.path }}';
+        var mode = modelist.getModeForPath(filePath).mode
+
+        var editor = ace.edit("editor");
+        var textarea = document.getElementById('editor_textarea');
+        editor.setTheme("ace/theme/twilight");
+        editor.session.setMode(mode);
+        editor.getSession().on('change', function(){
+            textarea.value = editor.getSession().getValue();
+        });
+
+    </script>
 </html>

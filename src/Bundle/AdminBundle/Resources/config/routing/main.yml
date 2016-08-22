@@ -8,3 +8,5 @@ tree:
 text_editor:
     resource: "@SycmsTextEditorBundle/Resources/config/routing/main.yml"
     prefix: /admin/text-editor
+    defaults:
+        template: "@SycmsAdmin/TextEditor/index.html.twig"

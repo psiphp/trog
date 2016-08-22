@@ -18,6 +18,14 @@ var
             './node_modules/jquery/dist/jquery.min.js',
             './node_modules/jquery-ui-dist/jquery-ui.js',
             './node_modules/semantic-ui-css/semantic.min.js',
+
+            './node_modules/ace-builds/src-min/ace.js',
+            './node_modules/ace-builds/src-min/ext-modelist.js',
+            './node_modules/ace-builds/src-min/mode-twig.js',
+            './node_modules/ace-builds/src-min/mode-php.js',
+            './node_modules/ace-builds/src-min/mode-css.js',
+            './node_modules/ace-builds/src-min/theme-twilight.js',
+
             './src/Bundle/*/Resources/private/js/*.js',
         ]
     }
