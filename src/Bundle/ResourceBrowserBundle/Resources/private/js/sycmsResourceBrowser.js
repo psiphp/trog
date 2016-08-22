@@ -55,4 +55,8 @@ jQuery.fn.sycmsResourceBrowser = function (options) {
         });
 
     });
+
+	$('.ui.dropdown')
+	  .dropdown()
+	;
 };

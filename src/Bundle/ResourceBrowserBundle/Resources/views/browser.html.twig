@@ -5,7 +5,7 @@
     <div class="ui grid celled segment">
         <div class="row">
             {% for columnNb in 0..3 %}
-                <div class="four wide column">
+                <div class="four wide column browser-header-item">
                     {% if columns[columnNb] is defined %}
                         {% include "@SycmsResourceBrowser/_headers.html.twig" with { 'column': columns[columnNb] } %}
                     {% else %}
@@ -15,7 +15,7 @@
         </div>
         <div class="row">
             {% for columnNb in 0..3 %}
-                <div class="four wide column">
+                <div class="four wide column sortable">
                     {% if columns[columnNb] is defined %}
                         {% include "@SycmsResourceBrowser/_items.html.twig" with { 'column': columns[columnNb] } %}
                     {% endif %}

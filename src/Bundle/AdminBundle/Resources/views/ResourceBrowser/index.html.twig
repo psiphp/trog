@@ -2,3 +2,14 @@
 {% block main %}
     {% include "@SycmsResourceBrowser/browser.html.twig" %}
 {% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script type="text/javascript">
+$(document).ready(function () {
+    $('.resource-browser').sycmsResourceBrowser({
+        update_path: "{{ path('_cmf_resource_browser_update') }}"
+    });
+});
+</script>
+{% endblock %}

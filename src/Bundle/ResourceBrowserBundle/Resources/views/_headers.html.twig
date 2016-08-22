@@ -1,19 +1,25 @@
-<div class="ui dropdown">
+{% set description = cmf_resource_description(column) %}
+
+<div class="ui simple dropdown">
 	<div class="text">
 		{{ column.name ?: '/' }}
 	</div>
 	<i class="dropdown icon"></i>
 	<div class="menu">
-		<div class="item">New</div>
-		<div class="item">
-			<span class="description">ctrl + o</span>
-			Open...
-		</div>
-		<div class="item">
-			<span class="description">ctrl + s</span>
-			Save as...
-		</div>
+        {% if description.all|length == 0 %}
+			<div class="item disabled">
+				{{ 'no-actions-available'|trans() }}
+			</div>
+		{% endif %}
+
+		{% if description.has('links.create_child.html') %}
+            {% include "SycmsResourceBrowser/item_menu/create_child.html.twig" %}
+		{% endif %}
+
+        {% if description.has('link.edit.html') %}
+            <div class="item">
+				<a href="{{ description.get('link.edit.html') }}"><i class="icon large edit"></i> {{ 'edit'|trans() }}</a>
+			</div>
+        {% endif %}
 	</div>
 </div>
-
-

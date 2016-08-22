@@ -37,7 +37,6 @@ class EditorController
         $resource = $repository->get($path);
 
         if ($request->getMethod() === 'POST') {
-            var_dump($_POST);die();;
             file_put_contents($resource->getFilesystemPath(), $request->request->get('text'));
             return new RedirectResponse($this->urlGenerator->generate($request->attributes->get('_route'), $request->query->all()));
         }

@@ -1,17 +1,13 @@
+<div class="browser-item item {% if resource.path == browser.path %} current{% endif %}{{ resource.path == browser.path|slice(0, resource.path|length) ? ' active' : '' }}">
 
-<div class="item {% if resource.path == browser.path %} current{% endif %}{{ resource.path == browser.path|slice(0, resource.path|length) ? ' active' : '' }}">
+    <span class="grippy moving"></span>
 
-    <div class="content">
+    <i class="{{ browser.path|slice(0, resource.path|length) == resource.path ? 'folder open' : 'folder closed' }} icon"></i>
 
-        <span class="grippy moving"></span>
-
-        <i class="{{ browser.path|slice(0, resource.path|length) == resource.path ? 'folder open' : 'folder closed' }} icon"></i>
-
-        <a class="browser-item" 
-            href="{{ path('_cmf_resource_browser_repository', { path: resource.path, repository: repositoryName}) }}"
-        >{{ resource.name }}</a>
-
-    </div>
+    <a class="browser-item" 
+       href="{{ path('_cmf_resource_browser_repository', { path: resource.path, repository: repositoryName}) }}"
+       title="{{ resource.name }}"
+    >{{ resource.name }}</a>
 
 </div>
 

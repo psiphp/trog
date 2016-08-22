@@ -16,6 +16,7 @@ var
         ],
         'js': [
             './node_modules/jquery/dist/jquery.min.js',
+            './node_modules/jquery-ui-dist/jquery-ui.js',
             './node_modules/semantic-ui-css/semantic.min.js',
             './src/Bundle/*/Resources/private/js/*.js',
         ]
