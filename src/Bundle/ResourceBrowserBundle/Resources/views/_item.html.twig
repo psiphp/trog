@@ -5,7 +5,7 @@
     <i class="{{ browser.path|slice(0, resource.path|length) == resource.path ? 'folder open' : 'folder closed' }} icon"></i>
 
     <a class="browser-item" 
-       href="{{ path('_cmf_resource_browser_repository', { path: resource.path, repository: repositoryName}) }}"
+       href="{{ path('sycms_resource_browser_repository', { path: resource.path, repository: repositoryName}) }}"
        title="{{ resource.name }}"
     >{{ resource.name }}</a>
 

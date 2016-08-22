@@ -8,20 +8,18 @@
         <link rel="stylesheet" href="{{ asset('assets/admin.css') }}" />
     </head>
     <body>
-        <div class="sycms-admin">
-            <div class="header">
-                <h1>SyCMS</h1><p>Experimental full-stack, hierarchical content management</p>
-            </div>
+        <div class="ui inverted menu">
+            {% include "@SycmsAdmin/_menu.html.twig" %}
+        </div>
 
-            <div class="body">
-                {% block main %}
-                {% endblock %}
-            </div>
-
-            {% block javascripts %}
-                <script type="text/javascript" src="{{ asset('assets/admin.js') }}"></script>
+        <div class="main">
+            {% block main %}
             {% endblock %}
         </div>
+
+        {% block javascripts %}
+            <script type="text/javascript" src="{{ asset('assets/admin.js') }}"></script>
+        {% endblock %}
     </body>
 </html>
 

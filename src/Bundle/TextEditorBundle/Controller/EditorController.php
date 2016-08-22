@@ -43,7 +43,8 @@ class EditorController
                     'repository' => $repositoryName,
                     'path' => $path
                 ])
-            );
+            );;
+
         }
 
         if (!$resource instanceof FileResource) {
