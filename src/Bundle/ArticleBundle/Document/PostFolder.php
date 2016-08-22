@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Document;
+namespace Sycms\Bundle\ArticleBundle\Document;
 
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 use Sylius\Component\Resource\Model\ResourceInterface;
@@ -8,10 +8,10 @@ use Sylius\Component\Resource\Model\ResourceInterface;
 /**
  * @PHPCR\Document(
  *     referenceable=true,
- *     childClasses={"AppBundle\Document\Post"}
+ *     childClasses={"Sycms\Bundle\ArticleBundle\Document\Post"}
  * )
  */
-class PostFolder implements ResourceInterface
+class PostFolder
 {
     /**
      * @PHPCR\Nodename()

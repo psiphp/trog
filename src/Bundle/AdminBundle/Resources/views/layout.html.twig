@@ -9,9 +9,14 @@
     </head>
     <body>
         <div class="sycms-admin">
-            <h1>SyCMS</h1><p>Experimental full-stack, hierarchical content management</p>
-            {% block main %}
-            {% endblock %}
+            <div class="header">
+                <h1>SyCMS</h1><p>Experimental full-stack, hierarchical content management</p>
+            </div>
+
+            <div class="body">
+                {% block main %}
+                {% endblock %}
+            </div>
 
             {% block javascripts %}
                 <script type="text/javascript" src="{{ asset('assets/admin.js') }}"></script>

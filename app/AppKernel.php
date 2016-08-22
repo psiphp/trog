@@ -16,6 +16,7 @@ class AppKernel extends Kernel
             new Sycms\Bundle\AdminBundle\SycmsAdminBundle(),
             new Sycms\Bundle\ResourceBrowserBundle\SycmsResourceBrowserBundle(),
             new Sycms\Bundle\TextEditorBundle\SycmsTextEditorBundle(),
+            new Sycms\Bundle\ArticleBundle\SycmsArticleBundle(),
 
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\MonologBundle\MonologBundle(),

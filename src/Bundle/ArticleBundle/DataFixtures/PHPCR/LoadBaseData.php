@@ -1,13 +1,13 @@
 <?php
 
-namespace AppBundle\DataFixtures\PHPCR;
+namespace Sycms\Bundle\ArticleBundle\DataFixtures\PHPCR;
 
-use AppBundle\Document\PageFolder;
-use AppBundle\Document\PostFolder;
+use Sycms\Bundle\ArticleBundle\Document\PageFolder;
+use Sycms\Bundle\ArticleBundle\Document\PostFolder;
 use Doctrine\ODM\PHPCR\Document\Generic;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use AppBundle\Document\Post;
+use Sycms\Bundle\ArticleBundle\Document\Post;
 
 class LoadBaseData implements FixtureInterface
 {
