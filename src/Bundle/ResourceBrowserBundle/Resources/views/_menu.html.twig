@@ -1,0 +1,48 @@
+{% macro breadcrumb(resources, repositoryName) %}
+    {% if resources|length == 1 %}/{% else %}
+
+        {% for resource in resources %}
+
+            {% if loop.last %}
+                {{ resource.name }}
+            {% else %}
+                <a href="{{ path('_cmf_resource_browser_repository', { path: resource.path, repository: repositoryName}) }}" class="browsing ui right floated">{{ resource.name }}</a>&nbsp;/&nbsp;
+            {% endif %}
+
+        {% endfor %}
+    {% endif %}
+
+{% endmacro %}
+{% import _self as macros %}
+
+<div class="ui menu">
+
+    <div class="ui simple dropdown item">
+        {{ repositoryName }}
+        <i class="dropdown icon"></i>
+        <div class="menu">
+            {% for repository in repositories %}
+                {% if repository != repositoryName %}
+                <div class="item"><a href="{{ path('_cmf_resource_browser', { repository: repository }) }}">{{ repository }}</a></div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <a id="browser_move_button" href="#" class="item"><i class="move icon"></i></a>
+    <div class="header item"><a href="{{ path('_cmf_resource_browser_repository', { path: '/', repository: repositoryName}) }}"><i class="icon home large"></i></a>{{ macros.breadcrumb(browser.columns, repositoryName) }}</div>
+</div>
+
+{# hidden by default, displayed when in moving mode #}
+<div class="moving">
+    <div class="ui pointing menu">
+        <div class="header item">Move items</div>
+
+        <div class="ui buttons">
+          <button id="moving_cancel_button" class="ui button">Cancel</button>
+          <div class="or"></div>
+          <button id="moving_save_button" class="ui positive button">Save</button>
+        </div>
+    </div>
+</div>
+

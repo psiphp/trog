@@ -49,7 +49,7 @@ class Browser
             $columns = array_slice($columns, -4);
         }
 
-        return $columns;
+        return array_values($columns);
     }
 
     public function columns()
@@ -67,6 +67,7 @@ class Browser
         if ($path !== '/') {
             $columnNames = explode('/', ltrim($path, '/'));
             array_unshift($columnNames, '/');
+
             return $columnNames;
         }
 

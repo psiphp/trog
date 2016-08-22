@@ -1,0 +1,5 @@
+{% for resource in column.listChildren %}
+    {% include "@SycmsResourceBrowser/_item.html.twig" %}
+{% else %}
+    <i>{{ 'no-children'|trans }}</i>
+{% endfor %}

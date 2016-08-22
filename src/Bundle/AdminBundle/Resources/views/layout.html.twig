@@ -5,16 +5,17 @@
         <title>{% block title %}Welcome to SyCmS{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        <link rel="stylesheet" href="{{ asset('assets/semantic/semantic.min.css') }}" />
         <link rel="stylesheet" href="{{ asset('assets/admin.css') }}" />
     </head>
     <body>
-        {% block main %}
-        {% endblock %}
-        {% block javascripts %}
-            <script type="text/javascript" src="{{ asset('assets/admin.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('assets/semantic/semantic.min.js') }}"></script>
-        {% endblock %}
+        <div class="ui container">
+            {% block main %}
+            {% endblock %}
+
+            {% block javascripts %}
+                <script type="text/javascript" src="{{ asset('assets/admin.js') }}"></script>
+            {% endblock %}
+        </div>
     </body>
 </html>
 
