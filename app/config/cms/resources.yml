@@ -3,6 +3,9 @@ cmf_resource:
         default:
             type: doctrine_phpcr_odm
             basepath: /sycms
+        pages:
+            type: doctrine_phpcr_odm
+            basepath: /sycms/pages
         filesystem:
             type: filesystem
             base_dir: %kernel.root_dir%
