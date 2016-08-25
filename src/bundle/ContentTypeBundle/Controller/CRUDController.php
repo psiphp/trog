@@ -62,4 +62,36 @@ class CRUDController
             ]
         ));
     }
+
+    public function createAsChild(Request $request)
+    {
+        $template = $request->attributes->get('template');
+        $type = $request->attributes->get('type');
+        $parentIdentifier = $request->attributes->get('parent_identifier');
+
+        $agent = $this->agentFinder->findAgentFor($type);
+        $form = $this->formFactory->create($type);
+        $parentObject = $agent->find($parentIdentifier);
+
+        if ($request->getMethod() === 'POST' && $form->handleRequest($request)->isValid()) {
+            $agent->setParent($form->getData(), $parentObject);
+            $agent->save($form->getData());
+            $identifier = $agent->getIdentifier($form->getData());
+
+            return new RedirectResponse($this->urlGenerator->generate(
+                'sycms_content_type_crud_edit',
+                [
+                    'agent' => $agent->getAlias(),
+                    'identifier' => $identifier,
+                ]
+            ));
+        }
+
+        return new Response($this->templating->render(
+            $template,
+            [
+                'form' => $form->createView()
+            ]
+        ));
+    }
 }

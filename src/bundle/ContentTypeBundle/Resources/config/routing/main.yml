@@ -7,6 +7,6 @@ sycms_content_type_crud_edit:
 
 
 sycms_content_type_crud_create_as_child:
-    path: /{agent}/{parent_identifier}/create
+    path: /{agent}/{parent_identifier}/{type}/createAsChild
     defaults:
         _controller: sycms_content_type.controller.crud:createAsChild

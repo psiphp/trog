@@ -20,7 +20,7 @@ class Page
     protected $title;
 
     /**
-     * @PHPCR\Field(type="string", nullable=true)
+     * @ContentType\Property(type="text")
      */
     protected $content;
 

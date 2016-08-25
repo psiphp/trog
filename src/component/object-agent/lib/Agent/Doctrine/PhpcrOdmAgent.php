@@ -65,6 +65,26 @@ class PhpcrOdmAgent implements AgentInterface
     /**
      * {@inheritdoc}
      */
+    public function setParent($object, $parent)
+    {
+        $objectFqn = ClassUtils::getRealClass(get_class($object));
+        $metadata = $this->documentManager->getClassMetadata($objectFqn);
+        $parentField = $metadata->parentMapping;
+
+        if (!$parentField) {
+            throw new \RuntimeException(sprintf(
+                'Document "%s" does not have a ParentDocument mapping All '.
+                'PHPCR-ODM documents must have a mapped parent proprety.',
+                $objectFqn
+            ));
+        }
+
+        $metadata->setFieldValue($object, $parentField, $parent);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getAlias()
     {
         return $this->alias;
@@ -76,7 +96,8 @@ class PhpcrOdmAgent implements AgentInterface
     public function supports($class)
     {
         $metadataFactory = $this->documentManager->getMetadataFactory();
+        $supports =  $metadataFactory->getMetadataFor(ClassUtils::getRealClass($class));
 
-        return $metadataFactory->hasMetadataFor(ClassUtils::getRealClass($class));
+        return $supports ? true : false;
     }
 }

@@ -1,0 +1,14 @@
+<div class="item">
+    <i class="icon large add"></i>
+    <i class="dropdown icon"></i>
+    {{ 'create-child'|trans() }}
+    <div class="menu">
+        {% for alias, url in description.get('links.create_child.html') %}
+            <div class="item">
+                <a href="{{ url }}">{{ alias }}</a>
+                {% set hasActions = true %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
