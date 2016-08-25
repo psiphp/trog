@@ -1,0 +1,11 @@
+{% extends "@SycmsAdmin/layout.html.twig" %}
+{% block main %}
+
+    {% form_theme form "@SycmsAdmin/form_theme.html.twig" %}
+
+    <form method="POST">
+        {{ form_widget(form) }}
+        <input type="submit" class="ui button primary" value="{{ 'save'|trans() }}" />
+    </form>
+
+{% endblock %}

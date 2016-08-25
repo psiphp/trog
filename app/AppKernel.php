@@ -24,6 +24,9 @@ class AppKernel extends Kernel
             new Symfony\Bundle\TwigBundle\TwigBundle(),
 
             new Symfony\Cmf\Bundle\ResourceBundle\CmfResourceBundle(),
+            new Symfony\Cmf\Bundle\ContentTypeBundle\ContentTypeBundle(),
+            new Sycms\Bundle\ObjectAgentBundle\SycmsObjectAgentBundle(),
+            new Sycms\Bundle\ContentTypeBundle\SycmsContentTypeBundle()
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

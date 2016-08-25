@@ -16,3 +16,4 @@ cmf_resource:
         enhancers:
             - doctrine_phpcr_odm
             - text_editor
+            - content_type

@@ -1,0 +1,12 @@
+sycms_content_type_crud_edit:
+    path: /{agent}/{identifier}/edit
+    defaults:
+        _controller: sycms_content_type.controller.crud:edit
+    requirements:
+        path: .*
+
+
+sycms_content_type_crud_create_as_child:
+    path: /{agent}/{parent_identifier}/create
+    defaults:
+        _controller: sycms_content_type.controller.crud:createAsChild
