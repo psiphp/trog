@@ -20,7 +20,7 @@ class Page
     protected $title;
 
     /**
-     * @ContentType\Property(type="text")
+     * @ContentType\Property(type="markdown")
      */
     protected $content;
 

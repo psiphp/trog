@@ -5,7 +5,8 @@
     "autoload": {
         "psr-4": {
             "Sycms\\Bundle\\": "src/bundle",
-            "Sycms\\Component\\ObjectAgent\\": "src/component/object-agent/lib"
+            "Sycms\\Component\\ObjectAgent\\": "src/component/object-agent/lib",
+            "Sycms\\Component\\ContentType\\": "src/component/content-type/lib"
         },
         "classmap": [
             "app/AppKernel.php",
