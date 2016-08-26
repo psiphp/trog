@@ -20,7 +20,12 @@ class Page
     protected $title;
 
     /**
-     * @ContentType\Property(type="markdown")
+     * @ContentType\Property(type="markdown", options={"editor_height": "100px"})
+     */
+    protected $teaser;
+
+    /**
+     * @ContentType\Property(type="markdown", options={"editor_height": "400px"})
      */
     protected $content;
 
@@ -74,6 +79,16 @@ class Page
     public function setContent($content)
     {
         $this->content = $content;
+    }
+
+    public function getTeaser() 
+    {
+        return $this->teaser;
+    }
+    
+    public function setTeaser($teaser)
+    {
+        $this->teaser = $teaser;
     }
 
     public function getPublished() 

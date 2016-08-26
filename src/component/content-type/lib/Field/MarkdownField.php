@@ -37,6 +37,8 @@ class MarkdownField implements FieldInterface
 
     public function configureOptions(OptionsResolver $options)
     {
+        $options->setDefault('editor_height', '400px');
+        $options->setFormOptions(['editor_height']);
     }
 }
 

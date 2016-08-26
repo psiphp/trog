@@ -1,0 +1,18 @@
+$(document).ready(function () {
+    $('*[data-sycms-ct-ace-editor]').each(function () {
+        var mode = $(this).attr('data-sycms-ct-ace-editor-mode');
+
+        var textarea = $(this).find('textarea').get(0);
+        var editor = ace.edit(textarea.id + '-editor');
+        editor.setTheme("ace/theme/twilight");
+        editor.setValue(textarea.value);
+
+        if (mode) {
+            editor.session.setMode(mode);
+        }
+
+        editor.getSession().on('change', function(){
+            textarea.value = editor.getSession().getValue();
+        });
+    });
+});
