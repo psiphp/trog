@@ -17,8 +17,9 @@ use Symfony\Cmf\Component\ContentType\View\ScalarView;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Sycms\Component\ContentType\Form\MarkdownType;
+use Sycms\Component\ContentType\Form\WorkflowType;
 
-class MarkdownField implements FieldInterface
+class WorkflowField implements FieldInterface
 {
     public function getViewType()
     {
@@ -27,7 +28,7 @@ class MarkdownField implements FieldInterface
 
     public function getFormType()
     {
-        return MarkdownType::class;
+        return WorkflowType::class;
     }
 
     public function getMapping(MappingBuilder $builder)
@@ -37,9 +38,7 @@ class MarkdownField implements FieldInterface
 
     public function configureOptions(OptionsResolver $options)
     {
-        // we should not define form options here
-        $options->setDefault('editor_height', null);
-        $options->setFormOptions(['editor_height']);
     }
 }
+
 

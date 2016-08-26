@@ -9,7 +9,10 @@ use Symfony\Cmf\Component\ContentType\Metadata\Annotations as ContentType;
 /**
  * @PHPCR\Document(
  *     referenceable=true,
- *     childClasses={"Sycms\Bundle\ArticleBundle\Document\Page"}
+ *     childClasses={
+ *         "Sycms\Bundle\ArticleBundle\Document\Page",
+ *         "Sycms\Component\ContentType\Model\PublishPeriod"
+ *     }
  * )
  */
 class Page
@@ -18,6 +21,17 @@ class Page
      * @ContentType\Property(type="text")
      */
     protected $title;
+
+    /**
+     * @ContentType\Property(type="workflow")
+     */
+    protected $state;
+
+    /**
+     * @ContentType\Property(type="publish_period")
+     */
+    protected $publishPeriod;
+
 
     /**
      * @ContentType\Property(type="markdown", options={"editor_height": "100px"})
@@ -114,6 +128,26 @@ class Page
     public function getPath() 
     {
         return $this->path;
+    }
+
+    public function getState() 
+    {
+        return $this->state;
+    }
+    
+    public function setState($state)
+    {
+        $this->state = $state;
+    }
+
+    public function getPublishPeriod() 
+    {
+        return $this->publishPeriod;
+    }
+    
+    public function setPublishPeriod($publishPeriod)
+    {
+        $this->publishPeriod = $publishPeriod;
     }
     
 }

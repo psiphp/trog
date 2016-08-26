@@ -123,3 +123,16 @@
         <div class="sycms-markdown-editor" id="{{ id }}-editor" style="height: {{ editor_height }}"></div>
     </div>
 {% endblock %}
+
+{% block publish_period_widget %}
+<div class="ui grid">
+    <div class="row">
+        <div class="eight wide column">
+            {{- form_row(form.start) -}}
+        </div>
+        <div class="eight wide column">
+            {{- form_row(form.end) -}}
+        </div>
+    </div>
+</div>
+{% endblock %}

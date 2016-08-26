@@ -14,6 +14,14 @@
             <tag name="cmf_content_type.field" alias="markdown" />
         </service>
 
+        <service id="sycms_content_type.field.workflow" class="Sycms\Component\ContentType\Field\WorkflowField">
+            <tag name="cmf_content_type.field" alias="workflow" />
+        </service>
+
+        <service id="sycms_content_type.field.publish_period" class="Sycms\Component\ContentType\Field\PublishPeriodField">
+            <tag name="cmf_content_type.field" alias="publish_period" />
+        </service>
+
     </services>
 
 </container>

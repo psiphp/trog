@@ -1,13 +1,22 @@
 {% extends "@SycmsAdmin/layout.html.twig" %}
 {% block main %}
+<form class="ui form" method="POST">
+    <div class="ui grid">
+        {% form_theme form "@SycmsAdmin/form_theme.html.twig" %}
 
-    {% form_theme form "@SycmsAdmin/form_theme.html.twig" %}
+        <div class="twelve wide column">
+            <div class="ui segment">
+                {{ form_widget(form) }}
+            </div>
+        </div>
 
-    <div class="ui segment">
-    <form class="ui form" method="POST">
-        {{ form_widget(form) }}
-        <input type="submit" class="ui button primary" value="{{ 'save'|trans() }}" />
-    </form>
+        <div class="four wide column">
+            <div class="ui segment">
+                {% include "@SycmsAdmin/Widget/_button_save.html.twig" %}
+                {% include "@SycmsAdmin/Widget/_button_cancel.html.twig" %}
+            </div>
+        </div>
     </div>
+</form>
 
 {% endblock %}
