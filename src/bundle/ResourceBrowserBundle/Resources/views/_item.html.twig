@@ -1,8 +1,14 @@
+{% set itemDescription = cmf_resource_description(resource) %}
+
 <div class="browser-item item {% if resource.path == browser.path %} current{% endif %}{{ resource.path == browser.path|slice(0, resource.path|length) ? ' active' : '' }}">
 
     <span class="grippy moving"></span>
 
-    <i class="{{ browser.path|slice(0, resource.path|length) == resource.path ? 'folder open' : 'folder closed' }} icon"></i>
+    {% if itemDescription.has('image.primary') %}
+        <img class="ui inline image" src="{{ ('/files/' ~ itemDescription.get('image.primary')) | imagine_filter('mini') }}" />
+    {% else %}
+        <i class="{{ browser.path|slice(0, resource.path|length) == resource.path ? 'folder open' : 'folder closed' }} icon"></i>
+    {% endif %}
 
     <a class="browser-item" 
        href="{{ path('sycms_resource_browser_repository', { path: resource.path, repository: repositoryName}) }}"

@@ -136,3 +136,43 @@
     </div>
 </div>
 {% endblock %}
+
+{% block image_widget %}
+    <div class="ui grid">
+        <div class="row">
+            <div class="eight wide column">
+                {% if value and value.image %}
+                    <img class="ui inline big spaced image" src="{{ ('/files/' ~ value.image) | imagine_filter('preview') }}" />
+                {% endif %}
+            </div>
+            <div class="eight wide column">
+                {{ form_row(form.uploadedFile) }}
+
+                {% if value and value.image %}
+                    <table class="ui definition table">
+                        <thead>
+                            <tr>
+                                <th>{{ 'property'|trans() }}</th>
+                                <th>{{ 'value'|trans() }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ 'mime-type'|trans() }}</td>
+                                <td>{{ value.mimeType }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ 'filename-original'|trans() }}</td>
+                                <td>{{ value.originalFilename }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{ 'filename-internal'|trans() }}</td>
+                                <td>{{ value.image }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

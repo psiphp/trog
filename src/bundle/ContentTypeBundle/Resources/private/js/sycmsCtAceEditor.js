@@ -5,7 +5,7 @@ $(document).ready(function () {
         var textarea = $(this).find('textarea').get(0);
         var editor = ace.edit(textarea.id + '-editor');
         editor.setTheme("ace/theme/twilight");
-        editor.setValue(textarea.value);
+        editor.setValue(textarea.value, 1);
 
         if (mode) {
             editor.session.setMode(mode);

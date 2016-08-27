@@ -1,0 +1,16 @@
+liip_imagine:
+    resolvers:
+       default:
+          web_path: ~
+
+    filter_sets:
+        cache: ~
+        mini:
+            quality: 75
+            filters:
+                thumbnail: { size: [35, 35], mode: outbound }
+        preview:
+            quality: 75
+            filters:
+                thumbnail: { size: [600, 600], mode: inset }
+    driver: imagick

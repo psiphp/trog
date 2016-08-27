@@ -34,19 +34,19 @@ class Page
     private $publishPeriod;
 
     /**
-     * @ContentType\Property(type="markdown", options={"editor_height": "100px"})
+     * @ContentType\Property(type="markdown", options={"editor_height": "50px"})
      */
     private $teaser = '';
-
-    /**
-     * @ContentType\Property(type="markdown", options={"editor_height": "400px"})
-     */
-    private $content = '';
 
     /**
      * @ContentType\Property(type="image")
      */
     private $image;
+
+    /**
+     * @ContentType\Property(type="markdown", options={"editor_height": "400px"})
+     */
+    private $content = '';
 
     /**
      * @PHPCR\Nodename()

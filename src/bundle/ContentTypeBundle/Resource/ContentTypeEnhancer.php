@@ -11,6 +11,7 @@ use Metadata\MetadataFactoryInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Puli\Repository\Api\Resource\PuliResource;
 use Sycms\Component\ObjectAgent\AgentFinder;
+use Symfony\Component\PropertyAccess\PropertyAccessor;
 
 class ContentTypeEnhancer implements DescriptionEnhancerInterface
 {
@@ -36,6 +37,7 @@ class ContentTypeEnhancer implements DescriptionEnhancerInterface
     {
         $resource = $description->getResource();
         $payload = $resource->getPayload();
+        $metadata = $this->metadataFactory->getMetadataForClass($resource->getPayloadType());
 
         $agent = $this->agentFinder->findAgentFor(get_class($payload));
         $identifier = $agent->getIdentifier($payload);
@@ -50,6 +52,20 @@ class ContentTypeEnhancer implements DescriptionEnhancerInterface
                 ]
             )
         );
+
+        $propertyAccessor = new PropertyAccessor();
+        foreach ($metadata->getPropertyMetadata() as $propertyMetadata) {
+            if ($propertyMetadata->getType() === 'image') {
+
+                // we cannot use the property metadata to get the value as we might
+                // be acting upon a proxy, and that just doesn't work.
+                $image = $propertyAccessor->getValue($payload, $propertyMetadata->name);
+                if ($image) {
+                    $description->set('image.primary', $image->getImage());
+                    break;
+                }
+            }
+        }
 
         if ($description->has(Descriptor::CHILDREN_TYPES)) {
             $types = [];

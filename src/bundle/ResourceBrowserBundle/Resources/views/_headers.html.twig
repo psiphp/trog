@@ -3,7 +3,11 @@
 {# TODO: Put the action logic into a Column class #}
 {% set hasActions = false %}
 
-<div class="ui simple dropdown">
+{% if description.has('image.primary') %}
+    <img style="margin: -0.5em" class="ui right floated image" src="{{ ('/files/' ~ description.get('image.primary')) | imagine_filter('mini') }}" />
+{% endif %}
+
+<div class="ui left floated simple dropdown">
 	<div class="text">
 		{{ column.name ?: '/' }}
 	</div>

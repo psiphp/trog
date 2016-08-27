@@ -41,7 +41,9 @@
         "phpcr/phpcr-shell": "~1.0",
         "league/flysystem": "^1.0",
         "league/flysystem-phpcr": "^1.1@dev",
-        "ramsey/uuid": "^3.5"
+        "ramsey/uuid": "^3.5",
+        "imagine/imagine": "^0.6.3",
+        "liip/imagine-bundle": "^1.6"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

@@ -18,6 +18,7 @@ use Webmozart\PathUtil\Path;
 class BrowserController
 {
     const SESSION_PATH = 'session.path';
+    const REPOSITORY = 'session.repository';
 
     private $templating;
     private $registry;
@@ -36,7 +37,8 @@ class BrowserController
 
     public function indexAction(Request $request)
     {
-        $repositoryName = $request->get('repository') ?: 'default';
+        $repositoryName = $this->resolveRepositoryName($request);
+
         $repository = $this->registry->get($repositoryName);
         $path = $request->query->get('path') ?: null;
         $template = $request->get('template', '@SycmsResourceBrowser/index.html.twig');
@@ -110,5 +112,21 @@ class BrowserController
         $path = Path::getDirectory($path);
 
         return $this->resolvePath($repository, $path);
+    }
+
+    private function resolveRepositoryName(Request $request)
+    {
+        $repositoryName = $request->get('repository');
+
+        if ($repositoryName) {
+            $this->session->set(self::REPOSITORY, $repositoryName);
+            return $repositoryName;
+        }
+
+        if ($this->session->has(self::REPOSITORY)) {
+            return $this->session->get(self::REPOSITORY);
+        }
+
+        return 'default';
     }
 }

@@ -1,0 +1,4 @@
+sycms_media_image:
+    path: /cache/{filename}
+    defaults:
+        _controller: sycms_media.controller.image
