@@ -2,10 +2,10 @@
     {% include "@SycmsResourceBrowser/_menu.html.twig" %}
     {% set columns = browser.columnsForDisplay() %}
 
-    <div class="ui grid celled segment">
+    <div class="ui {{ browser.nbColumnsInWords }} column grid grid celled segment">
         <div class="row">
-            {% for columnNb in 0..3 %}
-                <div class="four wide column browser-header-item">
+            {% for columnNb in 0..browser.nbColumns - 1 %}
+                <div class="column browser-header-item">
                     {% if columns[columnNb] is defined %}
                         {% include "@SycmsResourceBrowser/_headers.html.twig" with { 'column': columns[columnNb] } %}
                     {% else %}
@@ -14,8 +14,8 @@
             {% endfor %}
         </div>
         <div class="row">
-            {% for columnNb in 0..3 %}
-                <div class="four wide column sortable">
+            {% for columnNb in 0..browser.nbColumns - 1 %}
+                <div class="column sortable">
                     {% if columns[columnNb] is defined %}
                         {% include "@SycmsResourceBrowser/_items.html.twig" with { 'column': columns[columnNb] } %}
                     {% endif %}

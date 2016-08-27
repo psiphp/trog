@@ -8,9 +8,12 @@ use Sylius\Component\Resource\Model\ResourceInterface;
 /**
  * @PHPCR\Document(
  *     referenceable=true,
- *     childClasses={"Sycms\Bundle\ArticleBundle\Document\Page"}
+ *     childClasses={
+ *         "Sycms\Bundle\ArticleBundle\Document\MediaFolder",
+ *         "Sycms\Bundle\ArticleBundle\Document\Image"
+ *     }
  * )
  */
-class PageFolder extends AbstractFolder
+class MediaFolder extends AbstractFolder
 {
 }

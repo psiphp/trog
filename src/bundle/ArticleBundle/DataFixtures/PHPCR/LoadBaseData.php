@@ -9,6 +9,7 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Sycms\Bundle\ArticleBundle\Document\Post;
 use Sycms\Bundle\ArticleBundle\Document\Page;
+use Sycms\Bundle\ArticleBundle\Document\MediaFolder;
 
 class LoadBaseData implements FixtureInterface
 {
@@ -21,13 +22,17 @@ class LoadBaseData implements FixtureInterface
         $base->setNodename('sycms');
         $base->setParentDocument($manager->find(null, '/'));
 
+        $media = new MediaFolder();
+        $media->setParent($base);
+        $media->setTitle('media');
+
         $posts = new PostFolder();
         $posts->setParent($base);
-        $posts->setName('posts');
+        $posts->setTitle('posts');
 
         $pages = new PageFolder();
         $pages->setParent($base);
-        $pages->setName('pages');
+        $pages->setTitle('pages');
 
         $this->createPage($manager, $pages, 'About Us');
 
@@ -45,6 +50,7 @@ class LoadBaseData implements FixtureInterface
         $this->createPage($manager, $pages, 'Contact');
 
         $manager->persist($base);
+        $manager->persist($media);
         $manager->persist($posts);
         $manager->persist($pages);
 

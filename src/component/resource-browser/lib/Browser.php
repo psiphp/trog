@@ -1,26 +1,31 @@
 <?php
 
-namespace Sycms\Bundle\ResourceBrowserBundle\Column;
+namespace Sycms\Component\ResourceBrowser;
 
-use Puli\Repository\Api\ResourceRepository;
-use Sycms\Bundle\ColumnBrowserBundle\Column\Column;
+use Puli\Repository\Api\Resource\PuliResource;
 
 class Browser
 {
+    private $descriptionFactory;
     private $repository;
-    private $nbColumns;
-    private $columns;
     private $path;
+    private $nbColumns;
 
-    public function __construct(ResourceRepository $repository, $path = '/', $nbColumns = 4)
+    public function __construct(
+        DescriptionFactory $descriptionFactory,
+        ResourceRepository $repository,
+        $path,
+        $nbColumns = 4
+    )
     {
-        $this->repository = $repository;
-        $this->nbColumns = $nbColumns;
+        $this->descriptionFactory = $descriptionFactory;
+        $this->resourceRepository = $repository;
         $this->path = $path;
+        $this->nbColumns = $nbColumns;
         $this->init($path);
     }
 
-    public function init($path)
+    private function init($path)
     {
         $columns = [];
         $columnNames = $this->getColumnNames($path);
@@ -34,14 +39,15 @@ class Browser
             $columnPath = empty($elements) ? '/' : '/' . implode('/', $elements);
 
             $resource = $this->repository->get($columnPath);
+            $description = $this->descriptionFactory->getPayloadDescriptionFor($resource);
 
-            $columns[] = $resource;
+            $columns[] = new Column($description);
         }
 
         $this->columns = $columns;
     }
 
-    public function columnsForDisplay()
+    public function getColumnsForDisplay()
     {
         $columns = $this->columns();
 
@@ -52,12 +58,17 @@ class Browser
         return array_values($columns);
     }
 
-    public function columns()
+    public function getColumns()
     {
         return $this->columns;
     }
 
-    public function path()
+    public function getColumnLimit()
+    {
+        return $this->nbColumns;
+    }
+
+    public function gePath()
     {
         return $this->path;
     }
@@ -72,18 +83,5 @@ class Browser
         }
 
         return [ '/' ];
-    }
-
-    public function nbColumns()
-    {
-        return $this->nbColumns;
-    }
-
-    public function nbColumnsInWords()
-    {
-        $numberFormatter = new \NumberFormatter('en', \NumberFormatter::SPELLOUT);
-        $words =  $numberFormatter->format($this->nbColumns);
-
-        return $words;
     }
 }

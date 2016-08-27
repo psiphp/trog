@@ -17,7 +17,7 @@
             <argument type="service" id="cmf_resource.registry" />
             <argument type="service" id="sycms_object_agent.agent_finder" />
             <argument type="service" id="router" />
-            <tag name="cmf_resource.description.enhancer" alias="content_type" />
+            <tag name="cmf_resource.description.enhancer" priority="-100" alias="content_type" />
         </service>
 
     </services>

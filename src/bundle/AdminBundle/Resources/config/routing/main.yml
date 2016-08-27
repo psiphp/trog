@@ -13,6 +13,6 @@ text_editor:
 
 content_type_crud:
     resource: "@SycmsContentTypeBundle/Resources/config/routing/main.yml"
-    prefix: /admin/crud
+    prefix: /admin/content
     defaults:
         template: "@SycmsAdmin/ContentType/Crud/edit.html.twig"

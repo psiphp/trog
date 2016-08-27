@@ -22,6 +22,10 @@
             <tag name="cmf_content_type.field" alias="publish_period" />
         </service>
 
+        <service id="sycms_content_type.field.image" class="Sycms\Component\ContentType\Field\ImageField">
+            <tag name="cmf_content_type.field" alias="image" />
+        </service>
+
     </services>
 
 </container>

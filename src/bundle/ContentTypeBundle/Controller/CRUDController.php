@@ -11,6 +11,8 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Sycms\Component\ObjectAgent\AgentFinder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Sycms\Bundle\ContentTypeBundle\Form\Event\ValidFormEvent;
+use Sycms\Bundle\ContentTypeBundle\Form\Event\PropagateValidFormEventSubscriber;
 
 class CRUDController
 {
@@ -41,9 +43,15 @@ class CRUDController
         $agent = $this->agentFinder->getAgent($agent);
         $object = $agent->find($identifier);
         $objectFqn = get_class($object);
-        $form = $this->formFactory->create($objectFqn, $object);
+        $form = $this->formFactory->createBuilder($objectFqn, $object);
+        $form->addEventSubscriber(new PropagateValidFormEventSubscriber());
+        $form = $form->getForm();
 
         if ($request->getMethod() === 'POST' && $form->handleRequest($request)->isValid()) {
+            $form->getConfig()->getEventDispatcher()->dispatch(
+                ValidFormEvent::EVENT_NAME,
+                new ValidFormEvent($form)
+            );
             $agent->save($object);
 
             return new RedirectResponse($this->urlGenerator->generate(
@@ -70,10 +78,16 @@ class CRUDController
         $parentIdentifier = $request->attributes->get('parent_identifier');
 
         $agent = $this->agentFinder->findAgentFor($type);
-        $form = $this->formFactory->create($type);
+        $form = $this->formFactory->createBuilder($type);
+        $form->addEventSubscriber(new PropagateValidFormEventSubscriber());
+        $form = $form->getForm();
         $parentObject = $agent->find($parentIdentifier);
 
         if ($request->getMethod() === 'POST' && $form->handleRequest($request)->isValid()) {
+            $form->getConfig()->getEventDispatcher()->dispatch(
+                ValidFormEvent::EVENT_NAME,
+                new ValidFormEvent($form)
+            );
             $agent->setParent($form->getData(), $parentObject);
             $agent->save($form->getData());
             $identifier = $agent->getIdentifier($form->getData());

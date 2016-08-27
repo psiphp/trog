@@ -9,39 +9,15 @@ use Symfony\Cmf\Component\ContentType\Metadata\Annotations as ContentType;
 /**
  * @PHPCR\Document(
  *     referenceable=true,
- *     childClasses={
- *         "Sycms\Bundle\ArticleBundle\Document\Page",
- *         "Sycms\Component\ContentType\Model\PublishPeriod",
- *         "Sycms\Component\ContentType\Model\Image"
- *     }
+ *     childClasses={}
  * )
  */
-class Page
+class Image
 {
     /**
      * @ContentType\Property(type="text")
      */
     private $title;
-
-    /**
-     * @ContentType\Property(type="workflow")
-     */
-    private $state = 'published';
-
-    /**
-     * @ContentType\Property(type="publish_period")
-     */
-    private $publishPeriod;
-
-    /**
-     * @ContentType\Property(type="markdown", options={"editor_height": "100px"})
-     */
-    private $teaser = '';
-
-    /**
-     * @ContentType\Property(type="markdown", options={"editor_height": "400px"})
-     */
-    private $content = '';
 
     /**
      * @ContentType\Property(type="image")
@@ -150,3 +126,4 @@ class Page
     }
     
 }
+

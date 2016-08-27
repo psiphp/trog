@@ -2,16 +2,13 @@ cmf_resource:
     repositories:
         default:
             type: doctrine_phpcr_odm
-            basepath: /sycms
+            basepath: /sycms/posts
         pages:
             type: doctrine_phpcr_odm
             basepath: /sycms/pages
-        filesystem:
-            type: filesystem
-            base_dir: %kernel.root_dir%
         media:
             type: doctrine_phpcr_odm
-            basepath: /sycms/posts
+            basepath: /sycms/media
     description:
         enhancers:
             - doctrine_phpcr_odm

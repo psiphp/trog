@@ -12,6 +12,7 @@ use Sycms\Component\ContentType\Model\PublishPeriod;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Validator\Constraints\NotNull;
 
 class PublishPeriodType extends AbstractType
 {

@@ -1,5 +1,5 @@
 sycms_content_type_crud_edit:
-    path: /{agent}/{identifier}/edit
+    path: /edit/{agent}/{identifier}
     defaults:
         _controller: sycms_content_type.controller.crud:edit
     requirements:

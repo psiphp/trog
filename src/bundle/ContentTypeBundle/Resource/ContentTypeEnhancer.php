@@ -54,6 +54,10 @@ class ContentTypeEnhancer implements DescriptionEnhancerInterface
         if ($description->has(Descriptor::CHILDREN_TYPES)) {
             $types = [];
             foreach ($description->get(Descriptor::CHILDREN_TYPES) as $childClassFqn) {
+                if (null === $this->metadataFactory->getMetadataForClass($childClassFqn)) {
+                    continue;
+                }
+
                 $types[$childClassFqn] = $this->urlGenerator->generate(
                     'sycms_content_type_crud_create_as_child',
                     [
