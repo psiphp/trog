@@ -23,6 +23,11 @@
         text-shadow: 1px 0 1px black;
     }
 
+    .ui.celled.grid > .row > .column {
+        padding: 0px;
+        margin: 0px;
+    }
+
     span.grippy::after {
         content: '.. .. .. ..';
     }
@@ -50,11 +55,20 @@
 
     .browser-item {
         padding: 1em;
-        margin: -1em;
         overflow: hidden;
         white-space: nowrap;
     }
 
-    .browser-item, .browser-header-item {
+
+    .browser-header-item {
+        padding: 1em;
+
+        .dropdown {
+            padding: 0.5em;
+        }
+    }
+
+    .ui.right.floated.image {
+        margin: 0px;
     }
 }

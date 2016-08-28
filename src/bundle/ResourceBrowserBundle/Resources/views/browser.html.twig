@@ -5,7 +5,7 @@
     <div class="ui {{ browser.nbColumnsInWords }} column grid grid celled segment">
         <div class="row">
             {% for columnNb in 0..browser.nbColumns - 1 %}
-                <div class="column browser-header-item">
+                <div class="column">
                     {% if columns[columnNb] is defined %}
                         {% include "@SycmsResourceBrowser/_headers.html.twig" with { 'column': columns[columnNb] } %}
                     {% else %}

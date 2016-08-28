@@ -5,7 +5,7 @@
     <span class="grippy moving"></span>
 
     {% if itemDescription.has('image.primary') %}
-        <img class="ui inline image" src="{{ ('/files/' ~ itemDescription.get('image.primary')) | imagine_filter('mini') }}" />
+        <img class="ui inline image" src="{{ ('/files/' ~ itemDescription.get('image.primary')) | imagine_filter('inline') }}" />
     {% else %}
         <i class="{{ browser.path|slice(0, resource.path|length) == resource.path ? 'folder open' : 'folder closed' }} icon"></i>
     {% endif %}
@@ -13,7 +13,7 @@
     <a class="browser-item" 
        href="{{ path('sycms_resource_browser_repository', { path: resource.path, repository: repositoryName}) }}"
        title="{{ resource.name }}"
-    >{{ resource.name }}</a>
+    >{{ resource.name | truncate(40)  }}</a>
 
 </div>
 

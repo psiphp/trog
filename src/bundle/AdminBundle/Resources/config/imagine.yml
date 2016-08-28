@@ -5,6 +5,10 @@ liip_imagine:
 
     filter_sets:
         cache: ~
+        inline:
+            quality: 75
+            filters:
+                thumbnail: { size: [20, 20], mode: outbound }
         mini:
             quality: 75
             filters:
