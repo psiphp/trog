@@ -1,0 +1,27 @@
+{% extends "@SycmsAdmin/layout.html.twig" %}
+{% block main %}
+<form class="ui form" method="POST" enctype="multipart/form-data">
+    <div class="ui grid">
+        {% form_theme form "@SycmsAdmin/form_theme.html.twig" %}
+
+        <div class="twelve wide column">
+            <div class="ui segment">
+                {{ form_widget(form) }}
+            </div>
+        </div>
+
+        <div class="four wide column">
+            {% if object_url %}
+                <div class="ui segment">
+                    <h3>URL: <a href="{{ object_url }}">{{ object_url }}</a></h3>
+                </div>
+            {% endif %}
+            <div class="ui segment">
+                {% include "@SycmsAdmin/Widget/_button_save.html.twig" %}
+                {% include "@SycmsAdmin/Widget/_button_cancel.html.twig" %}
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock %}

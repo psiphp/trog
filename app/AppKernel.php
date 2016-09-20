@@ -25,6 +25,9 @@ class AppKernel extends Kernel
 
             new Symfony\Cmf\Bundle\ResourceBundle\CmfResourceBundle(),
             new Symfony\Cmf\Bundle\ContentTypeBundle\ContentTypeBundle(),
+            new Symfony\Cmf\Bundle\RoutingBundle\CmfRoutingBundle(),
+            new Symfony\Cmf\Bundle\RoutingAutoBundle\CmfRoutingAutoBundle(),
+
             new Sycms\Bundle\ObjectAgentBundle\SycmsObjectAgentBundle(),
             new Sycms\Bundle\ContentTypeBundle\SycmsContentTypeBundle(),
             new Sycms\Bundle\MediaBundle\SycmsMediaBundle(),

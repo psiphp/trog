@@ -1,0 +1,24 @@
+cmf_routing:
+    chain:
+        routers_by_id:
+            cmf_routing.dynamic_router: 20
+            router.default: 100
+    dynamic:
+        enabled: true
+        persistence:
+            phpcr:
+                enabled: true
+
+                route_basepaths:
+                    - /sycms/routes
+
+cmf_routing_auto:
+    persistence:
+        phpcr:
+            enabled: true
+            route_basepath: /sycms/routes
+
+    adapter: doctrine_phpcr_odm
+    mapping:
+        resources:
+            path: %kernel.root_dir%/config/cms/routing_auto.yml

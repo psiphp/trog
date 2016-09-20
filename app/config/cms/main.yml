@@ -1,0 +1,4 @@
+imports:
+    - { resource: resources.yml }
+    - { resource: symfony_cmf.yml }
+    - { resource: "@SycmsAdminBundle/Resources/config/main.yml" }
