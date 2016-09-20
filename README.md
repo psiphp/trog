@@ -1,5 +1,5 @@
-Trog CMS
-========
+Trog CMS Platform
+=================
 
 Trog ([Troglodyte](https://en.wikipedia.org/wiki/Caveman)) is an experimental
 CMS built by the
@@ -16,7 +16,7 @@ CMS target features include:
 Storage
 -------
 
-Will Doctrine ORM (for storing users) and Doctrine
+Will use [Doctrine ORM](https://github.com/doctrine/doctrine2) for storing system data and Doctrine
 [PHPCR-ODM](https://github.com/doctrine/phpcr-odm) for storing content.
 
 Sylius E-Commerce Integration
