@@ -6,7 +6,7 @@
 
     <services>
 
-        <service id="sycms_content_type.form.type.image" class="Sycms\Component\ContentType\Form\ImageType">
+        <service id="sycms_content_type.form.type.image" class="Trog\Component\ContentType\Form\ImageType">
             <argument type="service" id="sycms_media.util.uploader" />
             <tag name="form.type" />
         </service>

@@ -1,4 +1,4 @@
-Sycms\Bundle\ArticleBundle\Document\Page:
+Trog\Bundle\ArticleBundle\Document\Page:
     definitions:
         frontend:
             uri_schema: /page/{title}

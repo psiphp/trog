@@ -1,5 +1,5 @@
 <div class="resource-browser">
-    {% include "@SycmsResourceBrowser/_menu.html.twig" %}
+    {% include "@TrogResourceBrowser/_menu.html.twig" %}
     {% set columns = browser.columnsForDisplay() %}
 
     <div class="ui {{ browser.nbColumnsInWords }} column grid grid celled segment">
@@ -7,7 +7,7 @@
             {% for columnNb in 0..browser.nbColumns - 1 %}
                 <div class="column">
                     {% if columns[columnNb] is defined %}
-                        {% include "@SycmsResourceBrowser/_headers.html.twig" with { 'column': columns[columnNb] } %}
+                        {% include "@TrogResourceBrowser/_headers.html.twig" with { 'column': columns[columnNb] } %}
                     {% else %}
                     {% endif %}
                 </div>
@@ -17,7 +17,7 @@
             {% for columnNb in 0..browser.nbColumns - 1 %}
                 <div class="column sortable">
                     {% if columns[columnNb] is defined %}
-                        {% include "@SycmsResourceBrowser/_items.html.twig" with { 'column': columns[columnNb] } %}
+                        {% include "@TrogResourceBrowser/_items.html.twig" with { 'column': columns[columnNb] } %}
                     {% endif %}
                 </div>
             {% endfor %}

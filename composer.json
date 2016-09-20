@@ -4,19 +4,12 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "Sycms\\Bundle\\": "src/bundle",
-            "Sycms\\Component\\ObjectAgent\\": "src/component/object-agent/lib",
-            "Sycms\\Component\\ContentType\\": "src/component/content-type/lib"
+            "Trog\\": "src"
         },
         "classmap": [
             "app/AppKernel.php",
             "app/AppCache.php"
         ]
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Sycms\\Component\\ObjectAgent\\Tests\\": "src/component/object-agent/tests"
-        }
     },
     "require": {
         "doctrine/doctrine-bundle": "^1.6",
@@ -31,13 +24,13 @@
         "league/flysystem-phpcr": "^1.1@dev",
         "liip/imagine-bundle": "^1.6",
         "php": ">=5.5.9",
+
         "phpcr/phpcr-shell": "~1.0",
         "puli/repository": "@beta",
         "ramsey/uuid": "^3.5",
         "sensio/framework-extra-bundle": "^3.0",
 
-        "symfony-cmf/content-type-bundle": "dev-master",
-        "symfony-cmf/content-type-bundle": "dev-master",
+        "psiphp/content-type-bundle": "dev-master",
         "symfony-cmf/resource": "dev-master",
         "symfony-cmf/resource-bundle": "dev-master",
         "symfony-cmf/routing-auto": "^2.0-dev",

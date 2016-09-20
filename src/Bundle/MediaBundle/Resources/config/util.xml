@@ -6,7 +6,7 @@
 
     <services>
 
-        <service id="sycms_media.util.uploader" class="Sycms\Bundle\MediaBundle\Util\Uploader">
+        <service id="sycms_media.util.uploader" class="Trog\Bundle\MediaBundle\Util\Uploader">
             <argument type="service" id="sycms_media.filesystem" />
         </service>
 

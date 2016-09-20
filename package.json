@@ -1,7 +1,7 @@
 {
   "name": "sycms",
   "version": "0.0.1",
-  "description": "Sycms CMS system that may or may not suck",
+  "description": "Trog CMS system that may or may not suck",
   "main": "Gulpfile.js",
   "dependencies": {
     "ace-builds": "^1.2.2",

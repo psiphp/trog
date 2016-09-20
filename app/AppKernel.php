@@ -12,10 +12,10 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\PHPCRBundle\DoctrinePHPCRBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
-            new Sycms\Bundle\AdminBundle\SycmsAdminBundle(),
-            new Sycms\Bundle\ResourceBrowserBundle\SycmsResourceBrowserBundle(),
-            new Sycms\Bundle\TextEditorBundle\SycmsTextEditorBundle(),
-            new Sycms\Bundle\ArticleBundle\SycmsArticleBundle(),
+            new Trog\Bundle\AdminBundle\TrogAdminBundle(),
+            new Trog\Bundle\ResourceBrowserBundle\TrogResourceBrowserBundle(),
+            new Trog\Bundle\TextEditorBundle\TrogTextEditorBundle(),
+            new Trog\Bundle\ArticleBundle\TrogArticleBundle(),
 
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\MonologBundle\MonologBundle(),
@@ -28,9 +28,9 @@ class AppKernel extends Kernel
             new Symfony\Cmf\Bundle\RoutingBundle\CmfRoutingBundle(),
             new Symfony\Cmf\Bundle\RoutingAutoBundle\CmfRoutingAutoBundle(),
 
-            new Sycms\Bundle\ObjectAgentBundle\SycmsObjectAgentBundle(),
-            new Sycms\Bundle\ContentTypeBundle\SycmsContentTypeBundle(),
-            new Sycms\Bundle\MediaBundle\SycmsMediaBundle(),
+            new Trog\Bundle\ObjectAgentBundle\TrogObjectAgentBundle(),
+            new Trog\Bundle\ContentTypeBundle\TrogContentTypeBundle(),
+            new Trog\Bundle\MediaBundle\TrogMediaBundle(),
             new Liip\ImagineBundle\LiipImagineBundle()
         ];
 

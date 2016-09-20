@@ -6,23 +6,23 @@
 
     <services>
 
-        <service id="sycms_content_type.field.textarea" class="Sycms\Component\ContentType\Field\TextareaField">
+        <service id="sycms_content_type.field.textarea" class="Trog\Component\ContentType\Field\TextareaField">
             <tag name="cmf_content_type.field" alias="textarea" />
         </service>
 
-        <service id="sycms_content_type.field.markdown" class="Sycms\Component\ContentType\Field\MarkdownField">
+        <service id="sycms_content_type.field.markdown" class="Trog\Component\ContentType\Field\MarkdownField">
             <tag name="cmf_content_type.field" alias="markdown" />
         </service>
 
-        <service id="sycms_content_type.field.workflow" class="Sycms\Component\ContentType\Field\WorkflowField">
+        <service id="sycms_content_type.field.workflow" class="Trog\Component\ContentType\Field\WorkflowField">
             <tag name="cmf_content_type.field" alias="workflow" />
         </service>
 
-        <service id="sycms_content_type.field.publish_period" class="Sycms\Component\ContentType\Field\PublishPeriodField">
+        <service id="sycms_content_type.field.publish_period" class="Trog\Component\ContentType\Field\PublishPeriodField">
             <tag name="cmf_content_type.field" alias="publish_period" />
         </service>
 
-        <service id="sycms_content_type.field.image" class="Sycms\Component\ContentType\Field\ImageField">
+        <service id="sycms_content_type.field.image" class="Trog\Component\ContentType\Field\ImageField">
             <tag name="cmf_content_type.field" alias="image" />
         </service>
 

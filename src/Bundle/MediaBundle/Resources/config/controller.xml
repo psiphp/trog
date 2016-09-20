@@ -6,7 +6,7 @@
 
     <services>
 
-        <service id="sycms_media.controller.image" class="Sycms\Bundle\MediaBundle\Controller\ImageController">
+        <service id="sycms_media.controller.image" class="Trog\Bundle\MediaBundle\Controller\ImageController">
             <argument type="service" id="imagine" />
         </service>
 
