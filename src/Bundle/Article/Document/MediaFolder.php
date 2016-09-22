@@ -1,6 +1,6 @@
 <?php
 
-namespace Trog\Bundle\ArticleBundle\Document;
+namespace Trog\Bundle\Article\Document;
 
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 use Sylius\Component\Resource\Model\ResourceInterface;
@@ -9,8 +9,8 @@ use Sylius\Component\Resource\Model\ResourceInterface;
  * @PHPCR\Document(
  *     referenceable=true,
  *     childClasses={
- *         "Trog\Bundle\ArticleBundle\Document\MediaFolder",
- *         "Trog\Bundle\ArticleBundle\Document\Image"
+ *         "Trog\Bundle\Article\Document\MediaFolder",
+ *         "Trog\Bundle\Article\Document\Image"
  *     }
  * )
  */

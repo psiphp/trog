@@ -1,6 +1,6 @@
 <?php
 
-namespace Trog\Bundle\TextEditorBundle;
+namespace Trog\Bundle\TextEditor;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

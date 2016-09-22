@@ -1,6 +1,6 @@
 <?php
 
-namespace Trog\Bundle\MediaBundle;
+namespace Trog\Bundle\Media;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

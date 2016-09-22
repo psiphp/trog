@@ -11,7 +11,7 @@ use Symfony\Cmf\Component\Routing\RouteReferrersReadInterface;
  * @PHPCR\Document(
  *     referenceable=true,
  *     childClasses={
- *         "Trog\Bundle\ArticleBundle\Document\Page",
+ *         "Trog\Bundle\Article\Document\Page",
  *         "Trog\Component\ContentType\Model\PublishPeriod",
  *         "Trog\Component\ContentType\Model\Image"
  *     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Trog\Bundle\ArticleBundle;
+namespace Trog\Bundle\Article;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

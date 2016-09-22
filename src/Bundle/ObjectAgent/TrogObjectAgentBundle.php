@@ -1,6 +1,6 @@
 <?php
 
-namespace Trog\Bundle\ObjectAgentBundle;
+namespace Trog\Bundle\ObjectAgent;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
