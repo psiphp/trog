@@ -3,11 +3,11 @@
 namespace Trog\Component\ContentType\Field;
 
 use Trog\Component\ContentType\Form\PublishPeriodType;
-use Symfony\Cmf\Component\ContentType\FieldInterface;
-use Symfony\Cmf\Component\ContentType\View\ScalarView;
+use Psi\Component\ContentType\FieldInterface;
+use Psi\Component\ContentType\View\ScalarView;
 use Trog\Component\ContentType\Model\PublishPeriod;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Cmf\Component\ContentType\MappingBuilder;
+use Psi\Component\ContentType\MappingBuilder;
 
 class PublishPeriodField implements FieldInterface
 {

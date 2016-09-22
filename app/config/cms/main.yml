@@ -1,4 +1,5 @@
 imports:
     - { resource: resources.yml }
+    - { resource: psi.yml }
     - { resource: symfony_cmf.yml }
     - { resource: "@TrogAdminBundle/Resources/config/main.yml" }

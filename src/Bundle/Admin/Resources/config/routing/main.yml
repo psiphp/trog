@@ -1,0 +1,17 @@
+trog_repository_browser:
+    resource: "@TrogResourceBrowserBundle/Resources/config/routing.xml"
+    prefix: /admin
+    defaults:
+        template: "@TrogAdmin/ResourceBrowser/index.html.twig"
+
+text_editor:
+    resource: "@TrogTextEditorBundle/Resources/config/routing/main.yml"
+    prefix: /admin/text-editor
+    defaults:
+        template: "@TrogAdmin/TextEditor/index.html.twig"
+
+content_type_crud:
+    resource: "@TrogContentTypeBundle/Resources/config/routing/main.yml"
+    prefix: /admin/content
+    defaults:
+        template: "@TrogAdmin/ContentType/Crud/edit.html.twig"

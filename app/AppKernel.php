@@ -12,10 +12,13 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\PHPCRBundle\DoctrinePHPCRBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
-            new Trog\Bundle\AdminBundle\TrogAdminBundle(),
-            new Trog\Bundle\ResourceBrowserBundle\TrogResourceBrowserBundle(),
-            new Trog\Bundle\TextEditorBundle\TrogTextEditorBundle(),
-            new Trog\Bundle\ArticleBundle\TrogArticleBundle(),
+            new Trog\Bundle\Admin\TrogAdminBundle(),
+            new Trog\Bundle\ResourceBrowser\TrogResourceBrowserBundle(),
+            new Trog\Bundle\TextEditor\TrogTextEditorBundle(),
+            new Trog\Bundle\Article\TrogArticleBundle(),
+            new Trog\Bundle\ObjectAgent\TrogObjectAgentBundle(),
+            new Trog\Bundle\ContentType\TrogContentTypeBundle(),
+            new Trog\Bundle\Media\TrogMediaBundle(),
 
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\MonologBundle\MonologBundle(),
@@ -24,13 +27,10 @@ class AppKernel extends Kernel
             new Symfony\Bundle\TwigBundle\TwigBundle(),
 
             new Symfony\Cmf\Bundle\ResourceBundle\CmfResourceBundle(),
-            new Symfony\Cmf\Bundle\ContentTypeBundle\ContentTypeBundle(),
+            new Psi\Bundle\ContentType\PsiContentTypeBundle(),
             new Symfony\Cmf\Bundle\RoutingBundle\CmfRoutingBundle(),
             new Symfony\Cmf\Bundle\RoutingAutoBundle\CmfRoutingAutoBundle(),
 
-            new Trog\Bundle\ObjectAgentBundle\TrogObjectAgentBundle(),
-            new Trog\Bundle\ContentTypeBundle\TrogContentTypeBundle(),
-            new Trog\Bundle\MediaBundle\TrogMediaBundle(),
             new Liip\ImagineBundle\LiipImagineBundle()
         ];
 

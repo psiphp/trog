@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="trog_content_type.field.textarea" class="Trog\Component\ContentType\Field\TextareaField">
+            <tag name="psi_content_type.field" alias="textarea" />
+        </service>
+
+        <service id="trog_content_type.field.markdown" class="Trog\Component\ContentType\Field\MarkdownField">
+            <tag name="psi_content_type.field" alias="markdown" />
+        </service>
+
+        <service id="trog_content_type.field.workflow" class="Trog\Component\ContentType\Field\WorkflowField">
+            <tag name="psi_content_type.field" alias="workflow" />
+        </service>
+
+        <service id="trog_content_type.field.publish_period" class="Trog\Component\ContentType\Field\PublishPeriodField">
+            <tag name="psi_content_type.field" alias="publish_period" />
+        </service>
+
+        <service id="trog_content_type.field.image" class="Trog\Component\ContentType\Field\ImageField">
+            <tag name="psi_content_type.field" alias="image" />
+        </service>
+
+    </services>
+
+</container>
+
+
+

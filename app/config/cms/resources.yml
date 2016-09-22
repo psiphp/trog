@@ -9,8 +9,3 @@ cmf_resource:
         media:
             type: doctrine_phpcr_odm
             basepath: /sycms/media
-    description:
-        enhancers:
-            - doctrine_phpcr_odm
-            - text_editor
-            - content_type

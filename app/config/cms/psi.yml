@@ -1,0 +1,4 @@
+psi_content_type:
+    storage_drivers:
+        - doctrine_phpcr_odm
+

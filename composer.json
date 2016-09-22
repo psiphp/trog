@@ -30,7 +30,11 @@
         "ramsey/uuid": "^3.5",
         "sensio/framework-extra-bundle": "^3.0",
 
-        "psiphp/content-type-bundle": "dev-master",
+        "psiphp/content-type-bundle": "^1.0",
+        "psiphp/description-bundle": "^1.0",
+        "psiphp/description-doctrine-phpcr-odm": "^1.0",
+        "psiphp/resource-browser": "^1.0",
+
         "symfony-cmf/resource": "dev-master",
         "symfony-cmf/resource-bundle": "dev-master",
         "symfony-cmf/routing-auto": "^2.0-dev",

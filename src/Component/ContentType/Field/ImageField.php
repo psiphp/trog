@@ -11,9 +11,9 @@
 
 namespace Trog\Component\ContentType\Field;
 
-use Symfony\Cmf\Component\ContentType\FieldInterface;
-use Symfony\Cmf\Component\ContentType\MappingBuilder;
-use Symfony\Cmf\Component\ContentType\View\ScalarView;
+use Psi\Component\ContentType\FieldInterface;
+use Psi\Component\ContentType\MappingBuilder;
+use Psi\Component\ContentType\View\ScalarView;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Trog\Component\ContentType\Form\MarkdownType;

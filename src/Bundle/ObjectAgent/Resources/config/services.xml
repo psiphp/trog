@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="trog_object_agent.agent_finder" class="Trog\Component\ObjectAgent\AgentFinder">
+            <argument type="collection">
+                <argument key="phpcr-odm" type="service" id="trog_object_agent.agent.doctrine.phpcr_odm" />
+            </argument>
+        </service>
+
+        <service id="trog_object_agent.agent.doctrine.phpcr_odm" class="Trog\Component\ObjectAgent\Agent\Doctrine\PhpcrOdmAgent">
+            <argument>phpcr-odm</argument>
+            <argument type="service" id="doctrine_phpcr.odm.document_manager" />
+        </service>
+
+    </services>
+
+</container>
+
