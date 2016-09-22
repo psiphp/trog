@@ -44,7 +44,7 @@ class Post
     protected $uuid;
 
     /**
-     * @PHPCR\Boolean(nullable=true)
+     * @PHPCR\Field(type="boolean", nullable=true)
      */
     protected $published = false;
 
