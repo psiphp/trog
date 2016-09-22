@@ -1,6 +1,6 @@
 <?php
 
-namespace Trog\Bundle\ContentTypeBundle\Form\Event;
+namespace Trog\Bundle\ContentType\Form\Event;
 
 use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\Form\FormInterface;

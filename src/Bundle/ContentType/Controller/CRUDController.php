@@ -1,6 +1,6 @@
 <?php
 
-namespace Trog\Bundle\ContentTypeBundle\Controller;
+namespace Trog\Bundle\ContentType\Controller;
 
 use Symfony\Cmf\Bundle\ResourceBundle\Registry\RepositoryRegistry;
 use Symfony\Cmf\Component\Resource\Repository\Resource\CmfResource;
@@ -11,8 +11,8 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Trog\Component\ObjectAgent\AgentFinder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Trog\Bundle\ContentTypeBundle\Form\Event\ValidFormEvent;
-use Trog\Bundle\ContentTypeBundle\Form\Event\PropagateValidFormEventSubscriber;
+use Trog\Bundle\ContentType\Form\Event\ValidFormEvent;
+use Trog\Bundle\ContentType\Form\Event\PropagateValidFormEventSubscriber;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
 
 class CRUDController

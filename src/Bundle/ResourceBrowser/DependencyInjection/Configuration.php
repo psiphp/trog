@@ -1,6 +1,6 @@
 <?php
 
-namespace Trog\Bundle\ResourceBrowserBundle\DependencyInjection;
+namespace Trog\Bundle\ResourceBrowser\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

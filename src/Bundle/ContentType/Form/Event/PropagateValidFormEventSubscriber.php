@@ -1,10 +1,10 @@
 <?php
 
-namespace Trog\Bundle\ContentTypeBundle\Form\Event;
+namespace Trog\Bundle\ContentType\Form\Event;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormInterface;
-use Trog\Bundle\ContentTypeBundle\Form\Event\ValidFormEvent;
+use Trog\Bundle\ContentType\Form\Event\ValidFormEvent;
 
 class PropagateValidFormEventSubscriber implements EventSubscriberInterface
 {

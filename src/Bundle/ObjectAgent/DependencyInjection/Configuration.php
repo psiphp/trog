@@ -1,6 +1,6 @@
 <?php
 
-namespace Trog\Bundle\ObjectAgentBundle\DependencyInjection;
+namespace Trog\Bundle\ObjectAgent\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

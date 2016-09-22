@@ -1,6 +1,6 @@
 <?php
 
-namespace Trog\Bundle\MediaBundle\Util;
+namespace Trog\Bundle\Media\Util;
 
 use League\Flysystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\UploadedFile;

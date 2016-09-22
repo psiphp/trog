@@ -1,6 +1,6 @@
 <?php
 
-namespace Trog\Bundle\MediaBundle\Util;
+namespace Trog\Bundle\Media\Util;
 
 use Imagine\Imagick\Imagine;
 use Imagine\Image\Box;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Trog\Bundle\TextEditorBundle\DependencyInjection;
+namespace Trog\Bundle\TextEditor\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

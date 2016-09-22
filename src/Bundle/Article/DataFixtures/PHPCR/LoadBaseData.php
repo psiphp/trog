@@ -1,15 +1,15 @@
 <?php
 
-namespace Trog\Bundle\ArticleBundle\DataFixtures\PHPCR;
+namespace Trog\Bundle\Article\DataFixtures\PHPCR;
 
-use Trog\Bundle\ArticleBundle\Document\PageFolder;
-use Trog\Bundle\ArticleBundle\Document\PostFolder;
+use Trog\Bundle\Article\Document\PageFolder;
+use Trog\Bundle\Article\Document\PostFolder;
 use Doctrine\ODM\PHPCR\Document\Generic;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Trog\Bundle\ArticleBundle\Document\Post;
-use Trog\Bundle\ArticleBundle\Document\Page;
-use Trog\Bundle\ArticleBundle\Document\MediaFolder;
+use Trog\Bundle\Article\Document\Post;
+use Trog\Bundle\Article\Document\Page;
+use Trog\Bundle\Article\Document\MediaFolder;
 
 class LoadBaseData implements FixtureInterface
 {

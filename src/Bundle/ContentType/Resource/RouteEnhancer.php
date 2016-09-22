@@ -1,6 +1,6 @@
 <?php
 
-namespace Trog\Bundle\ContentTypeBundle\Resource;
+namespace Trog\Bundle\ContentType\Resource;
 
 use Symfony\Cmf\Component\Resource\Description\DescriptionEnhancerInterface;
 use Symfony\Cmf\Component\Resource\Repository\Resource\CmfResource;
