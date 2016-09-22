@@ -6,12 +6,12 @@
 
     <services>
 
-        <service id="sycms_media.filesystem.adapter.local" class="League\Flysystem\Adapter\Local">
+        <service id="trog_media.filesystem.adapter.local" class="League\Flysystem\Adapter\Local">
             <argument>%kernel.root_dir%/../web/files</argument>
         </service>
 
-        <service id="sycms_media.filesystem" class="League\Flysystem\Filesystem">
-            <argument type="service" id="sycms_media.filesystem.adapter.local" />
+        <service id="trog_media.filesystem" class="League\Flysystem\Filesystem">
+            <argument type="service" id="trog_media.filesystem.adapter.local" />
         </service>
 
     </services>

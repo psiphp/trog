@@ -1,4 +1,4 @@
-jQuery.fn.sycmsResourceBrowser = function (options) {
+jQuery.fn.trogResourceBrowser = function (options) {
 
     var options = $.extend({
         update_path: '/'

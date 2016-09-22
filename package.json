@@ -1,5 +1,5 @@
 {
-  "name": "sycms",
+  "name": "trog",
   "version": "0.0.1",
   "description": "Trog CMS system that may or may not suck",
   "main": "Gulpfile.js",
@@ -18,7 +18,7 @@
   "author": "Daniel Leech",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sycms/sycms"
+    "url": "https://github.com/trog/trog"
   },
-  "homepage": "http://github.com/sycms"
+  "homepage": "http://github.com/trog"
 }

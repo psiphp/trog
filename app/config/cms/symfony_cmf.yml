@@ -10,13 +10,13 @@ cmf_routing:
                 enabled: true
 
                 route_basepaths:
-                    - /sycms/routes
+                    - /trog/routes
 
 cmf_routing_auto:
     persistence:
         phpcr:
             enabled: true
-            route_basepath: /sycms/routes
+            route_basepath: /trog/routes
 
     adapter: doctrine_phpcr_odm
     mapping:

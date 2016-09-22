@@ -6,7 +6,7 @@
 
     <services>
 
-        <service id="sycms_admin.twig.extension.text" class="Twig_Extensions_Extension_Text">
+        <service id="trog_admin.twig.extension.text" class="Twig_Extensions_Extension_Text">
             <tag name="twig.extension" />
         </service>
 

@@ -9,8 +9,8 @@
             {% include "@TrogResourceBrowser/browser.html.twig" %}
 <script type="text/javascript">
 $(document).ready(function () {
-    $('.sortable').sycmsResourceBrowser({
-        update_path: "{{ path('sycms_resource_browser_update') }}"
+    $('.sortable').trogResourceBrowser({
+        update_path: "{{ path('trog_resource_browser_update') }}"
     });
 });
 </script>

@@ -19,7 +19,7 @@ class LoadBaseData implements FixtureInterface
     public function load(ObjectManager $manager)
     {
         $base = new Generic();
-        $base->setNodename('sycms');
+        $base->setNodename('trog');
         $base->setParentDocument($manager->find(null, '/'));
 
         $media = new MediaFolder();

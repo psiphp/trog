@@ -39,7 +39,7 @@ class EditorController
         if ($request->getMethod() === 'POST') {
             file_put_contents($resource->getFilesystemPath(), $request->request->get('text'));
             return new RedirectResponse(
-                $this->urlGenerator->generate('sycms_text_editor', [
+                $this->urlGenerator->generate('trog_text_editor', [
                     'repository' => $repositoryName,
                     'path' => $path
                 ])

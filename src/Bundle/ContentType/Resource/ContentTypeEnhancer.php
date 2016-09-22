@@ -45,7 +45,7 @@ class ContentTypeEnhancer implements DescriptionEnhancerInterface
         $description->set(
             Descriptor::LINK_EDIT_HTML,
             $this->urlGenerator->generate(
-                'sycms_content_type_crud_edit',
+                'trog_content_type_crud_edit',
                 [
                     'agent' => $agent->getAlias(),
                     'identifier' => $identifier
@@ -75,7 +75,7 @@ class ContentTypeEnhancer implements DescriptionEnhancerInterface
                 }
 
                 $types[$childClassFqn] = $this->urlGenerator->generate(
-                    'sycms_content_type_crud_create_as_child',
+                    'trog_content_type_crud_create_as_child',
                     [
                         'agent' => $agent->getAlias(),
                         'parent_identifier' => $identifier,

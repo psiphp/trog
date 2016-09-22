@@ -1,5 +1,5 @@
 <h2>{{ resource.name }}</h2>
-<form action="{{ path('sycms_text_editor', { path: resource.path, repository: repositoryName} ) }}" method="POST">
+<form action="{{ path('trog_text_editor', { path: resource.path, repository: repositoryName} ) }}" method="POST">
     <pre id="editor" style="height: 400px">{{ resource.body }}</pre>
     <textarea id="editor_textarea" name="text" style="display: none">{{ resource.body }}</textarea>
     <input class="ui positive button" type="submit" value="Save"/>

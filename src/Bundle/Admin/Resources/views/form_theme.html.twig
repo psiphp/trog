@@ -118,9 +118,9 @@
 {% endmacro %}
 
 {% block markdown_widget %}
-    <div data-sycms-ct-ace-editor data-sycms-ct-ace-editor-mode="ace/mode/markdown">
+    <div data-trog-ct-ace-editor data-trog-ct-ace-editor-mode="ace/mode/markdown">
         {{ block('textarea_widget') }}
-        <div class="sycms-markdown-editor" id="{{ id }}-editor" style="height: {{ editor_height }}"></div>
+        <div class="trog-markdown-editor" id="{{ id }}-editor" style="height: {{ editor_height }}"></div>
     </div>
 {% endblock %}
 

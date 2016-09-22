@@ -104,7 +104,7 @@ class CRUDController
             $identifier = $agent->getIdentifier($form->getData());
 
             return new RedirectResponse($this->urlGenerator->generate(
-                'sycms_content_type_crud_edit',
+                'trog_content_type_crud_edit',
                 [
                     'agent' => $agent->getAlias(),
                     'identifier' => $identifier,

@@ -47,7 +47,7 @@ class TextEditorEnhancer implements DescriptionEnhancerInterface
         $repositoryName = $this->registry->getRepositoryAlias($repository);
 
         $description->set(Descriptor::LINK_EDIT_HTML, $this->urlGenerator->generate(
-            'sycms_text_editor',
+            'trog_text_editor',
             [
                 'repository' => $repositoryName,
                 'path' => $object->getPath()

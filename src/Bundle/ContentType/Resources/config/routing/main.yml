@@ -1,12 +1,12 @@
-sycms_content_type_crud_edit:
+trog_content_type_crud_edit:
     path: /edit/{agent}/{identifier}
     defaults:
-        _controller: sycms_content_type.controller.crud:edit
+        _controller: trog_content_type.controller.crud:edit
     requirements:
         path: .*
 
 
-sycms_content_type_crud_create_as_child:
+trog_content_type_crud_create_as_child:
     path: /{agent}/{parent_identifier}/{type}/createAsChild
     defaults:
-        _controller: sycms_content_type.controller.crud:createAsChild
+        _controller: trog_content_type.controller.crud:createAsChild

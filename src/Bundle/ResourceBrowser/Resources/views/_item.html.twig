@@ -11,7 +11,7 @@
     {% endif %}
 
     <a class="browser-item" 
-       href="{{ path('sycms_resource_browser_repository', { path: resource.path, repository: repositoryName}) }}"
+       href="{{ path('trog_resource_browser_repository', { path: resource.path, repository: repositoryName}) }}"
        title="{{ resource.name }}"
     >{{ resource.name | truncate(40)  }}</a>
 

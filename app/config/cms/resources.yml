@@ -2,10 +2,10 @@ cmf_resource:
     repositories:
         default:
             type: doctrine_phpcr_odm
-            basepath: /sycms/posts
+            basepath: /trog/posts
         pages:
             type: doctrine_phpcr_odm
-            basepath: /sycms/pages
+            basepath: /trog/pages
         media:
             type: doctrine_phpcr_odm
-            basepath: /sycms/media
+            basepath: /trog/media
