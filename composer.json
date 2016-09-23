@@ -33,6 +33,7 @@
         "psiphp/content-type-bundle": "^1.0",
         "psiphp/description-bundle": "^1.0",
         "psiphp/description-doctrine-phpcr-odm": "^1.0",
+        "psiphp/description-resolver-cmf-resource": "^1.0",
         "psiphp/resource-browser": "^1.0",
 
         "symfony-cmf/resource": "dev-master",

@@ -13,8 +13,12 @@ use Puli\Repository\Api\Resource\PuliResource;
 use Trog\Component\ObjectAgent\AgentFinder;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
 use Symfony\Cmf\Component\Routing\RouteReferrersReadInterface;
+use Psi\Component\Description\EnhancerInterface;
+use Psi\Component\Description\Subject;
+use Psi\Component\Description\DescriptionInterface;
+use Psi\Component\Description\Descriptor\UriDescriptor;
 
-class RouteEnhancer implements DescriptionEnhancerInterface
+class RouteEnhancer implements EnhancerInterface
 {
     private $urlGenerator;
 
@@ -25,22 +29,18 @@ class RouteEnhancer implements DescriptionEnhancerInterface
         $this->urlGenerator = $urlGenerator;
     }
 
-    public function enhance(Description $description)
+    public function enhanceFromObject(DescriptionInterface $description, Subject $subject)
     {
-        $resource = $description->getResource();
-        $payload = $resource->getPayload();
-
-        $description->set('url', $this->urlGenerator->generate($payload));
+        $description->set('std.uri.show', new UriDescriptor($this->urlGenerator->generate($subject->getObject())));
     }
 
-    public function supports(PuliResource $resource)
+    public function enhanceFromClass(DescriptionInterface $description, \ReflectionClass $class)
     {
-        if (!$resource instanceof CmfResource) {
-            return false;
-        }
-        $payload = $resource->getPayload();
+    }
 
-        return $payload instanceof RouteReferrersReadInterface;
+    public function supports(Subject $subject)
+    {
+        return $subject->getClass()->isSubclassOf(RouteReferrersReadInterface::class);
     }
 }
 

@@ -5,14 +5,14 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="trog_content_type.controller.crud" class="Trog\Bundle\ContentTypeBundle\Controller\CRUDController">
+        <service id="trog_content_type.controller.crud" class="Trog\Bundle\ContentType\Controller\CRUDController">
             <argument type="service" id="trog_object_agent.agent_finder" />
             <argument type="service" id="templating" />
             <argument type="service" id="form.factory" />
             <argument type="service" id="router" />
         </service>
 
-        <service id="trog_content_type.resource.description.enhancer.content_type" class="Trog\Bundle\ContentTypeBundle\Resource\ContentTypeEnhancer">
+        <service id="trog_content_type.resource.description.enhancer.content_type" class="Trog\Bundle\ContentType\Resource\ContentTypeEnhancer">
             <argument type="service" id="psi_content_type.metadata.factory" />
             <argument type="service" id="cmf_resource.registry" />
             <argument type="service" id="trog_object_agent.agent_finder" />
@@ -20,7 +20,7 @@
             <tag name="psi_description.enhancer" priority="-100" alias="content_type" />
         </service>
 
-        <service id="trog_content_type.resource.description.enhancer.route" class="Trog\Bundle\ContentTypeBundle\Resource\RouteEnhancer">
+        <service id="trog_content_type.resource.description.enhancer.route" class="Trog\Bundle\ContentType\Resource\RouteEnhancer">
             <argument type="service" id="router" />
             <tag name="psi_description.enhancer" alias="route" />
         </service>

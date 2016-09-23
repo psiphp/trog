@@ -18,9 +18,7 @@ class LoadBaseData implements FixtureInterface
      */
     public function load(ObjectManager $manager)
     {
-        $base = new Generic();
-        $base->setNodename('trog');
-        $base->setParentDocument($manager->find(null, '/'));
+        $base = $manager->find(null, '/trog');
 
         $media = new MediaFolder();
         $media->setParent($base);

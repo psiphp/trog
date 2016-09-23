@@ -1,4 +1,5 @@
-{% set children = description.get('links.create_child.html') %}
+{% set children = description.get('hierarchy.uris.create_child').values %}
+
 {% if children %}
 <div class="item">
     <i class="icon large add"></i>

@@ -1,0 +1,26 @@
+psi_description:
+    enhancers:
+        - route
+        - doctrine_phpcr_odm
+        - content_type
+
+    subject_resolvers:
+        - cmf_resource
+
+services:
+    trog.description.enhancer.phpcr_odm:
+        class: "Psi\\Component\\Description\\Enhancer\\Doctrine\\PhpcrOdmEnhancer"
+        arguments:
+            - "@doctrine_phpcr.odm.document_manager"
+        tags:
+            - 
+                name: psi_description.enhancer
+                alias: doctrine_phpcr_odm
+
+    trog.description.subject_resolver.cmf_resource:
+        class: "Psi\\Component\\Description\\SubjectResolver\\SymfonyCmfResource\\ResourcePayloadResolver"
+        tags:
+            - 
+                name: psi_description.subject_resolver
+                alias: cmf_resource
+

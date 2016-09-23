@@ -6,13 +6,12 @@ use Puli\Repository\Api\ResourceRepository;
 use Symfony\Component\Templating\EngineInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Trog\Bundle\ResourceBrowser\Column\ResourceBuilder;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Cmf\Bundle\ResourceBundle\Registry\RepositoryRegistry;
-use Trog\Bundle\ResourceBrowserBundle\Column\Browser;
 use Puli\Repository\Api\ResourceNotFoundException;
 use Webmozart\PathUtil\Path;
+use Psi\Component\ResourceBrowser\Browser;
 
 class BrowserController
 {
@@ -63,6 +62,9 @@ class BrowserController
         $browser = new Browser($repository, $path);
         $repositories = $this->registry->names();
 
+        $numberFormatter = new \NumberFormatter('en', \NumberFormatter::SPELLOUT);
+        $words =  $numberFormatter->format(count($browser->getColumnsForDisplay()));
+
         return $this->templating->renderResponse(
             $template,
             [
@@ -70,6 +72,7 @@ class BrowserController
                 'repositoryName' => $repositoryName,
                 'browser' => $browser,
                 'route' => $request->attributes->get('_route'),
+                'nbColumnsInWords' => $words,
             ],
             new Response()
         );

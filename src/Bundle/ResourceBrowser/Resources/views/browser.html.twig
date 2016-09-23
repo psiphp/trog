@@ -2,9 +2,9 @@
     {% include "@TrogResourceBrowser/_menu.html.twig" %}
     {% set columns = browser.columnsForDisplay() %}
 
-    <div class="ui {{ browser.nbColumnsInWords }} column grid grid celled segment">
+    <div class="ui {{ nbColumnsInWords }} column grid grid celled segment">
         <div class="row">
-            {% for columnNb in 0..browser.nbColumns - 1 %}
+            {% for columnNb in 0..browser.columnsForDisplay|length - 1 %}
                 <div class="column">
                     {% if columns[columnNb] is defined %}
                         {% include "@TrogResourceBrowser/_headers.html.twig" with { 'column': columns[columnNb] } %}
@@ -14,7 +14,7 @@
             {% endfor %}
         </div>
         <div class="row">
-            {% for columnNb in 0..browser.nbColumns - 1 %}
+            {% for columnNb in 0..browser.columnsForDisplay|length - 1 %}
                 <div class="column sortable">
                     {% if columns[columnNb] is defined %}
                         {% include "@TrogResourceBrowser/_items.html.twig" with { 'column': columns[columnNb] } %}

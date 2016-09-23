@@ -27,9 +27,11 @@ class AppKernel extends Kernel
             new Symfony\Bundle\TwigBundle\TwigBundle(),
 
             new Symfony\Cmf\Bundle\ResourceBundle\CmfResourceBundle(),
-            new Psi\Bundle\ContentType\PsiContentTypeBundle(),
             new Symfony\Cmf\Bundle\RoutingBundle\CmfRoutingBundle(),
             new Symfony\Cmf\Bundle\RoutingAutoBundle\CmfRoutingAutoBundle(),
+
+            new Psi\Bundle\ContentType\PsiContentTypeBundle(),
+            new Psi\Bundle\Description\PsiDescriptionBundle(),
 
             new Liip\ImagineBundle\LiipImagineBundle()
         ];

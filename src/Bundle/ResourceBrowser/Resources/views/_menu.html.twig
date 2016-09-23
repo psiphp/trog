@@ -1,12 +1,12 @@
-{% macro breadcrumb(resources, repositoryName) %}
-    {% if resources|length == 1 %}/{% else %}
+{% macro breadcrumb(columns, repositoryName) %}
+    {% if columns|length == 1 %}/{% else %}
 
-        {% for resource in resources %}
+        {% for column in columns %}
 
             {% if loop.last %}
-                {{ resource.name }}
+                {{ column.name }}
             {% else %}
-                <a href="{{ path('trog_resource_browser_repository', { path: resource.path, repository: repositoryName}) }}" class="browsing ui right floated">{{ resource.name }}</a>&nbsp;/&nbsp;
+                <a href="{{ path('trog_resource_browser_repository', { path: column.resource.path, repository: repositoryName}) }}" class="browsing ui right floated">{{ column.name }}</a>&nbsp;/&nbsp;
             {% endif %}
 
         {% endfor %}

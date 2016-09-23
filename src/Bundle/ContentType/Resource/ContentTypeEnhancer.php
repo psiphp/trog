@@ -12,8 +12,13 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Puli\Repository\Api\Resource\PuliResource;
 use Trog\Component\ObjectAgent\AgentFinder;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
+use Psi\Component\Description\DescriptionInterface;
+use Psi\Component\Description\Descriptor\UriDescriptor;
+use Psi\Component\Description\Subject;
+use Psi\Component\Description\EnhancerInterface;
+use Psi\Component\Description\Descriptor\UriCollectionDescriptor;
 
-class ContentTypeEnhancer implements DescriptionEnhancerInterface
+class ContentTypeEnhancer implements EnhancerInterface
 {
     private $metadataFactory;
     private $repositoryRegistry;
@@ -33,23 +38,24 @@ class ContentTypeEnhancer implements DescriptionEnhancerInterface
         $this->urlGenerator = $urlGenerator;
     }
 
-    public function enhance(Description $description)
+    public function enhanceFromObject(DescriptionInterface $description, Subject $subject)
     {
-        $resource = $description->getResource();
-        $payload = $resource->getPayload();
-        $metadata = $this->metadataFactory->getMetadataForClass($resource->getPayloadType());
+        $object = $subject->getObject();
+        $metadata = $this->metadataFactory->getMetadataForClass($subject->getClass()->getName());
 
-        $agent = $this->agentFinder->findAgentFor(get_class($payload));
-        $identifier = $agent->getIdentifier($payload);
+        $agent = $this->agentFinder->findAgentFor($subject->getClass()->getName());
+        $identifier = $agent->getIdentifier($object);
 
         $description->set(
-            Descriptor::LINK_EDIT_HTML,
-            $this->urlGenerator->generate(
-                'trog_content_type_crud_edit',
-                [
-                    'agent' => $agent->getAlias(),
-                    'identifier' => $identifier
-                ]
+            'std.uri.update',
+            new UriDescriptor(
+                $this->urlGenerator->generate(
+                    'trog_content_type_crud_edit',
+                    [
+                        'agent' => $agent->getAlias(),
+                        'identifier' => $identifier
+                    ]
+                )
             )
         );
 
@@ -59,44 +65,43 @@ class ContentTypeEnhancer implements DescriptionEnhancerInterface
 
                 // we cannot use the property metadata to get the value as we might
                 // be acting upon a proxy, and that just doesn't work.
-                $image = $propertyAccessor->getValue($payload, $propertyMetadata->name);
+                $image = $propertyAccessor->getValue($object, $propertyMetadata->name);
                 if ($image) {
-                    $description->set('image.primary', $image->getImage());
+                    $description->set('std.image', new UriDescriptor($image->getImage()));
                     break;
                 }
             }
         }
 
-        if ($description->has(Descriptor::CHILDREN_TYPES)) {
+        if ($description->has('hierarchy.children_types')) {
             $types = [];
-            foreach ($description->get(Descriptor::CHILDREN_TYPES) as $childClassFqn) {
-                if (null === $this->metadataFactory->getMetadataForClass($childClassFqn)) {
+            foreach ($description->get('hierarchy.children_types')->getValues() as $childType) {
+                if (null === $this->metadataFactory->getMetadataForClass($childType)) {
                     continue;
                 }
 
-                $types[$childClassFqn] = $this->urlGenerator->generate(
+                $types[$childType] = $this->urlGenerator->generate(
                     'trog_content_type_crud_create_as_child',
                     [
                         'agent' => $agent->getAlias(),
                         'parent_identifier' => $identifier,
-                        'type' => $childClassFqn,
+                        'type' => $childType,
                     ]
                 );
             }
 
-            $description->set(Descriptor::LINKS_CREATE_CHILD_HTML, $types);
+
+            $description->set('hierarchy.uris.create_child', new UriCollectionDescriptor($types));
         }
     }
 
-    public function supports(PuliResource $resource)
+    public function enhanceFromClass(DescriptionInterface $description, \ReflectionClass $class)
     {
-        if (!$resource instanceof CmfResource) {
-            return false;
-        }
+    }
 
-        $payload = $resource->getPayload();
-
-        if (null === $this->metadataFactory->getMetadataForClass(get_class($payload))) {
+    public function supports(Subject $subject)
+    {
+        if (null === $this->metadataFactory->getMetadataForClass($subject->getClass()->getName())) {
             return false;
         }
 
