@@ -15,13 +15,15 @@ class Uploader
 
     public function upload(UploadedFile $file)
     {
-        if ($file->isValid()) {
-            $stream = fopen($file->getRealPath(), 'r+');
-            $uuid = Uuid::uuid4()->toString();
-            $filename = sprintf('%s.%s', $uuid, $file->guessExtension());
-            $this->filesystem->writeStream($filename, $stream);
-            fclose($stream);
+        if (!$file->isValid()) {
+            throw new \InvalidArgumentException($file->getErrorMessage());
         }
+
+        $stream = fopen($file->getRealPath(), 'r+');
+        $uuid = Uuid::uuid4()->toString();
+        $filename = sprintf('%s.%s', $uuid, $file->guessExtension());
+        $this->filesystem->writeStream($filename, $stream);
+        fclose($stream);
 
         return $filename;
     }

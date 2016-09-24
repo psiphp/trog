@@ -13,8 +13,8 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints\Type;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
-use Trog\Bundle\ContentTypeBundle\Form\Event\ValidFormEvent;
-use Trog\Bundle\MediaBundle\Util\Uploader;
+use Trog\Bundle\ContentType\Form\Event\ValidFormEvent;
+use Trog\Bundle\Media\Util\Uploader;
 use Symfony\Component\HttpFoundation\File\MimeType\MimeTypeGuesser;
 
 class ImageType extends AbstractType

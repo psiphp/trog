@@ -12,7 +12,7 @@ var
             './node_modules/semantic-ui-css/semantic.min.css'
         ],
         'less': [
-            './src/bundle/*/Resources/private/less/*.less',
+            './src/Bundle/*/Resources/private/less/*.less',
         ],
         'js': [
             './node_modules/jquery/dist/jquery.min.js',
@@ -29,7 +29,7 @@ var
             './node_modules/ace-builds/src-min/mode-markdown.js',
             './node_modules/ace-builds/src-min/theme-twilight.js',
 
-            './src/bundle/*/Resources/private/js/*.js',
+            './src/Bundle/*/Resources/private/js/*.js',
         ]
     }
 

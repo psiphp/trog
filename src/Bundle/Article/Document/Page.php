@@ -6,6 +6,8 @@ use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Psi\Component\ContentType\Metadata\Annotations as ContentType;
 use Symfony\Cmf\Component\Routing\RouteReferrersReadInterface;
+use Trog\Component\ContentType\Model\PublishPeriod;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * @PHPCR\Document(
@@ -76,6 +78,11 @@ class Page implements RouteReferrersReadInterface
      * )
      */
     private $routes;
+
+    public function __construct()
+    {
+        $this->publishPeriod = new PublishPeriod(new \DateTime(), new \DateTime());
+    }
 
     public function getId()
     {

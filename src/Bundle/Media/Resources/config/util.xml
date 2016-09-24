@@ -6,7 +6,7 @@
 
     <services>
 
-        <service id="trog_media.util.uploader" class="Trog\Bundle\MediaBundle\Util\Uploader">
+        <service id="trog_media.util.uploader" class="Trog\Bundle\Media\Util\Uploader">
             <argument type="service" id="trog_media.filesystem" />
         </service>
 

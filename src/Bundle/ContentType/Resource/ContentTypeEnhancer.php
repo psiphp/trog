@@ -90,7 +90,6 @@ class ContentTypeEnhancer implements EnhancerInterface
                 );
             }
 
-
             $description->set('hierarchy.uris.create_child', new UriCollectionDescriptor($types));
         }
     }

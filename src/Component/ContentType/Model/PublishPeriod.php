@@ -8,6 +8,12 @@ class PublishPeriod
     private $start;
     private $end;
 
+    public function __construct(\DateTime $start, \DateTime $end)
+    {
+        $this->start = $start;
+        $this->end = $end;
+    }
+
     public function getStart() 
     {
         return $this->start;

@@ -6,7 +6,7 @@
 
     <services>
 
-        <service id="trog_media.controller.image" class="Trog\Bundle\MediaBundle\Controller\ImageController">
+        <service id="trog_media.controller.image" class="Trog\Bundle\Media\Controller\ImageController">
             <argument type="service" id="imagine" />
         </service>
 

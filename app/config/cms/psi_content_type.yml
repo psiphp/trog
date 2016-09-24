@@ -1,3 +1,7 @@
 psi_content_type:
-    storage_drivers:
+    enabled_storage:
         - doctrine_phpcr_odm
+    storage:
+        doctrine_phpcr_odm:
+            mapped_namespaces:
+                - "Trog"
