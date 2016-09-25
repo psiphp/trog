@@ -39,7 +39,7 @@ class BrowserController
 
         $repository = $this->registry->get($repositoryName);
         $path = $request->query->get('path') ?: null;
-        $template = $request->get('template', '@TrogResourceBrowser/index.html.twig');
+        $template = $request->attributes->get('template', '@TrogResourceBrowser/index.html.twig');
 
         // resolve the repository name (it may have been determined automatically)
         $repositoryName = $this->registry->getRepositoryAlias($repository);
@@ -63,7 +63,7 @@ class BrowserController
         $repositories = $this->registry->names();
 
         $numberFormatter = new \NumberFormatter('en', \NumberFormatter::SPELLOUT);
-        $words =  $numberFormatter->format(count($browser->getColumnsForDisplay()));
+        $words =  $numberFormatter->format($browser->getMaxColumns());
 
         return $this->templating->renderResponse(
             $template,

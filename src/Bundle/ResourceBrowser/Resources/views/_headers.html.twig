@@ -5,7 +5,7 @@
 {% set hasActions = false %}
 
 {% if description.has('std.image') %}
-    <img class="ui inline image" src="{{ ('/files/' ~ description.get('std.image')) | imagine_filter('mini') }}" />
+    <img class="ui inline image" src="{{ ('/files/' ~ description.get('std.image').value) | imagine_filter('mini') }}" />
 {% endif %}
 
 <div class="ui  simple dropdown">

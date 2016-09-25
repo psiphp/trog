@@ -32,14 +32,14 @@ class Page implements RouteReferrersReadInterface
     private $state = 'published';
 
     /**
-     * @ContentType\Property(type="publish_period")
-     */
-    private $publishPeriod;
-
-    /**
      * @ContentType\Property(type="markdown", options={"editor_height": "50px"})
      */
     private $teaser = '';
+
+    /**
+     * @ContentType\Property(type="publish_period")
+     */
+    private $publishPeriod;
 
     /**
      * @ContentType\Property(type="image")
