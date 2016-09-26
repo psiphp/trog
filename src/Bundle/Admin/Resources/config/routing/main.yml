@@ -2,7 +2,7 @@ trog_repository_browser:
     resource: "@TrogResourceBrowserBundle/Resources/config/routing.xml"
     prefix: /admin
     defaults:
-        template: "@TrogAdmin/ResourceBrowser/index.html.twig"
+        browser: default
 
 text_editor:
     resource: "@TrogTextEditorBundle/Resources/config/routing/main.yml"

@@ -5,15 +5,15 @@
         http://symfony.com/schema/routing/routing-1.0.xsd">
 
     <route id="trog_resource_browser_repository" path="/repository/{repository}">
-        <default key="_controller">cmf_resource_browser.controller:indexAction</default>
+        <default key="_controller">trog_resource_browser.controller:indexAction</default>
     </route>
 
     <route id="trog_resource_browser" path="/">
-        <default key="_controller">cmf_resource_browser.controller:indexAction</default>
+        <default key="_controller">trog_resource_browser.controller:indexAction</default>
     </route>
 
-    <route id="trog_resource_browser_update" path="/cmf_browser_update">
-        <default key="_controller">cmf_resource_browser.controller:updateAction</default>
+    <route id="trog_resource_browser_update" path="/trog_browser_update">
+        <default key="_controller">trog_resource_browser.controller:updateAction</default>
         <default key="_format">json</default>
     </route>
 </routes>

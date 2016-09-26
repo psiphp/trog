@@ -1,37 +1,39 @@
 <div class="browser-header-item">
     {% set description = psi_describe(column.resource) %}
 
-{# TODO: Put the action logic into a Column class #}
-{% set hasActions = false %}
+    {# TODO: Put the action logic into a Column class #}
+    {% set hasActions = false %}
 
-{% if description.has('std.image') %}
-    <img class="ui inline image" src="{{ ('/files/' ~ description.get('std.image').value) | imagine_filter('mini') }}" />
-{% endif %}
+    {% if description.has('std.image') %}
+        <img class="ui inline image" src="{{ ('/files/' ~ description.get('std.image').value) | imagine_filter('mini') }}" />
+    {% endif %}
 
-<div class="ui  simple dropdown">
-	<div class="text">
-		{{ column.name ?: '/' }}
-	</div>
-	<i class="dropdown icon"></i>
-	<div class="menu">
+        <div class="ui  simple dropdown">
+            <div class="text">
+                {{ column.name ?: '/' }}
+            </div>
+            {% if view.enableItemActions %}
+                <i class="dropdown icon"></i>
+                <div class="menu">
 
-        {% if description.has('std.uri.update') %}
-            <div class="item">
-				<a href="{{ description.get('std.uri.update').value }}"><i class="icon large edit"></i> {{ 'Edit'|trans() }}</a>
-                {% set hasActions = true %}
-			</div>
-        {% endif %}
+                    {% if description.has('std.uri.update') %}
+                        <div class="item">
+                            <a href="{{ description.get('std.uri.update').value }}"><i class="icon large edit"></i> {{ 'Edit'|trans() }}</a>
+                            {% set hasActions = true %}
+                        </div>
+                    {% endif %}
 
-		{% if description.has('hierarchy.uris.create_child') %}
-            {% include "@TrogResourceBrowser/item_menu/_create_child.html.twig" %}
-            {% set hasActions = true %}
-		{% endif %}
+                    {% if description.has('hierarchy.uris.create_child') %}
+                        {% include "@TrogResourceBrowser/item_menu/_create_child.html.twig" %}
+                        {% set hasActions = true %}
+                    {% endif %}
 
-        {% if hasActions == false %}
-			<div class="item disabled">
-				{{ 'no-actions-available'|trans() }}
-			</div>
-		{% endif %}
-	</div>
-</div>
+                    {% if hasActions == false %}
+                        <div class="item disabled">
+                            {{ 'no-actions-available'|trans() }}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
 </div>
