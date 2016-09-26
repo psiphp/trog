@@ -12,6 +12,7 @@ use Symfony\Cmf\Bundle\ResourceBundle\Registry\RepositoryRegistry;
 use Puli\Repository\Api\ResourceNotFoundException;
 use Webmozart\PathUtil\Path;
 use Psi\Component\ResourceBrowser\Browser;
+use Trog\Bundle\ResourceBrowser\Browser\ViewRegistry;
 
 class BrowserController
 {
@@ -20,26 +21,29 @@ class BrowserController
 
     private $templating;
     private $registry;
+    private $browserViewRegistry;
     private $session; 
 
     public function __construct(
         RepositoryRegistry $registry,
         EngineInterface $templating,
-        Session $session
+        Session $session,
+        ViewRegistry $browserViewRegistry
     )
     {
         $this->templating = $templating;
         $this->registry = $registry;
         $this->session = $session;
+        $this->browserViewRegistry = $browserViewRegistry;
     }
 
     public function indexAction(Request $request)
     {
-        $repositoryName = $this->resolveRepositoryName($request);
-
-        $repository = $this->registry->get($repositoryName);
         $path = $request->query->get('path') ?: null;
-        $template = $request->attributes->get('template', '@TrogResourceBrowser/index.html.twig');
+        $browserName = $request->attributes->get('browser');
+        $browserView = $this->browserViewRegistry->get($browserName);
+        $repositoryName = $this->resolveRepositoryName($request, $browserView->getDefaultRepository());
+        $repository = $this->registry->get($repositoryName);
 
         // resolve the repository name (it may have been determined automatically)
         $repositoryName = $this->registry->getRepositoryAlias($repository);
@@ -59,20 +63,34 @@ class BrowserController
 
         $path = $this->resolvePath($repository, $path);
 
-        $browser = new Browser($repository, $path);
-        $repositories = $this->registry->names();
+        $browser = new Browser($repository, $path, $browserView->getColumns());
+
+
+        $allRepositories = $this->registry->names();
+        $repositories = $browserView->getRepositories() ?: $allRepositories;
+        if ($diff = array_diff($repositories, $allRepositories)) {
+            throw new \InvalidArgumentException(sprintf(
+                'Unknown repositories enabled in browser view "%s": "%s"',
+                $browserName, implode('", "', $diff)
+            ));
+        }
+
+        if (!in_array($repositoryName, $repositories)) {
+            $repositoryName = reset($repositories);
+        }
 
         $numberFormatter = new \NumberFormatter('en', \NumberFormatter::SPELLOUT);
         $words =  $numberFormatter->format($browser->getMaxColumns());
 
         return $this->templating->renderResponse(
-            $template,
+            $browserView->getTemplate(),
             [
                 'repositories' => $repositories,
                 'repositoryName' => $repositoryName,
                 'browser' => $browser,
                 'route' => $request->attributes->get('_route'),
                 'nbColumnsInWords' => $words,
+                'view' => $browserView,
             ],
             new Response()
         );
@@ -116,7 +134,7 @@ class BrowserController
         return $this->resolvePath($repository, $path);
     }
 
-    private function resolveRepositoryName(Request $request)
+    private function resolveRepositoryName(Request $request, $defaultName)
     {
         $repositoryName = $request->get('repository');
 
@@ -129,6 +147,6 @@ class BrowserController
             return $this->session->get(self::REPOSITORY);
         }
 
-        return 'default';
+        return $defaultName;
     }
 }

@@ -29,7 +29,9 @@
         </div>
     </div>
 
+    {% if view.enableMove %}
     <a id="browser_move_button" href="#" class="item"><i class="move icon"></i></a>
+    {% endif %}
     <div class="header item"><a href="{{ path('trog_resource_browser_repository', { path: '/', repository: repositoryName}) }}"><i class="icon home large"></i></a>{{ macros.breadcrumb(browser.columns, repositoryName) }}</div>
 </div>
 

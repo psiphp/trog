@@ -5,11 +5,15 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="cmf_resource_browser.controller" class="Trog\Bundle\ResourceBrowser\Controller\BrowserController">
+        <service id="trog_resource_browser.controller" class="Trog\Bundle\ResourceBrowser\Controller\BrowserController">
             <argument type="service" id="cmf_resource.registry" />
             <argument type="service" id="templating" />
             <argument type="service" id="session" />
+            <argument type="service" id="trog_resource_browser.view_registry" />
         </service>
+
+        <service id="trog_resource_browser.view_registry" class="Trog\Bundle\ResourceBrowser\Browser\ViewRegistry" />
+
     </services>
 
 </container>

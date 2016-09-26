@@ -1,11 +1,11 @@
-{% set itemDescription = cmf_resource_description(resource) %}
+{% set itemDescription = psi_describe(resource) %}
 
 <div class="browser-item item {% if resource.path == browser.path %} current{% endif %}{{ resource.path == browser.path|slice(0, resource.path|length) ? ' active' : '' }}">
 
     <span class="grippy moving"></span>
 
-    {% if itemDescription.has('image.primary') %}
-        <img class="ui inline image" src="{{ ('/files/' ~ itemDescription.get('image.primary')) | imagine_filter('inline') }}" />
+    {% if itemDescription.has('std.image') %}
+        <img class="ui inline image" src="{{ ('/files/' ~ itemDescription.get('std.image').value) | imagine_filter('inline') }}" />
     {% else %}
         <i class="{{ browser.path|slice(0, resource.path|length) == resource.path ? 'folder open' : 'folder closed' }} icon"></i>
     {% endif %}
