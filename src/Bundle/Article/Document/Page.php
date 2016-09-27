@@ -15,7 +15,8 @@ use Symfony\Component\Validator\Constraints\DateTime;
  *     childClasses={
  *         "Trog\Bundle\Article\Document\Page",
  *         "Trog\Component\ContentType\Model\PublishPeriod",
- *         "Trog\Component\ContentType\Model\Image"
+ *         "Trog\Component\ContentType\Model\Image",
+ *         "Trog\Component\ContentType\Model\ResourceReference",
  *     }
  * )
  */
@@ -45,6 +46,11 @@ class Page implements RouteReferrersReadInterface
      * @ContentType\Property(type="image")
      */
     private $image;
+
+    /**
+     * @ContentType\Property(type="resource_reference")
+     */
+    private $resource;
 
     /**
      * @ContentType\Property(type="markdown", options={"editor_height": "400px"})
@@ -169,4 +175,15 @@ class Page implements RouteReferrersReadInterface
     {
         return $this->routes;
     }
+
+    public function getResource() 
+    {
+        return $this->resource;
+    }
+    
+    public function setResource($resource)
+    {
+        $this->resource = $resource;
+    }
+    
 }

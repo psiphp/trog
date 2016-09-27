@@ -11,6 +11,11 @@
             <tag name="form.type" />
         </service>
 
+        <service id="trog_content_type.form.type.resource_reference" class="Trog\Component\ContentType\Form\ResourceReferenceType">
+            <argument type="service" id="cmf_resource.registry" />
+            <tag name="form.type" />
+        </service>
+
     </services>
 
 </container>

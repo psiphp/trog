@@ -10,8 +10,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Trog\Component\ContentType\Form\MarkdownType;
 use Trog\Component\ContentType\Model\Image;
 use Trog\Component\ContentType\Form\ImageType;
+use Trog\Component\ContentType\Form\ResourceReferenceType;
+use Trog\Component\ContentType\Model\ResourceReference;
 
-class ImageField implements FieldInterface
+class ResourceReferenceField implements FieldInterface
 {
     public function getViewType()
     {
@@ -20,15 +22,14 @@ class ImageField implements FieldInterface
 
     public function getFormType()
     {
-        return ImageType::class;
+        return ResourceReferenceType::class;
     }
 
     public function getMapping(MappingBuilder $builder)
     {
-        return $builder->compound(Image::class)
-            ->map('image', 'string')
-            ->map('mimeType', 'string')
-            ->map('originalFilename', 'string')
+        return $builder->compound(ResourceReference::class)
+            ->map('path', 'string')
+            ->map('repository', 'string')
         ;
     }
 
@@ -36,3 +37,4 @@ class ImageField implements FieldInterface
     {
     }
 }
+

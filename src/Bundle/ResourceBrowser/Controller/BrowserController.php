@@ -63,7 +63,10 @@ class BrowserController
 
         $path = $this->resolvePath($repository, $path);
 
-        $browser = new Browser($repository, $path, $browserView->getColumns());
+        $browser = Browser::createFromOptions($repository, [
+            'path' => $path,
+            'nb_columns' => $browserView->getColumns()
+        ]);
 
 
         $allRepositories = $this->registry->names();

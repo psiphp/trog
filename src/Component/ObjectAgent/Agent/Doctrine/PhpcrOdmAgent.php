@@ -5,6 +5,7 @@ namespace Trog\Component\ObjectAgent\Agent\Doctrine;
 use Trog\Component\ObjectAgent\AgentInterface;
 use Doctrine\ODM\PHPCR\DocumentManagerInterface;
 use Doctrine\Common\Util\ClassUtils;
+use Trog\Component\ObjectAgent\Exception\ObjectNotFound;
 
 class PhpcrOdmAgent implements AgentInterface
 {
