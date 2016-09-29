@@ -15,7 +15,7 @@ use Psi\Component\ContentType\Metadata\Annotations as ContentType;
 class Image
 {
     /**
-     * @ContentType\Property(type="text")
+     * @ContentType\Property(type="text", role="title")
      */
     private $title;
 
@@ -25,7 +25,7 @@ class Image
     private $description;
 
     /**
-     * @ContentType\Property(type="image")
+     * @ContentType\Property(type="image", role="image")
      */
     private $image;
 

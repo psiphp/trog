@@ -1,0 +1,37 @@
+<div class="ui grid attached segment">
+    <div class="row">
+        <div class="eight wide column">
+            <table class="ui definition table">
+                <thead>
+                    <tr>
+                        <th>{{ 'property'|trans() }}</th>
+                        <th>{{ 'value'|trans() }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ 'path'|trans() }}</td>
+                        <td>{{ repository ~ ':/' ~ path }}</td>
+                    </tr>
+                    {% if description.has('std.title') %}
+                        <tr>
+                            <td>{{ 'title'|trans() }}</td>
+                            <td>{{ description.get('std.title').value }}</td>
+                        </tr>
+                    {% endif %}
+                    {% if description.has('std.class') %}
+                        <tr>
+                            <td>{{ 'class'|trans() }}</td>
+                            <td>{{ description.get('std.class').class.name }}</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+        <div class="four wide column">
+            {% if description.has('std.image') %}
+                <img class="ui inline big spaced image" src="{{ description.get('std.image').value | trog_media_path() | imagine_filter('preview') }}" />
+            {% endif %}
+        </div>
+    </div>
+</div>

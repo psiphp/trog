@@ -142,7 +142,7 @@
         <div class="row">
             <div class="eight wide column">
                 {% if value and value.image %}
-                    <img class="ui inline big spaced image" src="{{ ('/files/' ~ value.image) | imagine_filter('preview') }}" />
+                    <img class="ui inline big spaced image" src="{{ value.image | trog_media_path() | imagine_filter('preview') }}" />
                 {% endif %}
             </div>
             <div class="eight wide column">
@@ -174,5 +174,37 @@
                 {% endif %}
             </div>
         </div>
+    </div>
+{% endblock %}
+
+{% block resource_reference_widget %}
+    <div
+        id="{{ id }}"
+        data-trog-ct-resource-selector 
+        data-title="{{ 'browser'|trans() }}" 
+        data-browser="{{ browser }}"
+        data-input-repository="{{ form.repository.vars.id }}"
+        data-input-path="{{ form.path.vars.id }}"
+        data-preview-url="{{ path('trog_content_type_resource_reference_preview') }}"
+    >
+
+        <div class="preview">
+            {% if value and value.repository %}
+                {{ render(controller('trog_content_type.controller.resource_reference:formTypePreviewAction', {
+                    'path': value.path,
+                    'repository': value.repository
+                })) }}
+            {% endif %}
+        </div>
+
+        {{ form_row(form.path) }}
+        {{ form_row(form.repository) }}
+
+        <div class="ui two bottom attached buttons">
+            <a 
+                href="{{ path('trog_resource_browser', {browser: browser}) }}" 
+                class="ui button">{{ 'select'|trans() }}</a>
+        </div>
+
     </div>
 {% endblock %}

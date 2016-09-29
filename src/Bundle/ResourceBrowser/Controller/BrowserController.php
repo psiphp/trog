@@ -40,9 +40,11 @@ class BrowserController
     public function indexAction(Request $request)
     {
         $path = $request->query->get('path') ?: null;
-        $browserName = $request->attributes->get('browser');
+        $browserName = $request->get('browser');
         $browserView = $this->browserViewRegistry->get($browserName);
-        $repositoryName = $this->resolveRepositoryName($request, $browserView->getDefaultRepository());
+        $repositories = $browserView->getRepositories() ?: $allRepositories;
+        $repositoryName = $this->resolveRepositoryName($request, $browserView->getDefaultRepository(), $repositories);
+
         $repository = $this->registry->get($repositoryName);
 
         // resolve the repository name (it may have been determined automatically)
@@ -63,11 +65,13 @@ class BrowserController
 
         $path = $this->resolvePath($repository, $path);
 
-        $browser = new Browser($repository, $path, $browserView->getColumns());
+        $browser = Browser::createFromOptions($repository, [
+            'path' => $path,
+            'nb_columns' => $browserView->getColumns()
+        ]);
 
 
         $allRepositories = $this->registry->names();
-        $repositories = $browserView->getRepositories() ?: $allRepositories;
         if ($diff = array_diff($repositories, $allRepositories)) {
             throw new \InvalidArgumentException(sprintf(
                 'Unknown repositories enabled in browser view "%s": "%s"',
@@ -88,6 +92,7 @@ class BrowserController
                 'repositories' => $repositories,
                 'repositoryName' => $repositoryName,
                 'browser' => $browser,
+                'browserName' => $browserName,
                 'route' => $request->attributes->get('_route'),
                 'nbColumnsInWords' => $words,
                 'view' => $browserView,
@@ -134,17 +139,20 @@ class BrowserController
         return $this->resolvePath($repository, $path);
     }
 
-    private function resolveRepositoryName(Request $request, $defaultName)
+    private function resolveRepositoryName(Request $request, $defaultName, $availableRepositories)
     {
         $repositoryName = $request->get('repository');
 
-        if ($repositoryName) {
+        if ($repositoryName && in_array($defaultName, $availableRepositories)) {
             $this->session->set(self::REPOSITORY, $repositoryName);
             return $repositoryName;
         }
 
         if ($this->session->has(self::REPOSITORY)) {
-            return $this->session->get(self::REPOSITORY);
+            $repo = $this->session->get(self::REPOSITORY);
+            if (in_array($repo, $availableRepositories)) {
+                return $repo;
+            }
         }
 
         return $defaultName;

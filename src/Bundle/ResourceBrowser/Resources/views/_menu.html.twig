@@ -1,4 +1,4 @@
-{% macro breadcrumb(columns, repositoryName) %}
+{% macro breadcrumb(columns, browserName, repositoryName) %}
     {% if columns|length == 1 %}/{% else %}
 
         {% for column in columns %}
@@ -6,7 +6,7 @@
             {% if loop.last %}
                 {{ column.name }}
             {% else %}
-                <a href="{{ path('trog_resource_browser_repository', { path: column.resource.path, repository: repositoryName}) }}" class="browsing ui right floated">{{ column.name }}</a>&nbsp;/&nbsp;
+                <a href="{{ path('trog_resource_browser_repository', { browser: browserName, path: column.resource.path, repository: repositoryName}) }}" class="browsing ui right floated">{{ column.name }}</a>&nbsp;/&nbsp;
             {% endif %}
 
         {% endfor %}
@@ -23,7 +23,7 @@
         <div class="menu">
             {% for repository in repositories %}
                 {% if repository != repositoryName %}
-                <div class="item"><a href="{{ path('trog_resource_browser_repository', { repository: repository }) }}">{{ repository }}</a></div>
+                <div class="item"><a href="{{ path('trog_resource_browser_repository', { browser: browserName, repository: repository }) }}">{{ repository }}</a></div>
                 {% endif %}
             {% endfor %}
         </div>
@@ -32,7 +32,7 @@
     {% if view.enableMove %}
     <a id="browser_move_button" href="#" class="item"><i class="move icon"></i></a>
     {% endif %}
-    <div class="header item"><a href="{{ path('trog_resource_browser_repository', { path: '/', repository: repositoryName}) }}"><i class="icon home large"></i></a>{{ macros.breadcrumb(browser.columns, repositoryName) }}</div>
+    <div class="header item"><a href="{{ path('trog_resource_browser_repository', { browser: browserName, path: '/', repository: repositoryName}) }}"><i class="icon home large"></i></a>{{ macros.breadcrumb(browser.columns, browserName, repositoryName) }}</div>
 </div>
 
 {# hidden by default, displayed when in moving mode #}

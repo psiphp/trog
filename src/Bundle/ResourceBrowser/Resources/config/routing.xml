@@ -4,12 +4,14 @@
     xsi:schemaLocation="http://symfony.com/schema/routing
         http://symfony.com/schema/routing/routing-1.0.xsd">
 
-    <route id="trog_resource_browser_repository" path="/repository/{repository}">
+    <route id="trog_resource_browser_repository" path="/{browser}/repository/{repository}">
         <default key="_controller">trog_resource_browser.controller:indexAction</default>
+        <default key="browser">default</default>
     </route>
 
-    <route id="trog_resource_browser" path="/">
+    <route id="trog_resource_browser" path="/{browser}">
         <default key="_controller">trog_resource_browser.controller:indexAction</default>
+        <default key="browser">default</default>
     </route>
 
     <route id="trog_resource_browser_update" path="/trog_browser_update">

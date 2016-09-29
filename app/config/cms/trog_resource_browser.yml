@@ -10,11 +10,13 @@ trog_resource_browser:
             enable_item_actions: true
             columns: 4
             template: "@TrogAdmin/ResourceBrowser/index.html.twig"
-#        media_overlay:
-#            default_repository: media
-#            repositories:
-#                - media
-#            enable_move: false
-#            enable_item_actions: false
-#            columns: 2
-#            template: "@TrogResourceBrowser/browser.html.twig"
+
+        selector:
+            default_repository: media
+            repositories:
+                - media
+                - pages
+            enable_move: false
+            enable_item_actions: false
+            columns: 2
+            template: "@TrogResourceBrowser/browser.html.twig"
