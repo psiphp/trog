@@ -30,7 +30,7 @@
         </div>
         <div class="four wide column">
             {% if description.has('std.image') %}
-                <img class="ui inline big spaced image" src="{{ description.get('std.image').value | trog_media_path() | imagine_filter('preview') }}" />
+                <img class="ui inline big spaced bordered rounded image" src="{{ description.get('std.image').value | trog_media_path() | imagine_filter('preview') }}" />
             {% endif %}
         </div>
     </div>

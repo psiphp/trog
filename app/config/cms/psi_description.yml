@@ -3,7 +3,7 @@ psi_description:
         - route
         - doctrine_phpcr_odm
         - content_type
-
+        - text_editor
     subject_resolvers:
         - cmf_resource
 

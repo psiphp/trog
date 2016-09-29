@@ -1,6 +1,6 @@
 <?php
 
-namespace Trog\Bundle\TextEditorBundle\Controller;
+namespace Trog\Bundle\TextEditor\Controller;
 
 use Symfony\Cmf\Component\Resource\RepositoryRegistryInterface;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;

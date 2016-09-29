@@ -10,6 +10,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Trog\Bundle\Article\Document\Post;
 use Trog\Bundle\Article\Document\Page;
 use Trog\Bundle\Article\Document\MediaFolder;
+use Trog\Bundle\Media\Document\Folder;
 
 class LoadBaseData implements FixtureInterface
 {

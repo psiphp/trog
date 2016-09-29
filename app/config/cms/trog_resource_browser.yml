@@ -6,6 +6,7 @@ trog_resource_browser:
                 - default
                 - pages
                 - media
+                - files
             enable_move: true
             enable_item_actions: true
             columns: 4
@@ -16,7 +17,8 @@ trog_resource_browser:
             repositories:
                 - media
                 - pages
+                - files
             enable_move: false
             enable_item_actions: false
-            columns: 2
+            columns: 3
             template: "@TrogResourceBrowser/browser.html.twig"
