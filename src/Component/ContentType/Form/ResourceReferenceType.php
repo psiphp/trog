@@ -18,6 +18,8 @@ use Trog\Bundle\Media\Util\Uploader;
 use Symfony\Component\HttpFoundation\File\MimeType\MimeTypeGuesser;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Trog\Component\ContentType\Model\ResourceReference;
+use Symfony\Component\Form\FormView;
+use Symfony\Component\Form\FormInterface;
 
 class ResourceReferenceType extends AbstractType
 {
@@ -30,6 +32,12 @@ class ResourceReferenceType extends AbstractType
     public function configureOptions(OptionsResolver $options)
     {
         $options->setDefault('data_class', ResourceReference::class);
+        $options->setRequired('browser');
+    }
+
+    public function buildView(FormView $view, FormInterface $form, array $options)
+    {
+        $view->vars['browser'] = $options['browser'];
     }
 }
 

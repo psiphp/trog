@@ -35,6 +35,8 @@ class ResourceReferenceField implements FieldInterface
 
     public function configureOptions(OptionsResolver $options)
     {
+        $options->setRequired(['browser']);
+        $options->setFormOptions(['browser']);
     }
 }
 

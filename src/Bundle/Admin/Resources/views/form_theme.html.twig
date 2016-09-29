@@ -176,3 +176,13 @@
         </div>
     </div>
 {% endblock %}
+
+{% block resource_reference_widget %}
+
+    <a 
+        href="{{ path('trog_resource_browser', {browser: browser}) }}" 
+        data-trog-ct-resource-selector 
+        data-title="{{ 'browser'|trans() }}" 
+        data-browser="{{ browser }}" 
+        class="ui button">{{ 'select'|trans() }}</a>
+{% endblock %}

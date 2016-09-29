@@ -48,7 +48,7 @@ class Page implements RouteReferrersReadInterface
     private $image;
 
     /**
-     * @ContentType\Property(type="resource_reference")
+     * @ContentType\Property(type="resource_reference", options={"browser": "selector"})
      */
     private $resource;
 

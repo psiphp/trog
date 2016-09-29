@@ -2,7 +2,7 @@
     {% include "@TrogResourceBrowser/_menu.html.twig" %}
     {% set columns = browser.columnsForDisplay() %}
 
-    <div class="ui {{ nbColumnsInWords }} column grid grid celled segment">
+    <div class="ui {{ nbColumnsInWords }} column grid celled">
         <div class="row">
             {% for columnNb in 0..browser.maxColumns %}
                 <div class="column">
