@@ -142,7 +142,7 @@
         <div class="row">
             <div class="eight wide column">
                 {% if value and value.image %}
-                    <img class="ui inline big spaced image" src="{{ ('/files/' ~ value.image) | imagine_filter('preview') }}" />
+                    <img class="ui inline big spaced image" src="{{ value.image | trog_media_path() | imagine_filter('preview') }}" />
                 {% endif %}
             </div>
             <div class="eight wide column">

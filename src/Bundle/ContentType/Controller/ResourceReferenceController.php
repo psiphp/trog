@@ -32,11 +32,11 @@ class ResourceReferenceController
 
         $description = $this->descriptionFactory->describe($resource);
 
-        $view = new Description();
-        $view->set('title', new Title($description->get('std.title')));
-        $view->set('image', new Image($description->get('std.image')));
-        $view->set('description', new Text($description->get('std.description'));
-
-        return new Response($this->templating->render($view));
+        return new Response($this->templating->render(
+            '@TrogContentType/ResourceReference/preview.html.twig',
+            [
+                'description' => $description
+            ]
+        ));
     }
 }

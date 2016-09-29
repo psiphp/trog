@@ -7,7 +7,7 @@
     <services>
 
         <service id="trog_media.filesystem.adapter.local" class="League\Flysystem\Adapter\Local">
-            <argument>%kernel.root_dir%/../web/files</argument>
+            <argument>%trog_media.filesystem_path%</argument>
         </service>
 
         <service id="trog_media.filesystem" class="League\Flysystem\Filesystem">
