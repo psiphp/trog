@@ -4,6 +4,10 @@ namespace Trog\Bundle\ContentType\Controller;
 
 use Symfony\Cmf\Bundle\ResourceBundle\Registry\RepositoryRegistry;
 use Psi\Component\Description\DescriptionFactory;
+use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
+use Symfony\Component\HttpFoundation\Request;
+use Psi\Component\Description\Subject;
+use Symfony\Component\HttpFoundation\Response;
 
 class ResourceReferenceController
 {
@@ -27,14 +31,16 @@ class ResourceReferenceController
         $repositoryName = $request->get('repository');
         $path = $request->get('path');
 
-        $repository = $this->repositoryFactory->get($repositoryName);
+        $repository = $this->repositoryRegistry->get($repositoryName);
         $resource = $repository->get($path);
 
-        $description = $this->descriptionFactory->describe($resource);
+        $description = $this->descriptionFactory->describe(Subject::createFromObject($resource));
 
         return new Response($this->templating->render(
             '@TrogContentType/ResourceReference/preview.html.twig',
             [
+                'repository' => $repositoryName,
+                'path' => $path,
                 'description' => $description
             ]
         ));

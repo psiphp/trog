@@ -10,3 +10,8 @@ trog_content_type_crud_create_as_child:
     path: /{agent}/{parent_identifier}/{type}/createAsChild
     defaults:
         _controller: trog_content_type.controller.crud:createAsChild
+
+trog_content_type_resource_reference_preview:
+    path: /_internal/content_type/resource_reference/preview
+    defaults:
+        _controller: trog_content_type.controller.resource_reference:formTypePreviewAction

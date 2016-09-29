@@ -17,6 +17,7 @@ use Psi\Component\Description\Descriptor\UriDescriptor;
 use Psi\Component\Description\Subject;
 use Psi\Component\Description\EnhancerInterface;
 use Psi\Component\Description\Descriptor\UriCollectionDescriptor;
+use Psi\Component\Description\Descriptor\StringDescriptor;
 
 class ContentTypeEnhancer implements EnhancerInterface
 {
@@ -60,16 +61,23 @@ class ContentTypeEnhancer implements EnhancerInterface
         );
 
         $propertyAccessor = new PropertyAccessor();
-        foreach ($metadata->getPropertyMetadata() as $propertyMetadata) {
-            if ($propertyMetadata->getType() === 'image') {
+        if ($metadata->hasPropertyByRole('title') && $propertyMetadata = $metadata->getPropertyByRole('title')) {
+            // we cannot use the property metadata to get the value as we might
+            // be acting upon a proxy, and that just doesn't work.
+            $title = $propertyAccessor->getValue($object, $propertyMetadata->name);
 
-                // we cannot use the property metadata to get the value as we might
-                // be acting upon a proxy, and that just doesn't work.
-                $image = $propertyAccessor->getValue($object, $propertyMetadata->name);
-                if ($image) {
-                    $description->set('std.image', new UriDescriptor($image->getImage()));
-                    break;
-                }
+            if ($title) {
+                $description->set('std.title', new StringDescriptor($title));
+            }
+        }
+
+        if ($metadata->hasPropertyByRole('image') && $propertyMetadata = $metadata->getPropertyByRole('image')) {
+
+            // we cannot use the property metadata to get the value as we might
+            // be acting upon a proxy, and that just doesn't work.
+            $image = $propertyAccessor->getValue($object, $propertyMetadata->name);
+            if ($image) {
+                $description->set('std.image', new UriDescriptor($image->getImage()));
             }
         }
 

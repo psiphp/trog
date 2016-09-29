@@ -12,6 +12,12 @@
             <argument type="service" id="router" />
         </service>
 
+        <service id="trog_content_type.controller.resource_reference" class="Trog\Bundle\ContentType\Controller\ResourceReferenceController">
+            <argument type="service" id="cmf_resource.registry" />
+            <argument type="service" id="psi_description.factory" />
+            <argument type="service" id="templating" />
+        </service>
+
         <service id="trog_content_type.resource.description.enhancer.content_type" class="Trog\Bundle\ContentType\Resource\ContentTypeEnhancer">
             <argument type="service" id="psi_content_type.metadata.factory" />
             <argument type="service" id="cmf_resource.registry" />

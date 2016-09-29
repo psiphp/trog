@@ -1,17 +1,23 @@
 $(document).ready(function () {
     $('*[data-trog-ct-resource-selector]').each(function () {
         var title = $(this).attr('data-title');
-        var url = $(this).attr('href');
+        var url = $(this).find('a').attr('href');
+        var previewUrl = $(this).attr('data-preview-url');
         var browser = $(this).attr('data-browser');
+        var repositoryInputId = $(this).attr('data-input-repository');
+        var pathInputId = $(this).attr('data-input-path');
+        var repositoryEl = $(this).find('#' + repositoryInputId);
+        var pathEl = $(this).find('#' + pathInputId);
+        var previewEl = $(this).find('.preview');
 
-        $(this).on('click', function (event) {
+        $(this).find('a').on('click', function (event) {
             event.preventDefault();
             var panel = $(
                 '<div class="ui modal">' + 
                     '<div class="header">' +
                         title +
                     '</div>' +
-            '<div class="browser">' + 
+                    '<div class="browser">' + 
                     '</div>' + 
                     '<div class="actions">' + 
                         '<div class="select ui positive right labeled icon  button">Select <span class="resource-path"></span><i class="checkmark icon"></i></div>' +
@@ -22,8 +28,13 @@ $(document).ready(function () {
             var selectEl = panel.find('.select');
 
             selectEl.on('click', function () {
-                console.log($(this).attr('data-path'));
-                console.log($(this).attr('data-repository'));
+                var path = $(this).attr('data-path');
+                var repository = $(this).attr('data-repository');
+                pathEl.val(path);
+                repositoryEl.val(repository);
+                $.get(previewUrl + '?repository=' + repository + '&path=' + path, function (data) {
+                    previewEl.html(data);
+                });
             });
 
             var update = function () {
