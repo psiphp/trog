@@ -4,6 +4,8 @@ psi_description:
         - doctrine_phpcr_odm
         - content_type
         - text_editor
+        - trog_media_file
+        - trog_media_folder
     subject_resolvers:
         - cmf_resource
 

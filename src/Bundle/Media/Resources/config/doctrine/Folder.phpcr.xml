@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<doctrine-mapping
+    xmlns="http://doctrine-project.org/schemas/phpcr-odm/phpcr-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://doctrine-project.org/schemas/phpcr-odm/phpcr-mapping
+    https://github.com/doctrine/phpcr-odm/raw/master/doctrine-phpcr-odm-mapping.xsd"
+    >
+
+    <document 
+        name="Trog\Bundle\Media\Document\Folder"
+        referenceable="true"
+        node-type="nt:folder"
+        is-leaf="false"
+        >
+        <child-class name="Trog\Bundle\Media\Document\File" />
+        <child-class name="Trog\Bundle\Media\Document\Folder" />
+        <id name="path" />
+        <uuid name="uuid" />
+        <nodename name="name" />
+        <parent-document name="parent" />
+        <children name="children"/>
+    </document>
+
+</doctrine-mapping>

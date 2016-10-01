@@ -15,3 +15,7 @@ content_type_crud:
     prefix: /admin/content
     defaults:
         template: "@TrogAdmin/ContentType/Crud/edit.html.twig"
+
+media:
+    resource: "@TrogMediaBundle/Resources/config/routing/main.yml"
+    prefix: /admin/media
