@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services> 
+        <service id="trog_media.icon_maker" class="Trog\Bundle\Media\IconMaker\IconMaker">
+            <argument type="service" id="liip_imagine" />
+            <argument>%kernel.root_dir%/../web</argument>
+            <argument>media</argument>
+        </service>
+
+    </services>
+</container>
+
+
+
+
