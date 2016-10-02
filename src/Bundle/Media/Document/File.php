@@ -11,6 +11,7 @@ class File
     private $createdAt;
     private $createdBy;
     private $content;
+    private $originalName;
 
     /**
      * non-mapped
@@ -32,7 +33,35 @@ class File
         $this->uploadedFile = $uploadedFile;
     }
 
-    public function getPath() 
+    public function getOriginalName() 
+    {
+        return $this->originalName;
+    }
+    
+
+    public function consumeUploadedFile()
+    {
+        if (!$this->uploadedFile) {
+            return;
+        }
+
+        $content = $this->getContent();
+        $finfo = new \finfo();
+        $this->originalName = $this->uploadedFile->getClientOriginalName();
+
+        if (!$this->getId()) {
+            $this->createdAt = new \DateTime();
+            $this->createdBy = 'anon';
+        }
+
+        // stream should be closed by phpcr-odm on flush
+        $stream = fopen($this->uploadedFile->getPathname(), 'r');
+        $content->setData($stream);
+        $content->setMimeType($finfo->file($this->uploadedFile->getPathname(), FILEINFO_MIME_TYPE));
+        $content->setEncoding($finfo->file($this->uploadedFile->getPathname(), FILEINFO_MIME_ENCODING));
+    }
+
+    public function getPath()
     {
         return $this->path;
     }
@@ -52,21 +81,11 @@ class File
         return $this->createdAt;
     }
     
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-    }
-
     public function getCreatedBy() 
     {
         return $this->createdBy;
     }
     
-    public function setCreatedBy($createdBy)
-    {
-        $this->createdBy = $createdBy;
-    }
-
     public function setParent($parent)
     {
         $this->parent = $parent;
@@ -80,4 +99,5 @@ class File
 
         return $this->content;
     }
+
 }

@@ -13,7 +13,8 @@
         is-leaf="false"
         >
         <mixins>
-            <mixin type="mix:created"/>
+            <mixin type="mix:created" />
+            <mixin type="trg:file" />
         </mixins>
         <id name="path">
             <generator strategy="parent" />
@@ -23,6 +24,7 @@
         <parent-document name="parent" />
         <field name="createdAt" type="date" property="jcr:created" />
         <field name="createdBy" type="string" property="jcr:createdBy" />
+        <field name="originalName" type="string" property="trg:originalName" />
         <child name="content" node-name="jcr:content" />
     </document>
 

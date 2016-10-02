@@ -21,5 +21,6 @@ class TrogMediaExtension extends Extension
         $loader->load('twig.xml');
         $loader->load('description.xml');
         $loader->load('controller.xml');
+        $loader->load('content-type.xml');
     }
 }

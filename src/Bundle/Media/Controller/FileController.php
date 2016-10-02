@@ -16,9 +16,10 @@ use Trog\Bundle\ContentType\Form\Event\PropagateValidFormEventSubscriber;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
 use Symfony\Component\HttpFoundation\File\MimeType\MimeTypeGuesser;
 use Doctrine\ODM\PHPCR\DocumentManagerInterface;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Trog\Bundle\Media\Document\File;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Trog\Bundle\Media\Form\FileType;
 
 class FileController
 {
@@ -52,61 +53,37 @@ class FileController
             ));
         }
 
-        $form = $this->formFactory->createBuilder(FormType::class, null, [
-            'data_class' => File::class
-        ])
-            ->add('uploadedFile', FileType::class)
-            ->getForm();
-
         $file = new File();
         $file->setParent($parentObject);
 
-        return $this->processRequest($request, $file, $form);
+        return $this->processRequest($request, $file);
     }
 
     public function editFile(Request $request)
     {
         $identifier = $request->attributes->get('identifier');
         $file = $this->documentManager->find(File::class, $identifier);
-        $form = $this->formFactory->createBuilder(FormType::class, null, [
-            'data_class' => File::class
-        ])
-            ->add('uploadedFile', FileType::class)
-            ->getForm();
 
         if (null === $file) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new NotFoundHttpException(sprintf(
                 'File "%s" not found.',
                 $identifier
             ));
         }
 
-        return $this->processRequest($request, $file, $form);
+        return $this->processRequest($request, $file);
     }
 
-    private function processRequest(Request $request, $file, $form)
+    private function processRequest(Request $request, $file)
     {
+        $form = $this->formFactory->create(FileType::class, $file);
         $template = $request->attributes->get('template');
+
         if ($request->getMethod() === 'POST' && $form->handleRequest($request)->isValid()) {
-            $uploadedFile = $form->get('uploadedFile')->getData();
-
-            // FACTOR THIS OUT
-            $stream = fopen($uploadedFile->getPathname(), 'r');
-            $file->getContent()->setData($stream);
-            $file->setName($uploadedFile->getClientOriginalName());
-
-            if (!$file->getId()) {
-                $file->setCreatedAt(new \DateTime());
-                $file->setCreatedBy('anon');
-            }
-
-            $finfo = new \finfo();
-            $file->getContent()->setMimeType($finfo->file($uploadedFile->getPathname(), FILEINFO_MIME_TYPE));
-            $file->getContent()->setEncoding($finfo->file($uploadedFile->getPathname(), FILEINFO_MIME_ENCODING));
-
+            $file->consumeUploadedFile();
+            $file->setName($file->getUploadedFile()->getClientOriginalName());
             $this->documentManager->persist($file);
             $this->documentManager->flush();
-            // FACTOR THIS OUT
 
             return new RedirectResponse($this->urlGenerator->generate(
                 'trog_media_edit_file',
@@ -119,7 +96,8 @@ class FileController
         return new Response($this->templating->render(
             $template,
             [
-                'form' => $form->createView()
+                'form' => $form->createView(),
+                'file' => $file
             ]
         ));
     }

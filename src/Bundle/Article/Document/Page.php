@@ -8,6 +8,7 @@ use Psi\Component\ContentType\Metadata\Annotations as ContentType;
 use Symfony\Cmf\Component\Routing\RouteReferrersReadInterface;
 use Trog\Component\ContentType\Model\PublishPeriod;
 use Symfony\Component\Validator\Constraints\DateTime;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @PHPCR\Document(
@@ -15,7 +16,7 @@ use Symfony\Component\Validator\Constraints\DateTime;
  *     childClasses={
  *         "Trog\Bundle\Article\Document\Page",
  *         "Trog\Component\ContentType\Model\PublishPeriod",
- *         "Trog\Component\ContentType\Model\Image",
+ *         "Trog\Bundle\Media\Document\File",
  *         "Trog\Component\ContentType\Model\ResourceReference",
  *     }
  * )
@@ -43,7 +44,8 @@ class Page implements RouteReferrersReadInterface
     private $publishPeriod;
 
     /**
-     * @ContentType\Property(type="image")
+     * @ContentType\Property(type="file", options={
+     * })
      */
     private $image;
 

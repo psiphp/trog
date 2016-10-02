@@ -1,0 +1,4 @@
+<trg='https://github.com/psiphp/trog'>
+[trg:file]
+mixin
+- trg:originalName

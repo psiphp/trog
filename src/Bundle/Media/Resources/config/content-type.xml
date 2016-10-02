@@ -4,14 +4,15 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <services> 
-        <service id="trog_media.twig.extension" class="Trog\Bundle\Media\Twig\MediaExtension">
-            <argument type="service" id="trog_media.util.path_resolver" />
-            <tag name="twig.extension" />
-        </service>
+    <services>
 
+        <service id="trog_media.content-type.field.file" class="Trog\Bundle\Media\ContentType\FileField">
+            <tag name="psi_content_type.field" alias="file" />
+        </service>
     </services>
+
 </container>
+
 
 
 

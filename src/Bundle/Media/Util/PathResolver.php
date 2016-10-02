@@ -22,18 +22,20 @@ class PathResolver
 
     public function resolvePath(File $file)
     {
-        if ($this->filesystem->has($file->getPath())) {
-            return $this->getPath($file);
+        $cachedPath = sprintf('%s/%s', dirname($file->getPath()), $file->getOriginalName());
+
+        if ($this->filesystem->has($cachedPath)) {
+            return $this->getPath($cachedPath);
         }
 
-        $this->filesystem->writeStream($file->getPath(), $file->getContent()->getData());
+        $this->filesystem->writeStream($cachedPath, $file->getContent()->getData());
 
-        return $this->getPath($file);
+        return $this->getPath($cachedPath);
     }
 
-    private function getPath($file)
+    private function getPath($cachedPath)
     {
-        $path = sprintf('%s%s', $this->webPath, $file->getPath());
+        $path = sprintf('%s%s', $this->webPath, $cachedPath);
         return $path;
     }
 }
