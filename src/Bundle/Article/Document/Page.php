@@ -45,7 +45,8 @@ class Page implements RouteReferrersReadInterface
 
     /**
      * @ContentType\Property(type="file", options={
-     * })
+     *     "file_constraints": { @Assert\File(mimeTypes="image/*")}
+     * }, role="image")
      */
     private $image;
 

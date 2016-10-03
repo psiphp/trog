@@ -23,6 +23,7 @@
             <argument type="service" id="cmf_resource.registry" />
             <argument type="service" id="trog_object_agent.agent_finder" />
             <argument type="service" id="router" />
+            <argument type="service" id="trog_media.util.path_resolver" />
             <tag name="psi_description.enhancer" priority="-100" alias="content_type" />
         </service>
 
