@@ -9,6 +9,11 @@
         <service id="trog_media.content-type.field.file" class="Trog\Bundle\Media\ContentType\FileField">
             <tag name="psi_content_type.field" alias="file" />
         </service>
+
+        <service id="trog_media.content-type.field.file_reference" class="Trog\Bundle\Media\ContentType\FileReferenceField">
+            <tag name="psi_content_type.field" alias="file_reference" />
+        </service>
+
     </services>
 
 </container>

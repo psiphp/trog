@@ -44,8 +44,9 @@ class Page implements RouteReferrersReadInterface
     private $publishPeriod;
 
     /**
-     * @ContentType\Property(type="file", options={
-     *     "file_constraints": { @Assert\File(mimeTypes="image/*")}
+     * @ContentType\Property(type="object_reference", options={
+     *     "class": "Trog\Bundle\Media\Document\File",
+     *     "browser": "selector"
      * }, role="image")
      */
     private $image;

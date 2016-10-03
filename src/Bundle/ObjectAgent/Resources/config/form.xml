@@ -5,11 +5,12 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services> 
-        <service id="trog_media.icon_maker" class="Trog\Bundle\Media\IconMaker\IconMaker">
-            <argument type="service" id="liip_imagine" />
-            <argument>%kernel.root_dir%/../web</argument>
-            <argument>media</argument>
+
+        <service id="trog_object_agent.form.object_reference" class="Trog\Bundle\ObjectAgent\Form\ObjectReferenceType">
+            <argument type="service" id="trog_object_agent.agent_finder" />
+            <tag name="form.type" />
         </service>
 
     </services>
 </container>
+

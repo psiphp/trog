@@ -6,8 +6,10 @@ $(document).ready(function () {
         var browser = $(this).attr('data-browser');
         var repositoryInputId = $(this).attr('data-input-repository');
         var pathInputId = $(this).attr('data-input-path');
+        var identifierInputId = $(this).attr('data-input-identifier');
         var repositoryEl = $(this).find('#' + repositoryInputId);
         var pathEl = $(this).find('#' + pathInputId);
+        var identifierEl = $(this).find('#' + identifierInputId);
         var previewEl = $(this).find('.preview');
 
         $(this).find('a').on('click', function (event) {
@@ -30,9 +32,27 @@ $(document).ready(function () {
             selectEl.on('click', function () {
                 var path = $(this).attr('data-path');
                 var repository = $(this).attr('data-repository');
-                pathEl.val(path);
-                repositoryEl.val(repository);
-                $.get(previewUrl + '?repository=' + repository + '&path=' + path, function (data) {
+                var identifier = $(this).attr('data-identifier');
+                var classFqn = encodeURI($(this).attr('data-class'));
+
+                if (pathEl) {
+                    pathEl.val(path);
+                }
+
+                if (repositoryEl) {
+                    repositoryEl.val(repository);
+                }
+
+                if (identifierEl) {
+                    identifierEl.val(identifier);
+                }
+
+                var url = previewUrl.replace('__class__', classFqn);
+                url = url.replace('__repository__', repository)
+                url = url.replace('__identifier__', identifier)
+                url = url.replace('__path__', path)
+
+                $.get(url, function (data) {
                     previewEl.html(data);
                 });
             });
@@ -51,6 +71,8 @@ $(document).ready(function () {
                     var path = $(this).attr('data-path');
                     selectEl.attr('data-path', path);
                     selectEl.attr('data-repository', $(this).attr('data-repository'));
+                    selectEl.attr('data-class', $(this).attr('data-class'));
+                    selectEl.attr('data-identifier', $(this).attr('data-identifier'));
                     selectEl.find('.resource-path').html(path);
                 });
             };

@@ -1,0 +1,19 @@
+{% if description.has('std.identifier') %}
+    <tr>
+        <td>{{ 'identifier'|trans() }}</td>
+        <td>{{ description.get('std.identifier').value }}</td>
+    </tr>
+{% endif %}
+{% if description.has('std.title') %}
+    <tr>
+        <td>{{ 'title'|trans() }}</td>
+        <td>{{ description.get('std.title').value }}</td>
+    </tr>
+{% endif %}
+{% if description.has('std.class') %}
+    <tr>
+        <td>{{ 'class'|trans() }}</td>
+        <td>{{ description.get('std.class').class.name }}</td>
+    </tr>
+{% endif %}
+

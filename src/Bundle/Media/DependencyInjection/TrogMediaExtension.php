@@ -22,6 +22,7 @@ class TrogMediaExtension extends Extension
         $loader->load('description.xml');
         $loader->load('controller.xml');
         $loader->load('content-type.xml');
+        $loader->load('form.xml');
         $loader->load('icon-maker.xml');
     }
 }

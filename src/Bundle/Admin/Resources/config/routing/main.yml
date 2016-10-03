@@ -19,3 +19,7 @@ content_type_crud:
 media:
     resource: "@TrogMediaBundle/Resources/config/routing/main.yml"
     prefix: /admin/media
+
+object_agent:
+    resource: "@TrogObjectAgentBundle/Resources/config/routing/main.yml"
+    prefix: /admin/object-agent

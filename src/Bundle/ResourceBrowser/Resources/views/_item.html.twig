@@ -11,6 +11,8 @@
     {% endif %}
 
     <a class="browser-item" 
+       data-identifier="{{ itemDescription.has('std.identifier') ? itemDescription.get('std.identifier').value }}"
+       data-class="{{ itemDescription.has('std.class') ? itemDescription.get('std.class').class.name }}"
        data-path="{{ resource.path }}"
        data-repository="{{ repositoryName }}"
        href="{{ path('trog_resource_browser_repository', { browser: browserName, path: resource.path, repository: repositoryName}) }}"

@@ -1,6 +1,6 @@
 <?php
 
-namespace Trog\Bundle\Media\ContentType;
+namespace Trog\Bundle\ObjectAgent\ContentType;
 
 use Psi\Component\ContentType\FieldInterface;
 use Psi\Component\ContentType\MappingBuilder;
@@ -11,8 +11,10 @@ use Trog\Component\ContentType\Form\MarkdownType;
 use Trog\Component\ContentType\Form\ImageType;
 use Trog\Bundle\Media\Document\File;
 use Trog\Bundle\Media\Form\FileType;
+use Trog\Bundle\Media\Form\FileReferenceType;
+use Trog\Bundle\ObjectAgent\Form\ObjectReferenceType;
 
-class FileField implements FieldInterface
+class ObjectReferenceField implements FieldInterface
 {
     public function getViewType()
     {
@@ -21,23 +23,19 @@ class FileField implements FieldInterface
 
     public function getFormType()
     {
-        return FileType::class;
+        return ObjectReferenceType::class;
     }
 
     public function getMapping(MappingBuilder $builder)
     {
-        // we currently map the Fle class with a standard PHPCR mapping
-        // as there is no (current) scope for allowing other backends.
-        return $builder->compound(File::class);
+        return $builder->single('reference');
     }
 
     public function configureOptions(OptionsResolver $options)
     {
-        $options->setDefaults([
-            'file_constraints' => []
-        ]);
-        $options->setFormOptions([
-            'file_constraints'
-        ]);
+        $options->setDefault('browser', 'default');
+        $options->setRequired('class');
+        $options->setFormOptions([ 'browser', 'class' ]);
     }
 }
+

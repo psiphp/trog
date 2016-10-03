@@ -11,8 +11,9 @@ use Trog\Component\ContentType\Form\MarkdownType;
 use Trog\Component\ContentType\Form\ImageType;
 use Trog\Bundle\Media\Document\File;
 use Trog\Bundle\Media\Form\FileType;
+use Trog\Bundle\Media\Form\FileReferenceType;
 
-class FileField implements FieldInterface
+class FileReferenceField implements FieldInterface
 {
     public function getViewType()
     {
@@ -21,23 +22,17 @@ class FileField implements FieldInterface
 
     public function getFormType()
     {
-        return FileType::class;
+        return FileReferenceType::class;
     }
 
     public function getMapping(MappingBuilder $builder)
     {
-        // we currently map the Fle class with a standard PHPCR mapping
-        // as there is no (current) scope for allowing other backends.
-        return $builder->compound(File::class);
+        return $builder->single('reference');
     }
 
     public function configureOptions(OptionsResolver $options)
     {
-        $options->setDefaults([
-            'file_constraints' => []
-        ]);
-        $options->setFormOptions([
-            'file_constraints'
-        ]);
+        $options->setDefault('browser', 'default');
+        $options->setFormOptions([ 'browser' ]);
     }
 }

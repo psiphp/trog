@@ -5,7 +5,6 @@ trog_content_type_crud_edit:
     requirements:
         path: .*
 
-
 trog_content_type_crud_create_as_child:
     path: /{agent}/{parent_identifier}/{type}/createAsChild
     defaults:
