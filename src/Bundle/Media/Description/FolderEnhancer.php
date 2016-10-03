@@ -9,6 +9,7 @@ use Psi\Component\Description\DescriptionInterface;
 use Trog\Bundle\Media\Document\Folder;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Psi\Component\Description\Descriptor\UriCollectionDescriptor;
+use Psi\Component\Description\Descriptor\UriDescriptor;
 
 class FolderEnhancer implements EnhancerInterface
 {
@@ -42,6 +43,12 @@ class FolderEnhancer implements EnhancerInterface
         );
 
         $description->set('hierarchy.uris.create_child', new UriCollectionDescriptor($uris));
+        $description->set('std.uri.update', new UriDescriptor($this->urlGenerator->generate(
+            'trog_media_edit_folder',
+            [
+                'identifier' => $identifier
+            ]
+        )));
     }
 
     public function supports(Subject $subject)

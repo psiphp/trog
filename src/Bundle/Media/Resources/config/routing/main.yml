@@ -11,6 +11,14 @@ trog_media_edit_file:
         template: "@TrogMedia/edit.html.twig"
 
 trog_media_create_folder:
-    path: /folder/create
+    path: /folder/create/{parent_identifier}
     defaults:
         _controller: "trog_media.controller.folder:createFolder"
+        template: "@TrogMedia/edit.html.twig"
+
+trog_media_edit_folder:
+    path: /folder/edit/{identifier}
+    defaults:
+        _controller: "trog_media.controller.folder:editFolder"
+        template: "@TrogMedia/edit.html.twig"
+

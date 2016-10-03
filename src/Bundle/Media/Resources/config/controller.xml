@@ -13,11 +13,13 @@
             <argument type="service" id="router" />
         </service>
 
+        <service id="trog_media.controller.folder" class="Trog\Bundle\Media\Controller\FolderController">
+            <argument type="service" id="doctrine_phpcr.odm.document_manager" />
+            <argument type="service" id="templating" />
+            <argument type="service" id="form.factory" />
+            <argument type="service" id="router" />
+        </service>
+
     </services>
 
 </container>
-
-
-
-
-
