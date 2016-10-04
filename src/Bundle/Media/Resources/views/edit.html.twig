@@ -1,0 +1,26 @@
+{% extends "@TrogAdmin/layout.html.twig" %}
+{% block main %}
+<form class="ui form" method="POST" enctype="multipart/form-data">
+    <div class="ui grid">
+        {% form_theme form "@TrogAdmin/form_theme.html.twig" %}
+
+
+        <div class="twelve wide column">
+            <div class="ui segment">
+                {{ form_widget(form) }}
+            </div>
+        </div>
+        {{ form_rest(form) }}
+        {{ form_errors(form) }}
+
+        <div class="four wide column">
+            <div class="ui segment">
+                {% include "@TrogAdmin/Widget/_button_save.html.twig" %}
+                {% include "@TrogAdmin/Widget/_button_cancel.html.twig" %}
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock %}
+

@@ -1,0 +1,6 @@
+trog_object_agent_object_preview:
+    path: /preview/{class}/{identifier}
+    defaults:
+        _controller: trog_object_agent.controller.content_type:formTypePreviewAction
+
+

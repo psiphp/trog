@@ -25,7 +25,7 @@ class Image
     private $description;
 
     /**
-     * @ContentType\Property(type="image", role="image")
+     * @ContentType\Property(type="file", role="image")
      */
     private $image;
 

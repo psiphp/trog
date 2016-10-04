@@ -5,16 +5,16 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="trog.controller.text_editor" class="Trog\Bundle\TextEditorBundle\Controller\EditorController">
+        <service id="trog.controller.text_editor" class="Trog\Bundle\TextEditor\Controller\EditorController">
             <argument type="service" id="cmf_resource.registry" />
             <argument type="service" id="templating" />
             <argument type="service" id="router" />
         </service>
 
-        <service id="trog_text_editor.resource.enhancer" class="Trog\Bundle\TextEditorBundle\Resource\TextEditorEnhancer">
+        <service id="trog_text_editor.description.enhancer" class="Trog\Bundle\TextEditor\Resource\TextEditorEnhancer">
             <argument type="service" id="router" />
             <argument type="service" id="cmf_resource.registry" />
-            <tag name="cmf_resource.description.enhancer" alias="text_editor" />
+            <tag name="psi_description.enhancer" alias="text_editor" />
         </service>
     </services>
 </container>

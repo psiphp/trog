@@ -10,6 +10,11 @@
             <argument type="service" id="trog_media.filesystem" />
         </service>
 
+        <service id="trog_media.util.path_resolver" class="Trog\Bundle\Media\Util\PathResolver">
+            <argument type="service" id="trog_media.filesystem" />
+            <argument>%trog_media.filesystem_web_path%</argument>
+        </service>
+
     </services>
 
 </container>

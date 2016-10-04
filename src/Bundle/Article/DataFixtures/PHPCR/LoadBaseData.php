@@ -9,7 +9,7 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Trog\Bundle\Article\Document\Post;
 use Trog\Bundle\Article\Document\Page;
-use Trog\Bundle\Article\Document\MediaFolder;
+use Trog\Bundle\Media\Document\Folder;
 
 class LoadBaseData implements FixtureInterface
 {
@@ -20,9 +20,9 @@ class LoadBaseData implements FixtureInterface
     {
         $base = $manager->find(null, '/trog');
 
-        $media = new MediaFolder();
+        $media = new Folder();
         $media->setParent($base);
-        $media->setTitle('media');
+        $media->setName('media');
 
         $posts = new PostFolder();
         $posts->setParent($base);

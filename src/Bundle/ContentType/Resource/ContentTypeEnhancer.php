@@ -18,6 +18,8 @@ use Psi\Component\Description\Subject;
 use Psi\Component\Description\EnhancerInterface;
 use Psi\Component\Description\Descriptor\UriCollectionDescriptor;
 use Psi\Component\Description\Descriptor\StringDescriptor;
+use Trog\Bundle\Media\Util\PathResolver;
+use Trog\Bundle\Media\Document\File;
 
 class ContentTypeEnhancer implements EnhancerInterface
 {
@@ -25,18 +27,21 @@ class ContentTypeEnhancer implements EnhancerInterface
     private $repositoryRegistry;
     private $urlGenerator;
     private $agentFinder;
+    private $pathResolver;
 
     public function __construct(
         MetadataFactoryInterface $metadataFactory,
         RepositoryRegistry $repositoryRegistry,
         AgentFinder $agentFinder,
-        UrlGeneratorInterface $urlGenerator
+        UrlGeneratorInterface $urlGenerator,
+        PathResolver $pathResolver
     )
     {
         $this->metadataFactory = $metadataFactory;
         $this->repositoryRegistry = $repositoryRegistry;
         $this->agentFinder = $agentFinder;
         $this->urlGenerator = $urlGenerator;
+        $this->pathResolver = $pathResolver;
     }
 
     public function enhanceFromObject(DescriptionInterface $description, Subject $subject)
@@ -76,8 +81,11 @@ class ContentTypeEnhancer implements EnhancerInterface
             // we cannot use the property metadata to get the value as we might
             // be acting upon a proxy, and that just doesn't work.
             $image = $propertyAccessor->getValue($object, $propertyMetadata->name);
+
             if ($image) {
-                $description->set('std.image', new UriDescriptor($image->getImage()));
+                if ($image instanceof File) {
+                    $description->set('std.image', new UriDescriptor($this->pathResolver->resolvePath($image)));
+                }
             }
         }
 

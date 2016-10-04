@@ -1,6 +1,6 @@
 <?php
 
-namespace Trog\Bundle\TextEditorBundle\Resource;
+namespace Trog\Bundle\TextEditor\Resource;
 
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Puli\Repository\Resource\FileResource;
@@ -9,13 +9,18 @@ use Symfony\Cmf\Component\Resource\Description\DescriptionEnhancerInterface;
 use Puli\Repository\Api\Resource\PuliResource;
 use Symfony\Cmf\Component\Resource\Description\Description;
 use Symfony\Cmf\Component\Resource\RepositoryRegistryInterface;
+use Psi\Component\Description\EnhancerInterface;
+use Psi\Component\Description\Subject;
+use Psi\Component\Description\Descriptor\UriDescriptor;
+use Psi\Component\Description\DescriptionInterface;
+use Puli\Repository\Api\Resource\BodyResource;
 
 /**
  * Description enhancer for text files.
  *
  * @author Daniel Leech <daniel@dantleech.com>
  */
-class TextEditorEnhancer implements DescriptionEnhancerInterface
+class TextEditorEnhancer implements EnhancerInterface
 {
     /**
      * @var UrlGeneratorInterface
@@ -40,26 +45,30 @@ class TextEditorEnhancer implements DescriptionEnhancerInterface
     /**
      * {@inheritdoc}
      */
-    public function enhance(Description $description)
+    public function enhanceFromClass(DescriptionInterface $description, \ReflectionClass $class)
     {
-        $object = $description->getResource();
+    }
+
+    public function enhanceFromObject(DescriptionInterface $description, Subject $subject)
+    {
+        $object = $subject->getObject();
         $repository = $object->getRepository();
         $repositoryName = $this->registry->getRepositoryAlias($repository);
 
-        $description->set(Descriptor::LINK_EDIT_HTML, $this->urlGenerator->generate(
+        $description->set('std.uri.update', new UriDescriptor($this->urlGenerator->generate(
             'trog_text_editor',
             [
                 'repository' => $repositoryName,
                 'path' => $object->getPath()
             ]
-        ));
+        )));
     }
 
     /**
      * {@inheritdoc}
      */
-    public function supports(PuliResource $resource)
+    public function supports(Subject $subject)
     {
-        return $resource instanceof FileResource;
+        return $subject->getClass()->isSubclassOf(BodyResource::class);
     }
 }

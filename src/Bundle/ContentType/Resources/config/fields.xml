@@ -22,10 +22,6 @@
             <tag name="psi_content_type.field" alias="publish_period" />
         </service>
 
-        <service id="trog_content_type.field.image" class="Trog\Component\ContentType\Field\ImageField">
-            <tag name="psi_content_type.field" alias="image" />
-        </service>
-
         <service id="trog_content_type.field.resource_reference" class="Trog\Component\ContentType\Field\ResourceReferenceField">
             <tag name="psi_content_type.field" alias="resource_reference" />
         </service>

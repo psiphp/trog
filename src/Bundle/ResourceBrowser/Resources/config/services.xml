@@ -16,7 +16,7 @@
         <service id="trog_resource_browser.filter_registry" class="Psi\Component\ResourceBrowser\FilterRegistry" />
 
         <service id="trog_resource_browser.filter.regex" class="Trog\Bundle\ResourceBrowser\Browser\Filter\RegexFilter">
-            <argument>{%psi_content_type.phpcr_namespace_prefix%:.*}</argument>
+            <argument>%psi_content_type.storage.doctrine_phpcr_odm.namespace_prefix%</argument>
             <tag name="trog_resource_browser.filter" />
         </service>
 

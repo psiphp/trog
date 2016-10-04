@@ -6,7 +6,7 @@
 
     <services> 
         <service id="trog_media.twig.extension" class="Trog\Bundle\Media\Twig\MediaExtension">
-            <argument>%trog_media.filesystem_web_path%</argument>
+            <argument type="service" id="trog_media.util.path_resolver" />
             <tag name="twig.extension" />
         </service>
 

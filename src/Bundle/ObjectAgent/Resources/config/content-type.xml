@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="trog_object_agent.content_type.object_reference" class="Trog\Bundle\ObjectAgent\ContentType\ObjectReferenceField">
+            <tag name="psi_content_type.field" alias="object_reference" />
+        </service>
+
+    </services>
+
+</container>

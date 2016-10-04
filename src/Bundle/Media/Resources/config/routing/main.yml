@@ -1,4 +1,24 @@
-trog_media_image:
-    path: /cache/{filename}
+trog_media_create_file:
+    path: /file/create/{parent_identifier}
     defaults:
-        _controller: trog_media.controller.image
+        _controller: "trog_media.controller.file:createFile"
+        template: "@TrogMedia/edit.html.twig"
+
+trog_media_edit_file:
+    path: /file/edit/{identifier}
+    defaults:
+        _controller: "trog_media.controller.file:editFile"
+        template: "@TrogMedia/edit.html.twig"
+
+trog_media_create_folder:
+    path: /folder/create/{parent_identifier}
+    defaults:
+        _controller: "trog_media.controller.folder:createFolder"
+        template: "@TrogMedia/edit.html.twig"
+
+trog_media_edit_folder:
+    path: /folder/edit/{identifier}
+    defaults:
+        _controller: "trog_media.controller.folder:editFolder"
+        template: "@TrogMedia/edit.html.twig"
+

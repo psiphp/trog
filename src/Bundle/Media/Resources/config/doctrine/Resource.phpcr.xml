@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<doctrine-mapping
+    xmlns="http://doctrine-project.org/schemas/phpcr-odm/phpcr-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://doctrine-project.org/schemas/phpcr-odm/phpcr-mapping
+    https://github.com/doctrine/phpcr-odm/raw/master/doctrine-phpcr-odm-mapping.xsd"
+    >
+
+    <document 
+        name="Trog\Bundle\Media\Document\Resource"
+        referenceable="false"
+        node-type="nt:resource"
+        is-leaf="true"
+        >
+        <id name="path" />
+        <nodename name="name" />
+        <field name="mimeType" type="string" property="jcr:mimeType" />
+        <field name="encoding" type="string" property="jcr:encoding" />
+        <field name="updatedBy" type="string" property="jcr:lastModifiedBy" />
+        <field name="updatedAt" type="date" property="jcr:lastModified" />
+        <field name="data" type="binary" property="jcr:data" />
+    </document>
+
+</doctrine-mapping>

@@ -13,24 +13,13 @@
                         <td>{{ 'path'|trans() }}</td>
                         <td>{{ repository ~ ':/' ~ path }}</td>
                     </tr>
-                    {% if description.has('std.title') %}
-                        <tr>
-                            <td>{{ 'title'|trans() }}</td>
-                            <td>{{ description.get('std.title').value }}</td>
-                        </tr>
-                    {% endif %}
-                    {% if description.has('std.class') %}
-                        <tr>
-                            <td>{{ 'class'|trans() }}</td>
-                            <td>{{ description.get('std.class').class.name }}</td>
-                        </tr>
-                    {% endif %}
+                    {% include "@TrogContentType/_preview_description.html.twig" %}
                 </tbody>
             </table>
         </div>
         <div class="four wide column">
             {% if description.has('std.image') %}
-                <img class="ui inline big spaced image" src="{{ description.get('std.image').value | trog_media_path() | imagine_filter('preview') }}" />
+                <img class="ui inline big spaced bordered rounded image" src="{{ description.get('std.image').value | imagine_filter('preview') }}" />
             {% endif %}
         </div>
     </div>

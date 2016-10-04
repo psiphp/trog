@@ -9,3 +9,6 @@ cmf_resource:
         media:
             type: doctrine_phpcr_odm
             basepath: /trog/media
+        files:
+            type: filesystem
+            base_dir: %kernel.root_dir%/../web/files

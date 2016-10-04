@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="trog_media.description.enhancer.folder" class="Trog\Bundle\Media\Description\FolderEnhancer">
+            <argument type="service" id="router" />
+            <tag name="psi_description.enhancer" alias="trog_media_folder" />
+        </service>
+
+        <service id="trog_media.description.enhancer.file" class="Trog\Bundle\Media\Description\FileEnhancer">
+            <argument type="service" id="trog_media.icon_maker" />
+            <argument type="service" id="trog_media.util.path_resolver" />
+            <argument type="service" id="router" />
+            <tag name="psi_description.enhancer" alias="trog_media_file" />
+        </service>
+
+    </services>
+
+</container>
+
+
+
+
+
