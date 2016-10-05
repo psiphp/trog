@@ -16,4 +16,23 @@
         <td>{{ description.get('std.class').class.name }}</td>
     </tr>
 {% endif %}
+{% if description.has('file.mime-type') %}
+    <tr>
+        <td>{{ 'mime-type'|trans() }}</td>
+        <td>{{ description.get('file.mime-type').value }}</td>
+    </tr>
+{% endif %}
+{% if description.has('file.size') %}
+    <tr>
+        <td>{{ 'file-size'|trans() }}</td>
+        <td>{{ description.get('file.size').value }}</td>
+    </tr>
+{% endif %}
+
+{% if description.has('file.encoding') %}
+    <tr>
+        <td>{{ 'encoding'|trans() }}</td>
+        <td>{{ description.get('file.encoding').value }}</td>
+    </tr>
+{% endif %}
 

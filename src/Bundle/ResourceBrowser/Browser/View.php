@@ -19,7 +19,8 @@ class View
         bool $enableMove,
         bool $enableItemActions,
         int $columns,
-        string $defaultRepository
+        string $defaultRepository,
+        array $filterConfigs
     )
     {
         $this->template = $template;
@@ -28,6 +29,7 @@ class View
         $this->enableItemActions = $enableItemActions;
         $this->columns = $columns;
         $this->defaultRepository = $defaultRepository;
+        $this->filterConfigs = $filterConfigs;
     }
 
     public function getTemplate(): string
@@ -58,5 +60,10 @@ class View
     public function getDefaultRepository(): string
     {
         return $this->defaultRepository;
+    }
+
+    public function getFilterConfigs(): array 
+    {
+        return $this->filterConfigs;
     }
 }

@@ -185,7 +185,7 @@
         data-browser="{{ browser }}"
         data-input-repository="{{ form.repository.vars.id }}"
         data-input-path="{{ form.path.vars.id }}"
-        data-preview-url="{{ path('trog_content_type_resource_reference_preview') }}"
+        data-preview-url="{{ path('trog_content_type_resource_reference_preview', { 'repository': '__repository__', 'path': '__path__'}) }}"
     >
 
         <div class="preview">

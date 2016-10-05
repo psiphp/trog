@@ -13,6 +13,8 @@ use Puli\Repository\Api\ResourceNotFoundException;
 use Webmozart\PathUtil\Path;
 use Psi\Component\ResourceBrowser\Browser;
 use Trog\Bundle\ResourceBrowser\Browser\ViewRegistry;
+use Psi\Component\ResourceBrowser\Filter\AcceptorRegistry;
+use Psi\Component\ResourceBrowser\Filter\Filter\AcceptorFilter;
 
 class BrowserController
 {
@@ -23,18 +25,21 @@ class BrowserController
     private $registry;
     private $browserViewRegistry;
     private $session; 
+    private $acceptorRegistry;
 
     public function __construct(
         RepositoryRegistry $registry,
         EngineInterface $templating,
         Session $session,
-        ViewRegistry $browserViewRegistry
+        ViewRegistry $browserViewRegistry,
+        AcceptorRegistry $acceptorRegistry
     )
     {
         $this->templating = $templating;
         $this->registry = $registry;
         $this->session = $session;
         $this->browserViewRegistry = $browserViewRegistry;
+        $this->acceptorRegistry = $acceptorRegistry;
     }
 
     public function indexAction(Request $request)
@@ -44,12 +49,10 @@ class BrowserController
         $browserView = $this->browserViewRegistry->get($browserName);
         $repositories = $browserView->getRepositories() ?: $allRepositories;
         $repositoryName = $this->resolveRepositoryName($request, $browserView->getDefaultRepository(), $repositories);
-
         $repository = $this->registry->get($repositoryName);
 
         // resolve the repository name (it may have been determined automatically)
         $repositoryName = $this->registry->getRepositoryAlias($repository);
-
         if ($this->session->has(self::SESSION_PATH)) {
             $paths = $this->session->get(self::SESSION_PATH);
         }
@@ -67,9 +70,9 @@ class BrowserController
 
         $browser = Browser::createFromOptions($repository, [
             'path' => $path,
-            'nb_columns' => $browserView->getColumns()
+            'nb_columns' => $browserView->getColumns(),
+            'filter' => new AcceptorFilter($this->acceptorRegistry, $browserView->getFilterConfigs())
         ]);
-
 
         $allRepositories = $this->registry->names();
         if ($diff = array_diff($repositories, $allRepositories)) {

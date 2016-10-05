@@ -29,6 +29,7 @@ class TrogResourceBrowserExtension extends Extension
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
+        $loader->load('filter.xml');
 
         $this->loadBrowserViews($config['browsers'], $container);
     }
@@ -45,7 +46,8 @@ class TrogResourceBrowserExtension extends Extension
                     $browserView['enable_move'],
                     $browserView['enable_item_actions'],
                     $browserView['columns'],
-                    $browserView['default_repository']
+                    $browserView['default_repository'],
+                    $browserView['filters']
                 ]
             );
             $viewId = 'trog_resource_browser.view.' . $browserName;

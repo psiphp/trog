@@ -46,7 +46,7 @@ class Page implements RouteReferrersReadInterface
     /**
      * @ContentType\Property(type="object_reference", options={
      *     "class": "Trog\Bundle\Media\Document\File",
-     *     "browser": "selector"
+     *     "browser": "image_selector"
      * }, role="image")
      */
     private $image;

@@ -11,14 +11,29 @@ trog_resource_browser:
             enable_item_actions: true
             columns: 4
             template: "@TrogAdmin/ResourceBrowser/index.html.twig"
+            filters:
+                - { type: "name", options: { inverse: true, pattern: "cmfct:.*" } }
+                - { type: "name", options: { inverse: true, pattern: "jcr:.*" } }
+
+        image_selector:
+            default_repository: media
+            repositories:
+                - media
+            enable_move: false
+            enable_item_actions: false
+            columns: 3
+            template: "@TrogResourceBrowser/browser.html.twig"
+            filters:
+                - { type: "name", options: { inverse: true, pattern: "cmfct:.*" } }
+                - { type: "mime-type", options: { mime-types: [ "^image/.*", "^application/vnd.trog.folder" ] } }
 
         selector:
             default_repository: media
             repositories:
                 - media
-                - pages
-                - files
             enable_move: false
             enable_item_actions: false
             columns: 3
             template: "@TrogResourceBrowser/browser.html.twig"
+            filters:
+                - { type: "name", options: { inverse: true, pattern: "cmfct:.*" } }

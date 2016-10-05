@@ -10,6 +10,7 @@ use Trog\Bundle\Media\Document\Folder;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Psi\Component\Description\Descriptor\UriCollectionDescriptor;
 use Psi\Component\Description\Descriptor\UriDescriptor;
+use Psi\Component\Description\Descriptor\StringDescriptor;
 
 class FolderEnhancer implements EnhancerInterface
 {
@@ -49,6 +50,7 @@ class FolderEnhancer implements EnhancerInterface
                 'identifier' => $identifier
             ]
         )));
+        $description->set('file.mime-type', new StringDescriptor('application/vnd.trog.folder'));
     }
 
     public function supports(Subject $subject)

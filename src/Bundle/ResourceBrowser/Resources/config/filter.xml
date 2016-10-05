@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="trog_resource_browser.acceptor_registry" class="Psi\Component\ResourceBrowser\Filter\AcceptorRegistry">
+            <argument type="collection" /><!-- Acceptors -->
+        </service>
+
+        <service id="trog_resource_browser.acceptor.name" class="Psi\Component\ResourceBrowser\Filter\Acceptor\NameAcceptor">
+            <tag name="trog_resource_browser.filter.acceptor" alias="name" />
+        </service>
+
+        <service id="trog_resource_browser.acceptor.mime-type" class="Trog\Bundle\ResourceBrowser\Filter\MimeTypeAcceptor">
+            <argument type="service" id="psi_description.factory" />
+            <tag name="trog_resource_browser.filter.acceptor" alias="mime-type" />
+        </service>
+
+    </services>
+
+</container>
+

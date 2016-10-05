@@ -10,15 +10,10 @@
             <argument type="service" id="templating" />
             <argument type="service" id="session" />
             <argument type="service" id="trog_resource_browser.view_registry" />
+            <argument type="service" id="trog_resource_browser.acceptor_registry" />
         </service>
 
         <service id="trog_resource_browser.view_registry" class="Trog\Bundle\ResourceBrowser\Browser\ViewRegistry" />
-        <service id="trog_resource_browser.filter_registry" class="Psi\Component\ResourceBrowser\FilterRegistry" />
-
-        <service id="trog_resource_browser.filter.regex" class="Trog\Bundle\ResourceBrowser\Browser\Filter\RegexFilter">
-            <argument>%psi_content_type.storage.doctrine_phpcr_odm.namespace_prefix%</argument>
-            <tag name="trog_resource_browser.filter" />
-        </service>
 
     </services>
 

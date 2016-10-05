@@ -10,6 +10,7 @@ use Psi\Component\Description\DescriptionInterface;
 use Psi\Component\Description\Descriptor\UriDescriptor;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Trog\Bundle\Media\IconMaker\IconMaker;
+use Psi\Component\Description\Descriptor\StringDescriptor;
 
 class FileEnhancer implements EnhancerInterface
 {
@@ -52,6 +53,8 @@ class FileEnhancer implements EnhancerInterface
                 ]
             )
         ));
+        $description->set('file.mime-type', new StringDescriptor($subject->getObject()->getContent()->getMimeType()));
+        $description->set('file.encoding', new StringDescriptor($subject->getObject()->getContent()->getEncoding()));
     }
 
     public function supports(Subject $subject)
