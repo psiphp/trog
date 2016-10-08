@@ -15,36 +15,33 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     referenceable=true,
  *     childClasses={
  *         "Trog\Bundle\Article\Document\Page",
- *         "Trog\Component\ContentType\Model\PublishPeriod",
- *         "Trog\Bundle\Media\Document\File",
- *         "Trog\Component\ContentType\Model\ResourceReference",
  *     }
  * )
  */
 class Page implements RouteReferrersReadInterface
 {
     /**
-     * @ContentType\Property(type="text")
+     * @ContentType\Field(type="text")
      */
     private $title;
 
     /**
-     * @ContentType\Property(type="workflow")
+     * @ContentType\Field(type="workflow")
      */
     private $state = 'published';
 
     /**
-     * @ContentType\Property(type="markdown", options={"editor_height": "50px"})
+     * @ContentType\Field(type="markdown", options={"editor_height": "50px"})
      */
     private $teaser = '';
 
     /**
-     * @ContentType\Property(type="publish_period")
+     * @ContentType\Field(type="publish_period")
      */
     private $publishPeriod;
 
     /**
-     * @ContentType\Property(type="object_reference", options={
+     * @ContentType\Field(type="object_reference", options={
      *     "class": "Trog\Bundle\Media\Document\File",
      *     "browser": "image_selector"
      * }, role="image")
@@ -52,12 +49,22 @@ class Page implements RouteReferrersReadInterface
     private $image;
 
     /**
-     * @ContentType\Property(type="resource_reference", options={"browser": "selector"})
+     * @ContentType\Field(type="collection", options={
+     *     "type": "image",
+     *     "type_options": {
+     *         "browser": "image_selector"
+     *     }
+     * })
+     */
+    private $slideshow;
+
+    /**
+     * @ContentType\Field(type="resource_reference", options={"browser": "selector"})
      */
     private $resource;
 
     /**
-     * @ContentType\Property(type="markdown", options={"editor_height": "400px"})
+     * @ContentType\Field(type="markdown", options={"editor_height": "400px"})
      */
     private $content = '';
 
@@ -188,6 +195,16 @@ class Page implements RouteReferrersReadInterface
     public function setResource($resource)
     {
         $this->resource = $resource;
+    }
+
+    public function getSlideshow() 
+    {
+        return $this->slideshow;
+    }
+    
+    public function setSlideshow($slideshow)
+    {
+        $this->slideshow = $slideshow;
     }
     
 }

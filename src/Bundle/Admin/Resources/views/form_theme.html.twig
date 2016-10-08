@@ -137,46 +137,6 @@
 </div>
 {% endblock %}
 
-{% block image_widget %}
-    <div class="ui grid">
-        <div class="row">
-            <div class="eight wide column">
-                {% if value and value.name %}
-                    <img class="ui inline big spaced image" src="{{ value | trog_media_path() | imagine_filter('preview') }}" />
-                {% endif %}
-            </div>
-            <div class="eight wide column">
-                {{ form_row(form.uploadedFile) }}
-
-                {% if value and value.name %}
-                    <table class="ui definition table">
-                        <thead>
-                            <tr>
-                                <th>{{ 'property'|trans() }}</th>
-                                <th>{{ 'value'|trans() }}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{{ 'mime-type'|trans() }}</td>
-                                <td>{{ value.content.mimeType }}</td>
-                            </tr>
-                            <tr>
-                                <td>{{ 'filename-original'|trans() }}</td>
-                                <td>{{ value.originalFilename }}</td>
-                            </tr>
-                            <tr>
-                                <td>{{ 'filename-internal'|trans() }}</td>
-                                <td>{{ value.name }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                {% endif %}
-            </div>
-        </div>
-    </div>
-{% endblock %}
-
 {% block resource_reference_widget %}
     <div
         id="{{ id }}"

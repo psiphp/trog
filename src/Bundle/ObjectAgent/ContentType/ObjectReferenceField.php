@@ -13,29 +13,37 @@ use Trog\Bundle\Media\Document\File;
 use Trog\Bundle\Media\Form\FileType;
 use Trog\Bundle\Media\Form\FileReferenceType;
 use Trog\Bundle\ObjectAgent\Form\ObjectReferenceType;
+use Psi\Component\ContentType\Storage\Mapping\TypeFactory;
+use Psi\Component\ContentType\Storage\Mapping\ConfiguredType;
+use Psi\Component\ContentType\OptionsResolver\FieldOptionsResolver;
 
 class ObjectReferenceField implements FieldInterface
 {
-    public function getViewType()
+    public function getViewType(): string
     {
         return ScalarView::class;
     }
 
-    public function getFormType()
+    public function getFormType(): string
     {
         return ObjectReferenceType::class;
     }
 
-    public function getMapping(MappingBuilder $builder)
+    public function getStorageType(TypeFactory $factory): ConfiguredType
     {
-        return $builder->single('reference');
+        return $factory->create('reference');
     }
 
-    public function configureOptions(OptionsResolver $options)
+    public function configureOptions(FieldOptionsResolver $options)
     {
         $options->setDefault('browser', 'default');
         $options->setRequired('class');
-        $options->setFormOptions([ 'browser', 'class' ]);
+        $options->setFormMapper(function ($options) {
+            return [
+                'browser' => $options['browser'],
+                'class' => $options['class']
+            ];
+        });
     }
 }
 

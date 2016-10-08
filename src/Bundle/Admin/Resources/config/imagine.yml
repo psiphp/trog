@@ -16,5 +16,5 @@ liip_imagine:
         preview:
             quality: 75
             filters:
-                thumbnail: { size: [600, 600], mode: inset }
+                thumbnail: { size: [600, 600], mode: outbound }
     driver: imagick

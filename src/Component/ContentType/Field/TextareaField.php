@@ -17,25 +17,28 @@ use Psi\Component\ContentType\View\ScalarView;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Psi\Component\ContentType\Storage\Mapping\ConfiguredType;
+use Psi\Component\ContentType\OptionsResolver\FieldOptionsResolver;
+use Psi\Component\ContentType\Storage\Mapping\TypeFactory;
 
 class TextareaField implements FieldInterface
 {
-    public function getViewType()
+    public function getViewType(): string
     {
         return ScalarView::class;
     }
 
-    public function getFormType()
+    public function getFormType(): string
     {
         return TextareaType::class;
     }
 
-    public function getMapping(MappingBuilder $builder)
+    public function getStorageType(TypeFactory $factory): ConfiguredType
     {
-        return $builder->single('string');
+        return $factory->create('string');
     }
 
-    public function configureOptions(OptionsResolver $options)
+    public function configureOptions(FieldOptionsResolver $options)
     {
     }
 }

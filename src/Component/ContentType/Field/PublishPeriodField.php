@@ -8,27 +8,30 @@ use Psi\Component\ContentType\View\ScalarView;
 use Trog\Component\ContentType\Model\PublishPeriod;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Psi\Component\ContentType\MappingBuilder;
+use Psi\Component\ContentType\Storage\Mapping\ConfiguredType;
+use Psi\Component\ContentType\Storage\Mapping\TypeFactory;
+use Psi\Component\ContentType\OptionsResolver\FieldOptionsResolver;
 
 class PublishPeriodField implements FieldInterface
 {
-    public function getViewType()
+    public function getViewType(): string
     {
         return ScalarView::class;
     }
 
-    public function getFormType()
+    public function getFormType(): string
     {
         return PublishPeriodType::class;
     }
 
-    public function getMapping(MappingBuilder $builder)
+    public function getStorageType(TypeFactory $factory): ConfiguredType
     {
-        return $builder->compound(PublishPeriod::class)
-            ->map('start', 'datetime')
-            ->map('end', 'datetime');
+        return $factory->create('object', [
+            'class' => PublishPeriod::class
+        ]);
     }
 
-    public function configureOptions(OptionsResolver $options)
+    public function configureOptions(FieldOptionsResolver $options)
     {
     }
 }

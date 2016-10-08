@@ -12,31 +12,37 @@ use Trog\Component\ContentType\Model\Image;
 use Trog\Component\ContentType\Form\ImageType;
 use Trog\Component\ContentType\Form\ResourceReferenceType;
 use Trog\Component\ContentType\Model\ResourceReference;
+use Psi\Component\ContentType\Storage\Mapping\ConfiguredType;
+use Psi\Component\ContentType\Storage\Mapping\TypeFactory;
+use Psi\Component\ContentType\OptionsResolver\FieldOptionsResolver;
 
 class ResourceReferenceField implements FieldInterface
 {
-    public function getViewType()
+    public function getViewType(): string
     {
         return ScalarView::class;
     }
 
-    public function getFormType()
+    public function getFormType(): string
     {
         return ResourceReferenceType::class;
     }
 
-    public function getMapping(MappingBuilder $builder)
+    public function getStorageType(TypeFactory $factory): ConfiguredType
     {
-        return $builder->compound(ResourceReference::class)
-            ->map('path', 'string')
-            ->map('repository', 'string')
-        ;
+        return $factory->create('object', [
+            'class' => ResourceReference::class
+        ]);
     }
 
-    public function configureOptions(OptionsResolver $options)
+    public function configureOptions(FieldOptionsResolver $options)
     {
         $options->setRequired(['browser']);
-        $options->setFormOptions(['browser']);
+        $options->setFormMapper(function ($options) {
+            return [
+                'browser' => $options['browser']
+            ];
+        });
     }
 }
 

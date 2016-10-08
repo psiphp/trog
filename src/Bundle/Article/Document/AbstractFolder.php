@@ -13,7 +13,7 @@ abstract class AbstractFolder
     protected $name;
 
     /**
-     * @ContentType\Property(type="text")
+     * @ContentType\Field(type="text")
      */
     protected $title;
 
