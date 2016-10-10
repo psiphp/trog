@@ -2,21 +2,13 @@
 
 namespace Trog\Bundle\Media\Controller;
 
-use Symfony\Cmf\Bundle\ResourceBundle\Registry\RepositoryRegistry;
-use Symfony\Cmf\Component\Resource\Repository\Resource\CmfResource;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Templating\EngineInterface;
 use Symfony\Component\Form\FormFactoryInterface;
-use Trog\Component\ObjectAgent\AgentFinder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Trog\Bundle\ContentType\Form\Event\ValidFormEvent;
-use Trog\Bundle\ContentType\Form\Event\PropagateValidFormEventSubscriber;
-use Symfony\Component\Routing\Exception\RouteNotFoundException;
-use Symfony\Component\HttpFoundation\File\MimeType\MimeTypeGuesser;
 use Doctrine\ODM\PHPCR\DocumentManagerInterface;
-use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Trog\Bundle\Media\Document\File;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Trog\Bundle\Media\Form\FileType;
@@ -33,8 +25,7 @@ class FileController
         EngineInterface $templating,
         FormFactoryInterface $formFactory,
         UrlGeneratorInterface $urlGenerator
-    )
-    {
+    ) {
         $this->templating = $templating;
         $this->formFactory = $formFactory;
         $this->documentManager = $documentManager;
@@ -97,7 +88,7 @@ class FileController
             $template,
             [
                 'form' => $form->createView(),
-                'file' => $file
+                'file' => $file,
             ]
         ));
     }

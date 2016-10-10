@@ -3,7 +3,6 @@
 namespace Trog\Bundle\Article\Document;
 
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
-use Sylius\Component\Resource\Model\ResourceInterface;
 
 /**
  * @PHPCR\Document(
@@ -48,7 +47,6 @@ class Post
      */
     protected $published = false;
 
-
     public function getId()
     {
         return $this->uuid;
@@ -75,11 +73,11 @@ class Post
         $this->content = $content;
     }
 
-    public function getPublished() 
+    public function getPublished()
     {
         return $this->published;
     }
-    
+
     public function setPublished($Published)
     {
         $this->published = $Published;
@@ -95,9 +93,8 @@ class Post
         return $this->parent;
     }
 
-    public function getPath() 
+    public function getPath()
     {
         return $this->path;
     }
 }
-

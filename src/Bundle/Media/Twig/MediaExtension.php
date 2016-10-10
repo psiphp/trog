@@ -2,8 +2,6 @@
 
 namespace Trog\Bundle\Media\Twig;
 
-use Trog\Component\Description\DescriptionFactory;
-use Trog\Component\Description\Subject;
 use Trog\Bundle\Media\Document\File;
 use Trog\Bundle\Media\Util\PathResolver;
 

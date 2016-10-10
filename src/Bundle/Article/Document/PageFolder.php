@@ -3,7 +3,6 @@
 namespace Trog\Bundle\Article\Document;
 
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
-use Sylius\Component\Resource\Model\ResourceInterface;
 
 /**
  * @PHPCR\Document(

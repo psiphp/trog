@@ -10,12 +10,12 @@ class Folder
     private $children;
     private $parent;
 
-    public function getId() 
+    public function getId()
     {
         return $this->uuid;
     }
 
-    public function getName() 
+    public function getName()
     {
         return $this->name;
     }
@@ -25,24 +25,23 @@ class Folder
         $this->name = $name;
     }
 
-    public function getPath() 
+    public function getPath()
     {
         return $this->path;
     }
 
-    public function getParent() 
+    public function getParent()
     {
         return $this->parent;
     }
-    
+
     public function setParent($parent)
     {
         $this->parent = $parent;
     }
 
-    public function getChildren() 
+    public function getChildren()
     {
         return $this->children;
     }
-    
 }

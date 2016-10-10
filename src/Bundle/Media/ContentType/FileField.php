@@ -3,12 +3,7 @@
 namespace Trog\Bundle\Media\ContentType;
 
 use Psi\Component\ContentType\FieldInterface;
-use Psi\Component\ContentType\MappingBuilder;
 use Psi\Component\ContentType\View\ScalarView;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Trog\Component\ContentType\Form\MarkdownType;
-use Trog\Component\ContentType\Form\ImageType;
 use Trog\Bundle\Media\Document\File;
 use Trog\Bundle\Media\Form\FileType;
 use Psi\Component\ContentType\Storage\Mapping\ConfiguredType;
@@ -32,18 +27,18 @@ class FileField implements FieldInterface
         // we currently map the Fle class with a standard PHPCR mapping
         // as there is no (current) scope for allowing other backends.
         return $factory->create('object', [
-            'class' => File::class
+            'class' => File::class,
         ]);
     }
 
     public function configureOptions(FieldOptionsResolver $options)
     {
         $options->setDefaults([
-            'file_constraints' => []
+            'file_constraints' => [],
         ]);
         $options->setFormMapper(function ($options) {
             return [
-                'file_constraints' => $options['file_constraints']
+                'file_constraints' => $options['file_constraints'],
             ];
         });
     }

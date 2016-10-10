@@ -6,23 +6,23 @@
 
     <services>
 
-        <service id="trog_content_type.field.textarea" class="Trog\Component\ContentType\Field\TextareaField">
+        <service id="trog_content_type.field.textarea" class="Trog\Bundle\ContentType\Field\TextareaField">
             <tag name="psi_content_type.field" alias="textarea" />
         </service>
 
-        <service id="trog_content_type.field.markdown" class="Trog\Component\ContentType\Field\MarkdownField">
+        <service id="trog_content_type.field.markdown" class="Trog\Bundle\ContentType\Field\MarkdownField">
             <tag name="psi_content_type.field" alias="markdown" />
         </service>
 
-        <service id="trog_content_type.field.workflow" class="Trog\Component\ContentType\Field\WorkflowField">
+        <service id="trog_content_type.field.workflow" class="Trog\Bundle\ContentType\Field\WorkflowField">
             <tag name="psi_content_type.field" alias="workflow" />
         </service>
 
-        <service id="trog_content_type.field.publish_period" class="Trog\Component\ContentType\Field\PublishPeriodField">
+        <service id="trog_content_type.field.publish_period" class="Trog\Bundle\ContentType\Field\PublishPeriodField">
             <tag name="psi_content_type.field" alias="publish_period" />
         </service>
 
-        <service id="trog_content_type.field.resource_reference" class="Trog\Component\ContentType\Field\ResourceReferenceField">
+        <service id="trog_content_type.field.resource_reference" class="Trog\Bundle\ContentType\Field\ResourceReferenceField">
             <tag name="psi_content_type.field" alias="resource_reference" />
         </service>
 

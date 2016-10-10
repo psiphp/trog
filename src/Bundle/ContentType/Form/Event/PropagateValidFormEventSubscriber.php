@@ -3,8 +3,6 @@
 namespace Trog\Bundle\ContentType\Form\Event;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\Form\FormInterface;
-use Trog\Bundle\ContentType\Form\Event\ValidFormEvent;
 
 class PropagateValidFormEventSubscriber implements EventSubscriberInterface
 {
@@ -19,7 +17,6 @@ class PropagateValidFormEventSubscriber implements EventSubscriberInterface
     {
         $form = $event->getForm();
         $this->propagate($form);
-
     }
 
     private function propagate($form)

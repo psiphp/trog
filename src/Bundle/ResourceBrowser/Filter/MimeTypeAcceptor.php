@@ -2,7 +2,6 @@
 
 namespace Trog\Bundle\ResourceBrowser\Filter;
 
-use Psi\Component\ResourceBrowser\FilterInterface;
 use Psi\Component\ResourceBrowser\Filter\AcceptorInterface;
 use Puli\Repository\Api\Resource\PuliResource;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -27,7 +26,7 @@ class MimeTypeAcceptor implements AcceptorInterface
         }
 
         foreach ($options['mime-types'] as $mimeType) {
-            if (preg_match('{' . $mimeType . '}', $description->get('file.mime-type')->getValue())) {
+            if (preg_match('{'.$mimeType.'}', $description->get('file.mime-type')->getValue())) {
                 return true;
             }
         }
@@ -40,6 +39,6 @@ class MimeTypeAcceptor implements AcceptorInterface
         $options->setRequired([
             'mime-types',
         ]);
-        $options->setAllowedTypes('mime-types', [ 'array' ]);
+        $options->setAllowedTypes('mime-types', ['array']);
     }
 }

@@ -15,6 +15,7 @@ interface AgentInterface
      * Find an object by its identifier.
      *
      * @param string $identifier
+     *
      * @return object
      */
     public function find($identifier);
@@ -30,6 +31,7 @@ interface AgentInterface
      * Return true if this agent can handle the given object class.
      *
      * @param string $class
+     *
      * @return bool
      */
     public function supports($class);

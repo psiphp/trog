@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types = 1);
 
 namespace Trog\Bundle\ResourceBrowser\Browser;
 
@@ -21,8 +21,7 @@ class View
         int $columns,
         string $defaultRepository,
         array $filterConfigs
-    )
-    {
+    ) {
         $this->template = $template;
         $this->repositories = $repositories;
         $this->enableMove = $enableMove;
@@ -62,7 +61,7 @@ class View
         return $this->defaultRepository;
     }
 
-    public function getFilterConfigs(): array 
+    public function getFilterConfigs(): array
     {
         return $this->filterConfigs;
     }

@@ -2,8 +2,6 @@
 
 namespace Trog\Bundle\ContentType\Controller;
 
-use Symfony\Cmf\Bundle\ResourceBundle\Registry\RepositoryRegistry;
-use Symfony\Cmf\Component\Resource\Repository\Resource\CmfResource;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Templating\EngineInterface;
@@ -27,8 +25,7 @@ class CRUDController
         EngineInterface $templating,
         FormFactoryInterface $formFactory,
         UrlGeneratorInterface $urlGenerator
-    )
-    {
+    ) {
         $this->templating = $templating;
         $this->formFactory = $formFactory;
         $this->agentFinder = $agentFinder;
@@ -74,7 +71,7 @@ class CRUDController
             $template,
             [
                 'object_url' => $objectUrl,
-                'form' => $form->createView()
+                'form' => $form->createView(),
             ]
         ));
     }
@@ -90,7 +87,6 @@ class CRUDController
 
         $form->addEventSubscriber(new PropagateValidFormEventSubscriber());
         $form = $form->getForm();
-
 
         $parentObject = $agent->find($parentIdentifier);
 
@@ -122,7 +118,7 @@ class CRUDController
             $template,
             [
                 'object_url' => $objectUrl,
-                'form' => $form->createView()
+                'form' => $form->createView(),
             ]
         ));
     }

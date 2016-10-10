@@ -1,28 +1,15 @@
 <?php
 
-/*
- * This file is part of the Symfony CMF package.
- *
- * (c) 2011-2016 Symfony CMF
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
-namespace Trog\Component\ContentType\Field;
+namespace Trog\Bundle\ContentType\Field;
 
 use Psi\Component\ContentType\FieldInterface;
-use Psi\Component\ContentType\MappingBuilder;
 use Psi\Component\ContentType\View\ScalarView;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Trog\Component\ContentType\Form\MarkdownType;
-use Trog\Component\ContentType\Form\WorkflowType;
+use Trog\Bundle\ContentType\Form\MarkdownType;
 use Psi\Component\ContentType\Storage\Mapping\ConfiguredType;
 use Psi\Component\ContentType\Storage\Mapping\TypeFactory;
 use Psi\Component\ContentType\OptionsResolver\FieldOptionsResolver;
 
-class WorkflowField implements FieldInterface
+class MarkdownField implements FieldInterface
 {
     public function getViewType(): string
     {
@@ -31,7 +18,7 @@ class WorkflowField implements FieldInterface
 
     public function getFormType(): string
     {
-        return WorkflowType::class;
+        return MarkdownType::class;
     }
 
     public function getStorageType(TypeFactory $factory): ConfiguredType
@@ -41,7 +28,12 @@ class WorkflowField implements FieldInterface
 
     public function configureOptions(FieldOptionsResolver $options)
     {
+        // we should not define form options here
+        $options->setDefault('editor_height', null);
+        $options->setFormMapper(function ($options) {
+            return [
+                'editor_height' => $options['editor_height'],
+            ];
+        });
     }
 }
-
-

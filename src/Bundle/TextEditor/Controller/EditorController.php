@@ -20,8 +20,7 @@ class EditorController
         RepositoryRegistryInterface $registry,
         EngineInterface $templating,
         UrlGeneratorInterface $urlGenerator
-    )
-    {
+    ) {
         $this->registry = $registry;
         $this->templating = $templating;
         $this->urlGenerator = $urlGenerator;
@@ -38,13 +37,13 @@ class EditorController
 
         if ($request->getMethod() === 'POST') {
             file_put_contents($resource->getFilesystemPath(), $request->request->get('text'));
+
             return new RedirectResponse(
                 $this->urlGenerator->generate('trog_text_editor', [
                     'repository' => $repositoryName,
-                    'path' => $path
+                    'path' => $path,
                 ])
-            );;
-
+            );
         }
 
         if (!$resource instanceof FileResource) {
@@ -61,6 +60,5 @@ class EditorController
                 'repositoryName' => $repositoryName,
             ]
         ));
-
     }
 }

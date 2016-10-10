@@ -42,17 +42,16 @@ abstract class AbstractFolder
         return $this->name;
     }
 
-    public function getTitle() 
+    public function getTitle()
     {
         return $this->title;
     }
-    
+
     public function setTitle($title)
     {
         $this->name = $title;
         $this->title = $title;
     }
-    
 
     public function setParent($parent)
     {

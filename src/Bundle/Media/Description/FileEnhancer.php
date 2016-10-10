@@ -21,8 +21,7 @@ class FileEnhancer implements EnhancerInterface
         IconMaker $iconMaker,
         PathResolver $pathResolver,
         UrlGeneratorInterface $urlGenerator
-    )
-    {
+    ) {
         $this->pathResolver = $pathResolver;
         $this->urlGenerator = $urlGenerator;
         $this->iconMaker = $iconMaker;
@@ -49,7 +48,7 @@ class FileEnhancer implements EnhancerInterface
             $this->urlGenerator->generate(
                 'trog_media_edit_file',
                 [
-                    'identifier' => $subject->getObject()->getId()
+                    'identifier' => $subject->getObject()->getId(),
                 ]
             )
         ));

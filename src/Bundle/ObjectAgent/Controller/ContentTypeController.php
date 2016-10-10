@@ -19,8 +19,7 @@ class ContentTypeController
         AgentFinder $agentFinder,
         DescriptionFactory $descriptionFactory,
         EngineInterface $templating
-    )
-    {
+    ) {
         $this->agentFinder = $agentFinder;
         $this->descriptionFactory = $descriptionFactory;
         $this->templating = $templating;
@@ -38,7 +37,7 @@ class ContentTypeController
         return new Response($this->templating->render(
             '@TrogObjectAgent/ContentType/object_preview.html.twig',
             [
-                'description' => $description
+                'description' => $description,
             ]
         ));
     }

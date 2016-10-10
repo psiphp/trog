@@ -24,7 +24,7 @@ class BrowserController
     private $templating;
     private $registry;
     private $browserViewRegistry;
-    private $session; 
+    private $session;
     private $acceptorRegistry;
 
     public function __construct(
@@ -33,8 +33,7 @@ class BrowserController
         Session $session,
         ViewRegistry $browserViewRegistry,
         AcceptorRegistry $acceptorRegistry
-    )
-    {
+    ) {
         $this->templating = $templating;
         $this->registry = $registry;
         $this->session = $session;
@@ -71,7 +70,7 @@ class BrowserController
         $browser = Browser::createFromOptions($repository, [
             'path' => $path,
             'nb_columns' => $browserView->getColumns(),
-            'filter' => new AcceptorFilter($this->acceptorRegistry, $browserView->getFilterConfigs())
+            'filter' => new AcceptorFilter($this->acceptorRegistry, $browserView->getFilterConfigs()),
         ]);
 
         $allRepositories = $this->registry->names();
@@ -87,7 +86,7 @@ class BrowserController
         }
 
         $numberFormatter = new \NumberFormatter('en', \NumberFormatter::SPELLOUT);
-        $words =  $numberFormatter->format($browser->getMaxColumns());
+        $words = $numberFormatter->format($browser->getMaxColumns());
 
         return $this->templating->renderResponse(
             $browserView->getTemplate(),
@@ -133,6 +132,7 @@ class BrowserController
 
         try {
             $repository->get($path);
+
             return $path;
         } catch (ResourceNotFoundException $e) {
         }
@@ -148,6 +148,7 @@ class BrowserController
 
         if ($repositoryName && in_array($defaultName, $availableRepositories)) {
             $this->session->set(self::REPOSITORY, $repositoryName);
+
             return $repositoryName;
         }
 

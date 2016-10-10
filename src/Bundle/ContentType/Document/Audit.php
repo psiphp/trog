@@ -1,6 +1,6 @@
 <?php
 
-namespace Trog\Component\ContentType\Model;
+namespace Trog\Bundle\ContentType\Document;
 
 class Audit
 {
@@ -14,7 +14,7 @@ class Audit
         $this->updatedAt = new \DateTime();
     }
 
-    public function getCreatedAt() 
+    public function getCreatedAt()
     {
         return $this->createdAt;
     }
@@ -23,13 +23,12 @@ class Audit
     {
         $this->createdAt = $createdAt;
     }
-    
 
-    public function getUpdatedAt() 
+    public function getUpdatedAt()
     {
         return $this->updatedAt;
     }
-    
+
     public function setUpdatedAt($updatedAt)
     {
         $this->updatedAt = $updatedAt;

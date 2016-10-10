@@ -4,19 +4,11 @@ namespace Trog\Bundle\ObjectAgent\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormEvent;
-use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\FileType as BaseFileType;
-use Trog\Bundle\ContentType\Form\Event\ValidFormEvent;
-use Symfony\Component\Validator\Constraints\File as FileConstraint;
-use Trog\Bundle\Media\Document\File;
 use Symfony\Component\Form\CallbackTransformer;
-use Doctrine\ODM\PHPCR\DocumentManagerInterface;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Form\Exception\TransformationFailedException;
 use Trog\Component\ObjectAgent\AgentFinder;
 use Trog\Component\ObjectAgent\AgentInterface;
 

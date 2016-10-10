@@ -36,4 +36,3 @@ class AcceptorPass implements CompilerPassInterface
         $registryDef->replaceArgument(0, $acceptorRefs);
     }
 }
-

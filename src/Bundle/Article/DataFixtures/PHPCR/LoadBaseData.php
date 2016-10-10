@@ -4,7 +4,6 @@ namespace Trog\Bundle\Article\DataFixtures\PHPCR;
 
 use Trog\Bundle\Article\Document\PageFolder;
 use Trog\Bundle\Article\Document\PostFolder;
-use Doctrine\ODM\PHPCR\Document\Generic;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Trog\Bundle\Article\Document\Post;

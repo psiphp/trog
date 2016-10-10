@@ -1,6 +1,6 @@
 <?php
 
-namespace Trog\Component\ContentType\Model;
+namespace Trog\Bundle\ContentType\Document;
 
 class PublishPeriod
 {
@@ -14,21 +14,21 @@ class PublishPeriod
         $this->end = $end;
     }
 
-    public function getStart() 
+    public function getStart()
     {
         return $this->start;
     }
-    
+
     public function setStart($start)
     {
         $this->start = $start;
     }
 
-    public function getEnd() 
+    public function getEnd()
     {
         return $this->end;
     }
-    
+
     public function setEnd($end)
     {
         $this->end = $end;

@@ -2,8 +2,6 @@
 
 namespace Trog\Bundle\Media\Document;
 
-use Doctrine\ODM\PHPCR\Exception\BadMethodCallException;
-use PHPCR\NodeInterface;
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCRODM;
 
 /**
@@ -46,16 +44,16 @@ class Resource
      */
     private $updatedAt;
 
-    public function getId() 
+    public function getId()
     {
         return $this->id;
     }
 
-    public function getName() 
+    public function getName()
     {
         return $this->name;
     }
-    
+
     public function setName($name)
     {
         $this->name = $name;
@@ -66,51 +64,51 @@ class Resource
         return $this->path;
     }
 
-    public function getData() 
+    public function getData()
     {
         return $this->data;
     }
-    
+
     public function setData($data)
     {
         $this->data = $data;
     }
 
-    public function getMimeType() 
+    public function getMimeType()
     {
         return $this->mimeType;
     }
-    
+
     public function setMimeType($mimeType)
     {
         $this->mimeType = $mimeType;
     }
 
-    public function getEncoding() 
+    public function getEncoding()
     {
         return $this->encoding;
     }
-    
+
     public function setEncoding($encoding)
     {
         $this->encoding = $encoding;
     }
 
-    public function getUpdatedBy() 
+    public function getUpdatedBy()
     {
         return $this->updatedBy;
     }
-    
+
     public function setUpdatedBy($updatedBy)
     {
         $this->updatedBy = $updatedBy;
     }
 
-    public function getUpdatedAt() 
+    public function getUpdatedAt()
     {
         return $this->updatedAt;
     }
-    
+
     public function setUpdatedAt($updatedAt)
     {
         $this->updatedAt = $updatedAt;

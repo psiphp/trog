@@ -9,14 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Trog\Component\ContentType\Field;
+namespace Trog\Bundle\ContentType\Field;
 
 use Psi\Component\ContentType\FieldInterface;
-use Psi\Component\ContentType\MappingBuilder;
 use Psi\Component\ContentType\View\ScalarView;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Psi\Component\ContentType\Storage\Mapping\ConfiguredType;
 use Psi\Component\ContentType\OptionsResolver\FieldOptionsResolver;
 use Psi\Component\ContentType\Storage\Mapping\TypeFactory;
@@ -42,5 +39,3 @@ class TextareaField implements FieldInterface
     {
     }
 }
-
-

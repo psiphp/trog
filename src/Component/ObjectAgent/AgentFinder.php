@@ -2,8 +2,6 @@
 
 namespace Trog\Component\ObjectAgent;
 
-use Sylius\Component\Registry\ServiceRegistry;
-
 class AgentFinder
 {
     private $agents;
@@ -43,4 +41,3 @@ class AgentFinder
         return $this->agents[$alias];
     }
 }
-

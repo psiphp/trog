@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types = 1);
 
 namespace Trog\Bundle\ResourceBrowser\DependencyInjection;
 
@@ -47,13 +47,13 @@ class TrogResourceBrowserExtension extends Extension
                     $browserView['enable_item_actions'],
                     $browserView['columns'],
                     $browserView['default_repository'],
-                    $browserView['filters']
+                    $browserView['filters'],
                 ]
             );
-            $viewId = 'trog_resource_browser.view.' . $browserName;
+            $viewId = 'trog_resource_browser.view.'.$browserName;
             $container->setDefinition($viewId, $viewDef);
 
-            $registryDef->addMethodCall('register', [ $browserName, new Reference($viewId) ]);
+            $registryDef->addMethodCall('register', [$browserName, new Reference($viewId)]);
         }
     }
 }

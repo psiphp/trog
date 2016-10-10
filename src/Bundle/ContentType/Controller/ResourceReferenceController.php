@@ -19,8 +19,7 @@ class ResourceReferenceController
         RepositoryRegistry $repositoryRegistry,
         DescriptionFactory $descriptionFactory,
         EngineInterface $templating
-    )
-    {
+    ) {
         $this->repositoryRegistry = $repositoryRegistry;
         $this->descriptionFactory = $descriptionFactory;
         $this->templating = $templating;
@@ -41,7 +40,7 @@ class ResourceReferenceController
             [
                 'repository' => $repositoryName,
                 'path' => $path,
-                'description' => $description
+                'description' => $description,
             ]
         ));
     }

@@ -2,14 +2,9 @@
 
 namespace Trog\Bundle\ContentType\Resource;
 
-use Symfony\Cmf\Component\Resource\Description\DescriptionEnhancerInterface;
-use Symfony\Cmf\Component\Resource\Repository\Resource\CmfResource;
 use Symfony\Cmf\Bundle\ResourceBundle\Registry\RepositoryRegistry;
-use Symfony\Cmf\Component\Resource\Description\Descriptor;
-use Symfony\Cmf\Component\Resource\Description\Description;
 use Metadata\MetadataFactoryInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Puli\Repository\Api\Resource\PuliResource;
 use Trog\Component\ObjectAgent\AgentFinder;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
 use Psi\Component\Description\DescriptionInterface;
@@ -35,8 +30,7 @@ class ContentTypeEnhancer implements EnhancerInterface
         AgentFinder $agentFinder,
         UrlGeneratorInterface $urlGenerator,
         PathResolver $pathResolver
-    )
-    {
+    ) {
         $this->metadataFactory = $metadataFactory;
         $this->repositoryRegistry = $repositoryRegistry;
         $this->agentFinder = $agentFinder;
@@ -59,7 +53,7 @@ class ContentTypeEnhancer implements EnhancerInterface
                     'trog_content_type_crud_edit',
                     [
                         'agent' => $agent->getAlias(),
-                        'identifier' => $identifier
+                        'identifier' => $identifier,
                     ]
                 )
             )

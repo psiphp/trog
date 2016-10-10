@@ -1,11 +1,8 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types = 1);
 
 namespace Trog\Bundle\ResourceBrowser\Browser;
-
-use Sylius\Component\Registry\ServiceRegistry;
-use Trog\Bundle\ResourceBrowser\Browser\View;
 
 class ViewRegistry
 {

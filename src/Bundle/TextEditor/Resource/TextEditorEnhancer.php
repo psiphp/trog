@@ -3,10 +3,6 @@
 namespace Trog\Bundle\TextEditor\Resource;
 
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Puli\Repository\Resource\FileResource;
-use Symfony\Cmf\Component\Resource\Description\Descriptor;
-use Symfony\Cmf\Component\Resource\Description\DescriptionEnhancerInterface;
-use Puli\Repository\Api\Resource\PuliResource;
 use Symfony\Cmf\Component\Resource\Description\Description;
 use Symfony\Cmf\Component\Resource\RepositoryRegistryInterface;
 use Psi\Component\Description\EnhancerInterface;
@@ -33,7 +29,7 @@ class TextEditorEnhancer implements EnhancerInterface
     private $registry;
 
     /**
-     * @param UrlGeneratorInterface $urlGenerator
+     * @param UrlGeneratorInterface       $urlGenerator
      * @param RepositoryRegistryInterface $registry
      */
     public function __construct(UrlGeneratorInterface $urlGenerator, RepositoryRegistryInterface $registry)
@@ -59,7 +55,7 @@ class TextEditorEnhancer implements EnhancerInterface
             'trog_text_editor',
             [
                 'repository' => $repositoryName,
-                'path' => $object->getPath()
+                'path' => $object->getPath(),
             ]
         )));
     }

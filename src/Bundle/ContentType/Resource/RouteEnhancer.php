@@ -2,16 +2,7 @@
 
 namespace Trog\Bundle\ContentType\Resource;
 
-use Symfony\Cmf\Component\Resource\Description\DescriptionEnhancerInterface;
-use Symfony\Cmf\Component\Resource\Repository\Resource\CmfResource;
-use Symfony\Cmf\Bundle\ResourceBundle\Registry\RepositoryRegistry;
-use Symfony\Cmf\Component\Resource\Description\Descriptor;
-use Symfony\Cmf\Component\Resource\Description\Description;
-use Metadata\MetadataFactoryInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Puli\Repository\Api\Resource\PuliResource;
-use Trog\Component\ObjectAgent\AgentFinder;
-use Symfony\Component\PropertyAccess\PropertyAccessor;
 use Symfony\Cmf\Component\Routing\RouteReferrersReadInterface;
 use Psi\Component\Description\EnhancerInterface;
 use Psi\Component\Description\Subject;
@@ -24,8 +15,7 @@ class RouteEnhancer implements EnhancerInterface
 
     public function __construct(
         UrlGeneratorInterface $urlGenerator
-    )
-    {
+    ) {
         $this->urlGenerator = $urlGenerator;
     }
 
@@ -43,4 +33,3 @@ class RouteEnhancer implements EnhancerInterface
         return $subject->getClass()->isSubclassOf(RouteReferrersReadInterface::class);
     }
 }
-

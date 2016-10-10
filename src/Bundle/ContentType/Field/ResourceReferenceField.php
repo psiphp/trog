@@ -1,18 +1,16 @@
 <?php
 
-namespace Trog\Component\ContentType\Field;
+namespace Trog\Bundle\ContentType\Field;
 
 use Psi\Component\ContentType\FieldInterface;
-use Psi\Component\ContentType\MappingBuilder;
 use Psi\Component\ContentType\View\ScalarView;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Trog\Component\ContentType\Form\MarkdownType;
+use Trog\Bundle\ContentType\Form\ResourceReferenceType;
+use Trog\Bundle\ContentType\Document\ResourceReference;
 use Psi\Component\ContentType\Storage\Mapping\ConfiguredType;
 use Psi\Component\ContentType\Storage\Mapping\TypeFactory;
 use Psi\Component\ContentType\OptionsResolver\FieldOptionsResolver;
 
-class MarkdownField implements FieldInterface
+class ResourceReferenceField implements FieldInterface
 {
     public function getViewType(): string
     {
@@ -21,23 +19,23 @@ class MarkdownField implements FieldInterface
 
     public function getFormType(): string
     {
-        return MarkdownType::class;
+        return ResourceReferenceType::class;
     }
 
     public function getStorageType(TypeFactory $factory): ConfiguredType
     {
-        return $factory->create('string');
+        return $factory->create('object', [
+            'class' => ResourceReference::class,
+        ]);
     }
 
     public function configureOptions(FieldOptionsResolver $options)
     {
-        // we should not define form options here
-        $options->setDefault('editor_height', null);
+        $options->setRequired(['browser']);
         $options->setFormMapper(function ($options) {
             return [
-                'editor_height' => $options['editor_height']
+                'browser' => $options['browser'],
             ];
         });
     }
 }
-

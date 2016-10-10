@@ -19,7 +19,7 @@ class PhpcrOdmAgent implements AgentInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function save($object)
     {
@@ -28,7 +28,7 @@ class PhpcrOdmAgent implements AgentInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function find($identifier)
     {
@@ -92,12 +92,12 @@ class PhpcrOdmAgent implements AgentInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function supports($class)
     {
         $metadataFactory = $this->documentManager->getMetadataFactory();
-        $supports =  $metadataFactory->getMetadataFor(ClassUtils::getRealClass($class));
+        $supports = $metadataFactory->getMetadataFor(ClassUtils::getRealClass($class));
 
         return $supports ? true : false;
     }

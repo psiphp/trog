@@ -45,5 +45,4 @@ class AgentFinderTest extends \PHPUnit_Framework_TestCase
         $agent = $this->finder->findAgentFor(\stdClass::class);
         $this->assertSame($this->agent2->reveal(), $agent);
     }
-
 }

@@ -2,7 +2,6 @@
 
 namespace Trog\Bundle\Media\Util;
 
-use Doctrine\ODM\PHPCR\DocumentManagerInterface;
 use League\Flysystem\Filesystem;
 use Trog\Bundle\Media\Document\File;
 
@@ -14,8 +13,7 @@ class PathResolver
     public function __construct(
         Filesystem $filesystem,
         $webPath
-    )
-    {
+    ) {
         $this->filesystem = $filesystem;
         $this->webPath = $webPath;
     }
@@ -36,6 +34,7 @@ class PathResolver
     private function getPath($cachedPath)
     {
         $path = sprintf('%s%s', $this->webPath, $cachedPath);
+
         return $path;
     }
 }

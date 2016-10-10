@@ -1,18 +1,12 @@
 <?php
 
-namespace Trog\Component\ContentType\Form;
+namespace Trog\Bundle\ContentType\Form;
 
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormView;
-use Symfony\Component\Form\Form;
-use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Trog\Component\ContentType\Model\PublishPeriod;
+use Trog\Bundle\ContentType\Document\PublishPeriod;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Validator\Constraints\NotNull;
 
 class PublishPeriodType extends AbstractType
 {

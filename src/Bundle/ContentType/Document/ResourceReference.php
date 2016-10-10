@@ -1,8 +1,8 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types = 1);
 
-namespace Trog\Component\ContentType\Model;
+namespace Trog\Bundle\ContentType\Document;
 
 class ResourceReference
 {
@@ -10,16 +10,16 @@ class ResourceReference
     private $path;
     private $repository;
 
-    public function getId() 
+    public function getId()
     {
         return $this->id;
     }
-    
+
     public function getPath()
     {
         return $this->path;
     }
-    
+
     public function setPath(string $path)
     {
         $this->path = $path;
@@ -29,7 +29,7 @@ class ResourceReference
     {
         return $this->repository;
     }
-    
+
     public function setRepository(string $repository)
     {
         $this->repository = $repository;

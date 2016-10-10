@@ -3,12 +3,9 @@
 namespace Trog\Bundle\Article\Document;
 
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
-use Sylius\Component\Resource\Model\ResourceInterface;
 use Psi\Component\ContentType\Metadata\Annotations as ContentType;
 use Symfony\Cmf\Component\Routing\RouteReferrersReadInterface;
-use Trog\Component\ContentType\Model\PublishPeriod;
-use Symfony\Component\Validator\Constraints\DateTime;
-use Symfony\Component\Validator\Constraints as Assert;
+use Trog\Bundle\ContentType\Document\PublishPeriod;
 
 /**
  * @PHPCR\Document(
@@ -49,9 +46,9 @@ class Page implements RouteReferrersReadInterface
     private $image;
 
     /**
-     * @ContentType\Field(type="collection", options={
-     *     "type": "image",
-     *     "type_options": {
+     * ContentType\Field(type="collection", options={
+     *     "field": "file",
+     *     "field_options": {
      *         "browser": "image_selector"
      *     }
      * })
@@ -127,11 +124,11 @@ class Page implements RouteReferrersReadInterface
         $this->content = $content;
     }
 
-    public function getTeaser() 
+    public function getTeaser()
     {
         return $this->teaser;
     }
-    
+
     public function setTeaser($teaser)
     {
         $this->teaser = $teaser;
@@ -147,64 +144,63 @@ class Page implements RouteReferrersReadInterface
         return $this->parent;
     }
 
-    public function getPath() 
+    public function getPath()
     {
         return $this->path;
     }
 
-    public function getState() 
+    public function getState()
     {
         return $this->state;
     }
-    
+
     public function setState($state)
     {
         $this->state = $state;
     }
 
-    public function getPublishPeriod() 
+    public function getPublishPeriod()
     {
         return $this->publishPeriod;
     }
-    
+
     public function setPublishPeriod($publishPeriod)
     {
         $this->publishPeriod = $publishPeriod;
     }
 
-    public function getImage() 
+    public function getImage()
     {
         return $this->image;
     }
-    
+
     public function setImage($image)
     {
         $this->image = $image;
     }
 
-    public function getRoutes() 
+    public function getRoutes()
     {
         return $this->routes;
     }
 
-    public function getResource() 
+    public function getResource()
     {
         return $this->resource;
     }
-    
+
     public function setResource($resource)
     {
         $this->resource = $resource;
     }
 
-    public function getSlideshow() 
+    public function getSlideshow()
     {
         return $this->slideshow;
     }
-    
+
     public function setSlideshow($slideshow)
     {
         $this->slideshow = $slideshow;
     }
-    
 }

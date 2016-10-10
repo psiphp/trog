@@ -14,30 +14,29 @@ class File
     private $originalName;
 
     /**
-     * non-mapped
+     * non-mapped.
      */
     private $uploadedFile;
 
-    public function getId() 
+    public function getId()
     {
         return $this->uuid;
     }
 
-    public function getUploadedFile() 
+    public function getUploadedFile()
     {
         return $this->uploadedFile;
     }
-    
+
     public function setUploadedFile($uploadedFile)
     {
         $this->uploadedFile = $uploadedFile;
     }
 
-    public function getOriginalName() 
+    public function getOriginalName()
     {
         return $this->originalName;
     }
-    
 
     public function consumeUploadedFile()
     {
@@ -66,32 +65,32 @@ class File
         return $this->path;
     }
 
-    public function getName() 
+    public function getName()
     {
         return $this->name;
     }
-    
+
     public function setName($name)
     {
         $this->name = $name;
     }
 
-    public function getCreatedAt() 
+    public function getCreatedAt()
     {
         return $this->createdAt;
     }
-    
-    public function getCreatedBy() 
+
+    public function getCreatedBy()
     {
         return $this->createdBy;
     }
-    
+
     public function setParent($parent)
     {
         $this->parent = $parent;
     }
 
-    public function getContent() 
+    public function getContent()
     {
         if (null === $this->content) {
             $this->content = new Resource();
@@ -99,5 +98,4 @@ class File
 
         return $this->content;
     }
-
 }

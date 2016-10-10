@@ -1,18 +1,24 @@
 <?php
 
-namespace Trog\Component\ContentType\Field;
+/*
+ * This file is part of the Symfony CMF package.
+ *
+ * (c) 2011-2016 Symfony CMF
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
-use Trog\Component\ContentType\Form\PublishPeriodType;
+namespace Trog\Bundle\ContentType\Field;
+
 use Psi\Component\ContentType\FieldInterface;
 use Psi\Component\ContentType\View\ScalarView;
-use Trog\Component\ContentType\Model\PublishPeriod;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Psi\Component\ContentType\MappingBuilder;
+use Trog\Bundle\ContentType\Form\WorkflowType;
 use Psi\Component\ContentType\Storage\Mapping\ConfiguredType;
 use Psi\Component\ContentType\Storage\Mapping\TypeFactory;
 use Psi\Component\ContentType\OptionsResolver\FieldOptionsResolver;
 
-class PublishPeriodField implements FieldInterface
+class WorkflowField implements FieldInterface
 {
     public function getViewType(): string
     {
@@ -21,14 +27,12 @@ class PublishPeriodField implements FieldInterface
 
     public function getFormType(): string
     {
-        return PublishPeriodType::class;
+        return WorkflowType::class;
     }
 
     public function getStorageType(TypeFactory $factory): ConfiguredType
     {
-        return $factory->create('object', [
-            'class' => PublishPeriod::class
-        ]);
+        return $factory->create('string');
     }
 
     public function configureOptions(FieldOptionsResolver $options)

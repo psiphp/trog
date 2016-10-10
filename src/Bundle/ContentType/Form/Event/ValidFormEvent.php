@@ -16,7 +16,7 @@ class ValidFormEvent extends Event
         $this->form = $form;
     }
 
-    public function getForm() 
+    public function getForm()
     {
         return $this->form;
     }

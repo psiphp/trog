@@ -47,7 +47,7 @@ class FolderEnhancer implements EnhancerInterface
         $description->set('std.uri.update', new UriDescriptor($this->urlGenerator->generate(
             'trog_media_edit_folder',
             [
-                'identifier' => $identifier
+                'identifier' => $identifier,
             ]
         )));
         $description->set('file.mime-type', new StringDescriptor('application/vnd.trog.folder'));
