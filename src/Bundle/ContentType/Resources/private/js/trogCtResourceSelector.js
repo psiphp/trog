@@ -1,18 +1,19 @@
 $(document).ready(function () {
-    $('*[data-trog-ct-resource-selector]').each(function () {
-        var title = $(this).attr('data-title');
-        var url = $(this).find('a').attr('href');
-        var previewUrl = $(this).attr('data-preview-url');
-        var browser = $(this).attr('data-browser');
-        var repositoryInputId = $(this).attr('data-input-repository');
-        var pathInputId = $(this).attr('data-input-path');
-        var identifierInputId = $(this).attr('data-input-identifier');
-        var repositoryEl = $(this).find('#' + repositoryInputId);
-        var pathEl = $(this).find('#' + pathInputId);
-        var identifierEl = $(this).find('#' + identifierInputId);
-        var previewEl = $(this).find('.preview');
+    bindSelector = function (el) {
+        var title = $(el).attr('data-title');
+        var url = $(el).find('a').attr('href');
+        var previewUrl = $(el).attr('data-preview-url');
 
-        $(this).find('a').on('click', function (event) {
+        var browser = $(el).attr('data-browser');
+        var repositoryInputId = $(el).attr('data-input-repository');
+        var pathInputId = $(el).attr('data-input-path');
+        var identifierInputId = $(el).attr('data-input-identifier');
+        var repositoryEl = $().find('#' + repositoryInputId);
+        var pathEl = $(el).find('#' + pathInputId);
+        var identifierEl = $(el).find('#' + identifierInputId);
+        var previewEl = $(el).find('.preview');
+
+        $(el).find('a').on('click', function (event) {
             event.preventDefault();
             var panel = $(
                 '<div class="ui modal">' + 
@@ -84,5 +85,16 @@ $(document).ready(function () {
                 panel.modal('refresh');
             });
         });
+    };
+    $(this).on('collection-form-add', function(e, el) {
+        if (el.children(':first').attr('data-trog-ct-resource-selector') === undefined) {
+            return;
+        }
+
+        bindSelector(el.children(':first'));
+    });
+
+    $('*[data-trog-ct-resource-selector]').each(function (i, el) {
+        bindSelector(el);
     });
 });

@@ -46,9 +46,32 @@ class Page implements RouteReferrersReadInterface
     private $image;
 
     /**
-     * ContentType\Field(type="collection", options={
-     *     "field": "file",
+     * @ContentType\Field(type="collection", options={
+     *     "field": "file"
+     * })
+     */
+    private $files;
+
+    /**
+     * @ContentType\Field(type="file")
+     */
+    private $file;
+
+    /**
+     * @ContentType\Field(type="collection", options={
+     *     "field": "markdown",
+     *     "field_options": { 
+     *         "editor_height": "100px",
+     *     }
+     * })
+     */
+    private $paragraphs;
+
+    /**
+     * @ContentType\Field(type="collection", options={
+     *     "field": "object_reference",
      *     "field_options": {
+     *         "class": "Trog\Bundle\Media\Document\File",
      *         "browser": "image_selector"
      *     }
      * })
@@ -203,4 +226,35 @@ class Page implements RouteReferrersReadInterface
     {
         $this->slideshow = $slideshow;
     }
+
+    public function getParagraphs() 
+    {
+        return $this->paragraphs;
+    }
+    
+    public function setParagraphs($paragraphs)
+    {
+        $this->paragraphs = $paragraphs;
+    }
+
+    public function getFiles() 
+    {
+        return $this->files;
+    }
+    
+    public function setFiles($files)
+    {
+        $this->files = $files;
+    }
+
+    public function getFile() 
+    {
+        return $this->file;
+    }
+    
+    public function setFile($file)
+    {
+        $this->file = $file;
+    }
+    
 }

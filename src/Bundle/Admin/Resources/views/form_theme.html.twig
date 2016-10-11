@@ -70,33 +70,33 @@
 {%- endblock percent_widget %}
 
 {% block collection_widget -%}
-    {% from 'SyliusResourceBundle:Macros:notification.html.twig' import error %}
+    {% import _self as macros %}
     {% set attr = attr|merge({'class': attr.class|default ~ ' controls collection-widget'}) %}
 
     {% spaceless %}
         <div data-form-type="collection" {{ block('widget_container_attributes') }}
             {% if prototype is defined and allow_add %}
-                data-prototype='{{ _self.collection_item(prototype, allow_delete, button_delete_label, '__name__')|e }}'
+                data-prototype='{{ macros.collection_item(prototype, allow_delete, 'Delete', '__name__')|e }}'
             {%- endif -%}
         >
-            {{ error(form.vars.errors) }}
+            {{ form_errors(form) }}
 
             {% if prototypes|default is iterable %}
                 {% for key, subPrototype in prototypes %}
-                    <input type="hidden" data-form-prototype="{{ key }}" value="{{ _self.collection_item(subPrototype, allow_delete, button_delete_label, '__name__')|e }}" />
+                    <input type="hidden" data-form-prototype="{{ key }}" value="{{ macros.collection_item(subPrototype, allow_delete, 'delete') }}" />
                 {% endfor %}
             {% endif %}
 
             <div data-form-collection="list">
                 {% for child in form %}
-                    {{ _self.collection_item(child, allow_delete, button_delete_label, loop.index0) }}
+                    {{ macros.collection_item(child, allow_delete, 'delete', loop.index0) }}
                 {% endfor %}
             </div>
 
             {% if prototype is defined and allow_add %}
                 <a href="#" class="ui labeled icon button" data-form-collection="add">
                     <i class="plus square outline icon"></i>
-                    {{ button_add_label|trans }}
+                    Add
                 </a>
             {% endif %}
         </div>
@@ -160,11 +160,9 @@
         {{ form_row(form.path) }}
         {{ form_row(form.repository) }}
 
-        <div class="ui two bottom attached buttons">
             <a 
                 href="{{ path('trog_resource_browser', {browser: browser}) }}" 
                 class="ui button">{{ 'select'|trans() }}</a>
-        </div>
 
     </div>
 {% endblock %}
@@ -177,7 +175,7 @@
 
             <div class="eight wide column">
                 {% if description.has('std.image') %}
-                    <img class="ui inline big spaced image" src="{{ description.get('std.image').value | imagine_filter('preview') }}" />
+                    <img class="ui inline spaced image" src="{{ description.get('std.image').value | imagine_filter('small') }}" />
                 {% endif %}
             </div>
             {% endif %}

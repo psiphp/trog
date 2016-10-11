@@ -6,16 +6,26 @@ use Trog\Component\ObjectAgent\AgentInterface;
 use Doctrine\ODM\PHPCR\DocumentManagerInterface;
 use Doctrine\Common\Util\ClassUtils;
 use Trog\Component\ObjectAgent\Exception\ObjectNotFound;
+use Trog\Component\ObjectAgent\Agent\Doctrine\Event\PhpcrOdmObjectEvent;
+use Trog\Component\ObjectAgent\Agent\Doctrine\Event\ObjectEvent;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Trog\Component\ObjectAgent\Events;
 
 class PhpcrOdmAgent implements AgentInterface
 {
     private $documentManager;
     private $alias;
+    private $eventDispatcher;
 
-    public function __construct($alias, DocumentManagerInterface $documentManager)
+    public function __construct(
+        $alias,
+        EventDispatcherInterface $eventDispatcher,
+        DocumentManagerInterface $documentManager
+    )
     {
         $this->alias = $alias;
         $this->documentManager = $documentManager;
+        $this->eventDispatcher = $eventDispatcher;
     }
 
     /**
@@ -23,6 +33,10 @@ class PhpcrOdmAgent implements AgentInterface
      */
     public function save($object)
     {
+        $this->eventDispatcher->dispatch(Events::PRE_SAVE, new ObjectEvent(
+            $this->documentManager, $object
+        ));
+
         $this->documentManager->persist($object);
         $this->documentManager->flush();
     }

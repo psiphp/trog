@@ -13,6 +13,7 @@
 
         <service id="trog_object_agent.agent.doctrine.phpcr_odm" class="Trog\Component\ObjectAgent\Agent\Doctrine\PhpcrOdmAgent">
             <argument>phpcr-odm</argument>
+            <argument type="service" id="event_dispatcher" />
             <argument type="service" id="doctrine_phpcr.odm.document_manager" />
         </service>
 

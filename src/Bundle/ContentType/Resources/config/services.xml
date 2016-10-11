@@ -32,6 +32,11 @@
             <tag name="psi_description.enhancer" alias="route" />
         </service>
 
+        <service id="trog_content_type.subscriber.collection_updater" class="Trog\Bundle\ContentType\Subscriber\CollectionIdentifierUpdaterSubscriber">
+            <argument type="service" id="psi_content_type.doctrine.phpcr_odm.collection_updater" />
+            <tag name="kernel.event_subscriber" />
+        </service>
+
     </services>
 
 </container>
