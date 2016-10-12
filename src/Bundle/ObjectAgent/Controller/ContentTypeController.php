@@ -29,13 +29,16 @@ class ContentTypeController
     {
         $class = $request->attributes->get('class');
         $identifier = $request->attributes->get('identifier');
+        $showProperties = $request->attributes->get('show_properties');
 
         $agent = $this->agentFinder->findAgentFor($class);
         $object = $agent->find($identifier);
         $description = $this->descriptionFactory->describe(Subject::createFromObject($object));
 
         return new Response($this->templating->render(
-            '@TrogObjectAgent/ContentType/object_preview.html.twig',
+            $showProperties
+            ? '@TrogObjectAgent/ContentType/object_preview.html.twig'
+            : '@TrogObjectAgent/ContentType/object_preview_thumb.html.twig',
             [
                 'description' => $description,
             ]

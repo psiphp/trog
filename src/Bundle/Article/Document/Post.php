@@ -3,6 +3,7 @@
 namespace Trog\Bundle\Article\Document;
 
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
+use Psi\Component\ContentType\Metadata\Annotations as ContentType;
 
 /**
  * @PHPCR\Document(
@@ -13,7 +14,7 @@ use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 class Post
 {
     /**
-     * @PHPCR\Field(type="string")
+     * @ContentType\Field(type="text", role="title", group="content")
      */
     protected $title;
 
@@ -23,9 +24,23 @@ class Post
     protected $name;
 
     /**
-     * @PHPCR\Field(type="string", nullable=true)
+     * @ContentType\Field(type="markdown", options={"editor_height": "400px"}, group="content")
      */
     protected $content;
+
+    /**
+     * @ContentType\Field(type="workflow", group="sidebar")
+     */
+    protected $state;
+
+    /**
+     * @ContentType\Field(type="object_reference", options={
+     *     "class": "Trog\Bundle\Media\Document\File",
+     *     "browser": "image_selector",
+     *     "show_properties": true,
+     * }, role="image", group="meta")
+     */
+    protected $image;
 
     /**
      * @PHPCR\Id()
@@ -97,4 +112,25 @@ class Post
     {
         return $this->path;
     }
+
+    public function getState() 
+    {
+        return $this->state;
+    }
+    
+    public function setState($state)
+    {
+        $this->state = $state;
+    }
+
+    public function getImage() 
+    {
+        return $this->image;
+    }
+    
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+    
 }

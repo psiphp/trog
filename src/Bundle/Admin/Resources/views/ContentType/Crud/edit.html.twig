@@ -1,27 +1,66 @@
 {% extends "@TrogAdmin/layout.html.twig" %}
+
 {% block main %}
-<form class="ui form" method="POST" enctype="multipart/form-data">
-    <div class="ui grid">
-        {% form_theme form "@TrogAdmin/form_theme.html.twig" %}
 
-        <div class="twelve wide column">
-            <div class="ui segment">
-                {{ form_widget(form) }}
-            </div>
-        </div>
-
-        <div class="four wide column">
-            {% if object_url %}
-                <div class="ui segment">
-                    <h3>URL: <a href="{{ object_url }}">{{ object_url }}</a></h3>
-                </div>
+    <form class="ui form" method="POST" enctype="multipart/form-data">
+        <div class="ui grid">
+            {% form_theme form "@TrogAdmin/form_theme.html.twig" %}
+            <div class="sixteen wide column">
+            {% if object is defined %}
+                {% set description = psi_describe(object) %}
+                {% if description.has('std.title') %}
+                <h1>{{ 'object.edit'|trans() }}: {{ description.get('std.title').value }}</h1>
+                {% endif %}
+            {% else %}
+                <h1>{{ 'object.create'|trans() }}</h1>
             {% endif %}
-            <div class="ui segment">
-                {% include "@TrogAdmin/Widget/_button_save.html.twig" %}
-                {% include "@TrogAdmin/Widget/_button_cancel.html.twig" %}
             </div>
+            <div class="four wide column">
+                <div class="ui segment">
+                    {% include "@TrogAdmin/Widget/_button_save.html.twig" %}
+                    {% include "@TrogAdmin/Widget/_button_cancel.html.twig" %}
+                    {% if object_url %}
+                        <h3>URL: <a href="{{ object_url }}">{{ object_url }}</a></h3>
+                    {% endif %}
+                </div>
+                <div class="ui segment">
+                    {% if form.sidebar is defined %}
+                        <h3>Properties</h3>
+                        {{ form_widget(form.sidebar) }}
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="twelve wide column">
+                <div class="ui top attached tabular menu">
+                    {% for fieldName, field in form %}
+                        {% if fieldName != '_token' and field.rendered == false %}
+                            <a class="item {{ loop.first ? 'active' : '' }}" data-tab="{{ fieldName }}">{{ fieldName }}</a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                    {% for fieldName, field in form %}
+                        {% if fieldName != '_token' and field.rendered == false %}
+                            <div class="ui bottom attached {{ loop.first ? 'active' : '' }} tab segment" data-tab="{{ fieldName }}">
+                                {{ form_widget(field) }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+            </div>
+            {% if form._token is defined %}
+                {{ form_widget(form._token) }}
+            {% endif %}
         </div>
-    </div>
-</form>
+    </form>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.menu .item').tab();
+        });
+    </script>
 
 {% endblock %}

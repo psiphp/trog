@@ -70,6 +70,7 @@ class CRUDController
         return new Response($this->templating->render(
             $template,
             [
+                'object' => $object,
                 'object_url' => $objectUrl,
                 'form' => $form->createView(),
             ]

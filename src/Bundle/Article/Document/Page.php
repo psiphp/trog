@@ -18,44 +18,45 @@ use Trog\Bundle\ContentType\Document\PublishPeriod;
 class Page implements RouteReferrersReadInterface
 {
     /**
-     * @ContentType\Field(type="text")
+     * @ContentType\Field(type="text", role="title", group="content")
      */
     private $title;
 
     /**
-     * @ContentType\Field(type="workflow")
+     * @ContentType\Field(type="workflow", group="sidebar")
      */
     private $state = 'published';
 
     /**
-     * @ContentType\Field(type="markdown", options={"editor_height": "50px"})
+     * @ContentType\Field(type="markdown", options={"editor_height": "50px"}, group="meta")
      */
     private $teaser = '';
 
     /**
-     * @ContentType\Field(type="publish_period")
+     * @ContentType\Field(type="publish_period", group="sidebar")
      */
     private $publishPeriod;
 
     /**
+     * @ContentType\Field(type="markdown", options={"editor_height": "400px"}, group="content")
+     */
+    private $content = '';
+
+    /**
      * @ContentType\Field(type="object_reference", options={
      *     "class": "Trog\Bundle\Media\Document\File",
-     *     "browser": "image_selector"
-     * }, role="image")
+     *     "browser": "image_selector",
+     *     "show_properties": false,
+     * }, role="image", group="meta")
      */
     private $image;
 
     /**
      * @ContentType\Field(type="collection", options={
      *     "field": "file"
-     * })
+     * }, group="files")
      */
     private $files;
-
-    /**
-     * @ContentType\Field(type="file")
-     */
-    private $file;
 
     /**
      * @ContentType\Field(type="collection", options={
@@ -63,7 +64,7 @@ class Page implements RouteReferrersReadInterface
      *     "field_options": { 
      *         "editor_height": "100px",
      *     }
-     * })
+     * }, group="main")
      */
     private $paragraphs;
 
@@ -72,21 +73,17 @@ class Page implements RouteReferrersReadInterface
      *     "field": "object_reference",
      *     "field_options": {
      *         "class": "Trog\Bundle\Media\Document\File",
-     *         "browser": "image_selector"
+     *         "browser": "image_selector",
+     *         "show_properties": true,
      *     }
-     * })
+     * }, group="slideshow")
      */
     private $slideshow;
 
     /**
-     * @ContentType\Field(type="resource_reference", options={"browser": "selector"})
+     * @ContentType\Field(type="resource_reference", options={"browser": "selector"}, group="misc")
      */
     private $resource;
-
-    /**
-     * @ContentType\Field(type="markdown", options={"editor_height": "400px"})
-     */
-    private $content = '';
 
     /**
      * @PHPCR\Nodename()
@@ -246,15 +243,4 @@ class Page implements RouteReferrersReadInterface
     {
         $this->files = $files;
     }
-
-    public function getFile() 
-    {
-        return $this->file;
-    }
-    
-    public function setFile($file)
-    {
-        $this->file = $file;
-    }
-    
 }

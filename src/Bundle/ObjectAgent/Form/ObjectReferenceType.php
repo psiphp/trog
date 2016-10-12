@@ -54,6 +54,7 @@ class ObjectReferenceType extends AbstractType
 
     public function configureOptions(OptionsResolver $options)
     {
+        $options->setDefault('show_properties', false);
         $options->setDefault('browser', 'default');
         $options->setRequired('class');
     }
@@ -62,6 +63,7 @@ class ObjectReferenceType extends AbstractType
     {
         $view->vars['browser'] = $options['browser'];
         $view->vars['class'] = $options['class'];
+        $view->vars['show_properties'] = $options['show_properties'];
     }
 
     public function getParent()

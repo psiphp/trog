@@ -227,7 +227,8 @@
             {% if value  %}
                 {{ render(controller('trog_object_agent.controller.content_type:formTypePreviewAction', {
                     'class': class,
-                    'identifier': value
+                    'identifier': value,
+                    'show_properties': show_properties
                 })) }}
             {% endif %}
         </div>

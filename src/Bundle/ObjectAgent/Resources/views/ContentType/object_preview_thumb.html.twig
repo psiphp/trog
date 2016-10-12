@@ -1,0 +1,3 @@
+{% if description.has('std.image') %}
+    <img class="ui inline spaced bordered rounded image" src="{{ description.get('std.image').value | imagine_filter('small') }}" />
+{% endif %}
