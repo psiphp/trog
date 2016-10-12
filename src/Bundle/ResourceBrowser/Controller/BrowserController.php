@@ -50,10 +50,11 @@ class BrowserController
         $repositoryName = $this->resolveRepositoryName($request, $browserView->getDefaultRepository(), $repositories);
         $repository = $this->registry->get($repositoryName);
 
+        $sessionKey = $browserName . self::SESSION_PATH;
         // resolve the repository name (it may have been determined automatically)
         $repositoryName = $this->registry->getRepositoryAlias($repository);
-        if ($this->session->has(self::SESSION_PATH)) {
-            $paths = $this->session->get(self::SESSION_PATH);
+        if ($this->session->has($sessionKey)) {
+            $paths = $this->session->get($sessionKey);
         }
 
         if (null === $path && isset($paths[$repositoryName])) {
@@ -62,7 +63,7 @@ class BrowserController
 
         if (null !== $path) {
             $paths[$repositoryName] = $path;
-            $this->session->set(self::SESSION_PATH, $paths);
+            $this->session->set($sessionKey, $paths);
         }
 
         $path = $this->resolvePath($repository, $path);
@@ -145,15 +146,17 @@ class BrowserController
     private function resolveRepositoryName(Request $request, $defaultName, $availableRepositories)
     {
         $repositoryName = $request->get('repository');
+        $browserName = $request->get('browser');
+        $sessionKey = $browserName . self::REPOSITORY;
 
         if ($repositoryName && in_array($defaultName, $availableRepositories)) {
-            $this->session->set(self::REPOSITORY, $repositoryName);
+            $this->session->set($sessionKey, $repositoryName);
 
             return $repositoryName;
         }
 
-        if ($this->session->has(self::REPOSITORY)) {
-            $repo = $this->session->get(self::REPOSITORY);
+        if ($this->session->has($sessionKey)) {
+            $repo = $this->session->get($sessionKey);
             if (in_array($repo, $availableRepositories)) {
                 return $repo;
             }
