@@ -15,5 +15,6 @@ class TrogContentTypeExtension extends Extension
         $loader->load('services.xml');
         $loader->load('fields.xml');
         $loader->load('form-types.xml');
+        $loader->load('markdown.xml');
     }
 }

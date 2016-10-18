@@ -18,7 +18,7 @@ use Trog\Bundle\ContentType\Document\PublishPeriod;
 class Page implements RouteReferrersReadInterface
 {
     /**
-     * @ContentType\Field(type="text", role="title", group="content")
+     * @ContentType\Field(type="text", options={"tag": "h1"}, role="title", group="content")
      */
     private $title;
 
@@ -53,14 +53,14 @@ class Page implements RouteReferrersReadInterface
 
     /**
      * @ContentType\Field(type="collection", options={
-     *     "field": "file"
+     *     "field_type": "file"
      * }, group="files")
      */
     private $files;
 
     /**
      * @ContentType\Field(type="collection", options={
-     *     "field": "markdown",
+     *     "field_type": "markdown",
      *     "field_options": { 
      *         "editor_height": "100px",
      *     }
@@ -70,7 +70,7 @@ class Page implements RouteReferrersReadInterface
 
     /**
      * @ContentType\Field(type="collection", options={
-     *     "field": "object_reference",
+     *     "field_type": "object_reference",
      *     "field_options": {
      *         "class": "Trog\Bundle\Media\Document\File",
      *         "browser": "image_selector",

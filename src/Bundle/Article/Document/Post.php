@@ -4,6 +4,7 @@ namespace Trog\Bundle\Article\Document;
 
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 use Psi\Component\ContentType\Metadata\Annotations as ContentType;
+use Symfony\Cmf\Component\Routing\RouteReferrersReadInterface;
 
 /**
  * @PHPCR\Document(
@@ -11,10 +12,10 @@ use Psi\Component\ContentType\Metadata\Annotations as ContentType;
  *     childClasses={"Trog\Bundle\Article\Document\Post"}
  * )
  */
-class Post
+class Post implements RouteReferrersReadInterface
 {
     /**
-     * @ContentType\Field(type="text", role="title", group="content")
+     * @ContentType\Field(type="text", options={"tag": "h1"}, role="title", group="content")
      */
     protected $title;
 
@@ -61,6 +62,14 @@ class Post
      * @PHPCR\Field(type="boolean", nullable=true)
      */
     protected $published = false;
+
+    /**
+     * @PHPCR\Referrers(
+     *     referringDocument="Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Phpcr\Route",
+     *     referencedBy="content"
+     * )
+     */
+    private $routes;
 
     public function getId()
     {
@@ -131,6 +140,11 @@ class Post
     public function setImage($image)
     {
         $this->image = $image;
+    }
+
+    public function getRoutes() 
+    {
+        return $this->routes;
     }
     
 }

@@ -1,0 +1,20 @@
+Trog\Bundle\Article\Document\Page:
+    definitions:
+        frontend:
+            uri_schema: /page/{title}
+            defaults:
+                _controller: trog_content_type.controller.view:defaultAction
+
+    token_providers:
+        title: [content_method, { method: getTitle } ]
+
+Trog\Bundle\Article\Document\Post:
+    definitions:
+        frontend:
+            uri_schema: /post/{title}
+            defaults:
+                _controller: trog_content_type.controller.view:defaultAction
+
+    token_providers:
+        title: [content_method, { method: getTitle } ]
+

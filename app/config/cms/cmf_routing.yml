@@ -8,17 +8,6 @@ cmf_routing:
         persistence:
             phpcr:
                 enabled: true
-
                 route_basepaths:
                     - /trog/routes
 
-cmf_routing_auto:
-    persistence:
-        phpcr:
-            enabled: true
-            route_basepath: /trog/routes
-
-    adapter: doctrine_phpcr_odm
-    mapping:
-        resources:
-            path: %kernel.root_dir%/config/cms/routing_auto.yml

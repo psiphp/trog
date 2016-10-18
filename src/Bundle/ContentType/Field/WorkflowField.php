@@ -12,17 +12,18 @@
 namespace Trog\Bundle\ContentType\Field;
 
 use Psi\Component\ContentType\FieldInterface;
-use Psi\Component\ContentType\View\ScalarView;
+use Psi\Component\ContentType\Standard\View\ScalarType;
 use Trog\Bundle\ContentType\Form\WorkflowType;
-use Psi\Component\ContentType\Storage\Mapping\ConfiguredType;
-use Psi\Component\ContentType\Storage\Mapping\TypeFactory;
 use Psi\Component\ContentType\OptionsResolver\FieldOptionsResolver;
+use Psi\Component\ContentType\Storage\TypeFactory;
+use Psi\Component\ContentType\Storage\ConfiguredType;
+use Psi\Component\ContentType\Standard\View\NullType;
 
 class WorkflowField implements FieldInterface
 {
     public function getViewType(): string
     {
-        return ScalarView::class;
+        return NullType::class;
     }
 
     public function getFormType(): string

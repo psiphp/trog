@@ -6,7 +6,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Trog\Component\ObjectAgent\Events;
 use Trog\Component\ObjectAgent\Agent\Doctrine\Event\ObjectEvent;
 use Trog\Component\ObjectAgent\Event\AbstractObjectEvent;
-use Psi\Component\ContentType\Storage\Doctrine\PhpcrOdm\CollectionIdentifierUpdater;
+use Psi\Bridge\ContentType\Doctrine\PhpcrOdm\CollectionIdentifierUpdater;
 
 class CollectionIdentifierUpdaterSubscriber implements EventSubscriberInterface
 {

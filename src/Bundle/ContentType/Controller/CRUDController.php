@@ -65,6 +65,7 @@ class CRUDController
             $objectUrl = $this->urlGenerator->generate($object);
         } catch (RouteNotFoundException $e) {
             $objectUrl = null;
+            throw $e;
         }
 
         return new Response($this->templating->render(

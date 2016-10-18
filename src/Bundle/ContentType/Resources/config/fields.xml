@@ -26,6 +26,16 @@
             <tag name="psi_content_type.field" alias="resource_reference" />
         </service>
 
+        <!-- Views -->
+        <service id="trog_content_type.type.description" class="Trog\Bundle\ContentType\View\DescriptionType">
+            <tag name="psi_content_type.view.type" />
+        </service>
+
+        <service id="trog_content_type.type.markdown" class="Trog\Bundle\ContentType\View\MarkdownType">
+            <argument type="service" id="trog_content_type.markdown.parser" />
+            <tag name="psi_content_type.view.type" />
+        </service>
+
     </services>
 
 </container>

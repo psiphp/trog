@@ -3,18 +3,18 @@
 namespace Trog\Bundle\ContentType\Field;
 
 use Psi\Component\ContentType\FieldInterface;
-use Psi\Component\ContentType\View\ScalarView;
+use Psi\Component\ContentType\Standard\View\NullType;
 use Trog\Bundle\ContentType\Form\ResourceReferenceType;
 use Trog\Bundle\ContentType\Document\ResourceReference;
-use Psi\Component\ContentType\Storage\Mapping\ConfiguredType;
-use Psi\Component\ContentType\Storage\Mapping\TypeFactory;
 use Psi\Component\ContentType\OptionsResolver\FieldOptionsResolver;
+use Psi\Component\ContentType\Storage\TypeFactory;
+use Psi\Component\ContentType\Storage\ConfiguredType;
 
 class ResourceReferenceField implements FieldInterface
 {
     public function getViewType(): string
     {
-        return ScalarView::class;
+        return NullType::class;
     }
 
     public function getFormType(): string

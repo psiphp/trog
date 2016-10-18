@@ -1,8 +1,0 @@
-Trog\Bundle\Article\Document\Page:
-    definitions:
-        frontend:
-            uri_schema: /page/{title}
-            defaults:
-                _controller: PageController
-    token_providers:
-        title: [content_method, { method: getTitle } ]

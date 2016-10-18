@@ -1,0 +1,11 @@
+{% set description =  psi_describe(content) %}
+{% set title = description.has('std.title') ? description.get('std.title').value : 'Untitled content' %}
+
+<html>
+    <head>
+        <title>{{ title }}</title>
+    </head>
+    <body>
+        {{ psi_content_render(view) }}
+    </body>
+</html>

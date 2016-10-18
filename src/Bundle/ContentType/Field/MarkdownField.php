@@ -3,22 +3,23 @@
 namespace Trog\Bundle\ContentType\Field;
 
 use Psi\Component\ContentType\FieldInterface;
-use Psi\Component\ContentType\View\ScalarView;
-use Trog\Bundle\ContentType\Form\MarkdownType;
-use Psi\Component\ContentType\Storage\Mapping\ConfiguredType;
-use Psi\Component\ContentType\Storage\Mapping\TypeFactory;
+use Psi\Component\ContentType\Standard\View\ScalarType;
+use Trog\Bundle\ContentType\Form\MarkdownType as FormMarkdownType;
 use Psi\Component\ContentType\OptionsResolver\FieldOptionsResolver;
+use Psi\Component\ContentType\Storage\TypeFactory;
+use Psi\Component\ContentType\Storage\ConfiguredType;
+use Trog\Bundle\ContentType\View\MarkdownType;
 
 class MarkdownField implements FieldInterface
 {
     public function getViewType(): string
     {
-        return ScalarView::class;
+        return MarkdownType::class;
     }
 
     public function getFormType(): string
     {
-        return MarkdownType::class;
+        return FormMarkdownType::class;
     }
 
     public function getStorageType(TypeFactory $factory): ConfiguredType

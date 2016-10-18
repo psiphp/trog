@@ -1,0 +1,9 @@
+imports:
+    - { resource: cmf_resource.yml }
+    - { resource: cmf_routing.yml }
+    - { resource: cmf_routing_auto.yml }
+    - { resource: psi_content_type.yml }
+    - { resource: psi_description.yml }
+    - { resource: trg_resource_browser.yml }
+    - { resource: twig.yml }
+    - { resource: "@TrogAdminBundle/Resources/config/main.yml" }

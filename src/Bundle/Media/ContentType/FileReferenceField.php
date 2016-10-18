@@ -3,17 +3,18 @@
 namespace Trog\Bundle\Media\ContentType;
 
 use Psi\Component\ContentType\FieldInterface;
-use Psi\Component\ContentType\View\ScalarView;
+use Psi\Component\ContentType\Standard\View\ScalarType;
 use Trog\Bundle\Media\Form\FileReferenceType;
-use Psi\Component\ContentType\Storage\Mapping\ConfiguredType;
-use Psi\Component\ContentType\Storage\Mapping\TypeFactory;
 use Psi\Component\ContentType\OptionsResolver\FieldOptionsResolver;
+use Psi\Component\ContentType\Storage\TypeFactory;
+use Psi\Component\ContentType\Storage\ConfiguredType;
+use Trog\Bundle\ContentType\View\DescriptionType;
 
 class FileReferenceField implements FieldInterface
 {
     public function getViewType(): string
     {
-        return ScalarView::class;
+        return DescriptionType::class;
     }
 
     public function getFormType(): string
