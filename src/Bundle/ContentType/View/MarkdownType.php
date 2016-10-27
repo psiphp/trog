@@ -25,7 +25,7 @@ class MarkdownType implements TypeInterface
     {
         $output = $this->parser->parse($data);
 
-        return new ScalarView($options['template'], $output);
+        return new ScalarView($options['template'], $output, null, true);
     }
 
     public function configureOptions(OptionsResolver $options)

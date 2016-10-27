@@ -15,9 +15,9 @@ use Psi\Component\ContentType\FieldInterface;
 use Psi\Component\ContentType\Standard\View\ScalarType;
 use Trog\Bundle\ContentType\Form\WorkflowType;
 use Psi\Component\ContentType\OptionsResolver\FieldOptionsResolver;
-use Psi\Component\ContentType\Storage\TypeFactory;
 use Psi\Component\ContentType\Storage\ConfiguredType;
 use Psi\Component\ContentType\Standard\View\NullType;
+use Psi\Component\ContentType\Standard\Storage\StringType;
 
 class WorkflowField implements FieldInterface
 {
@@ -31,9 +31,9 @@ class WorkflowField implements FieldInterface
         return WorkflowType::class;
     }
 
-    public function getStorageType(TypeFactory $factory): ConfiguredType
+    public function getStorageType(): string
     {
-        return $factory->create('string');
+        return StringType::class;
     }
 
     public function configureOptions(FieldOptionsResolver $options)

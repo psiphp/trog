@@ -17,6 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Psi\Component\ContentType\OptionsResolver\FieldOptionsResolver;
 use Psi\Component\ContentType\Storage\TypeFactory;
 use Psi\Component\ContentType\Storage\ConfiguredType;
+use Psi\Component\ContentType\Standard\Storage\StringType;
 
 class TextareaField implements FieldInterface
 {
@@ -30,9 +31,9 @@ class TextareaField implements FieldInterface
         return TextareaType::class;
     }
 
-    public function getStorageType(TypeFactory $factory): ConfiguredType
+    public function getStorageType(): string
     {
-        return $factory->create('string');
+        return StringType::class;
     }
 
     public function configureOptions(FieldOptionsResolver $options)

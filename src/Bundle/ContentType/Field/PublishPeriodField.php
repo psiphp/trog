@@ -7,8 +7,8 @@ use Psi\Component\ContentType\FieldInterface;
 use Trog\Bundle\ContentType\Document\PublishPeriod;
 use Psi\Component\ContentType\OptionsResolver\FieldOptionsResolver;
 use Psi\Component\ContentType\Standard\View\NullType;
-use Psi\Component\ContentType\Storage\TypeFactory;
 use Psi\Component\ContentType\Storage\ConfiguredType;
+use Psi\Component\ContentType\Standard\Storage\ObjectType;
 
 class PublishPeriodField implements FieldInterface
 {
@@ -22,14 +22,17 @@ class PublishPeriodField implements FieldInterface
         return PublishPeriodType::class;
     }
 
-    public function getStorageType(TypeFactory $factory): ConfiguredType
+    public function getStorageType(): string
     {
-        return $factory->create('object', [
-            'class' => PublishPeriod::class,
-        ]);
+        return ObjectType::class;
     }
 
     public function configureOptions(FieldOptionsResolver $options)
     {
+        $options->setStorageMapper(function () {
+            return [
+                'class' => PublishPeriod::class
+            ];
+        });
     }
 }

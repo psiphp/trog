@@ -7,9 +7,9 @@ use Psi\Component\ContentType\Standard\View\ScalarType;
 use Trog\Bundle\Media\Document\File;
 use Trog\Bundle\Media\Form\FileType;
 use Psi\Component\ContentType\OptionsResolver\FieldOptionsResolver;
-use Psi\Component\ContentType\Storage\TypeFactory;
 use Psi\Component\ContentType\Storage\ConfiguredType;
 use Trog\Bundle\ContentType\View\DescriptionType;
+use Psi\Component\ContentType\Standard\Storage\ObjectType;
 
 class FileField implements FieldInterface
 {
@@ -23,17 +23,18 @@ class FileField implements FieldInterface
         return FileType::class;
     }
 
-    public function getStorageType(TypeFactory $factory): ConfiguredType
+    public function getStorageType(): string
     {
-        // we currently map the Fle class with a standard PHPCR mapping
-        // as there is no (current) scope for allowing other backends.
-        return $factory->create('object', [
-            'class' => File::class,
-        ]);
+        return ObjectType::class;
     }
 
     public function configureOptions(FieldOptionsResolver $options)
     {
+        $options->setStorageMapper(function () {
+            return [
+                'class' => File::class
+            ];
+        });
         $options->setDefaults([
             'file_constraints' => [],
         ]);

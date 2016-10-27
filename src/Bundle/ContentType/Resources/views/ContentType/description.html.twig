@@ -1,4 +1,0 @@
-{% set description = psi_describe(view.value) %}
-{% if description.has('std.image') %}
-    <img src="{{ description.get('std.image').value }}" />
-{% endif %}

@@ -7,8 +7,8 @@ use Psi\Component\ContentType\Standard\View\NullType;
 use Trog\Bundle\ContentType\Form\ResourceReferenceType;
 use Trog\Bundle\ContentType\Document\ResourceReference;
 use Psi\Component\ContentType\OptionsResolver\FieldOptionsResolver;
-use Psi\Component\ContentType\Storage\TypeFactory;
 use Psi\Component\ContentType\Storage\ConfiguredType;
+use Psi\Component\ContentType\Standard\Storage\ObjectType;
 
 class ResourceReferenceField implements FieldInterface
 {
@@ -22,15 +22,18 @@ class ResourceReferenceField implements FieldInterface
         return ResourceReferenceType::class;
     }
 
-    public function getStorageType(TypeFactory $factory): ConfiguredType
+    public function getStorageType(): string
     {
-        return $factory->create('object', [
-            'class' => ResourceReference::class,
-        ]);
+        return ObjectType::class;
     }
 
     public function configureOptions(FieldOptionsResolver $options)
     {
+        $options->setStorageMapper(function () {
+            return [
+                'class' => ResourceReference::class
+            ];
+        });
         $options->setRequired(['browser']);
         $options->setFormMapper(function ($options) {
             return [

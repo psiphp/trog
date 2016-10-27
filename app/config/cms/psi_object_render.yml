@@ -1,0 +1,4 @@
+psi_object_render:
+    mapping:
+        "Psi\\Component\\ContentType\\Standard\\View": "@TrogContentType/Object/Psi"
+        "Trog\\Bundle\\ContentType\\View": "@TrogContentType/Object/Trog"

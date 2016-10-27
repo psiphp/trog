@@ -27,7 +27,6 @@ class ViewController
         $content = $request->attributes->get('contentDocument');
         $view = $this->viewFactory->create(ObjectType::class, $content, []);
 
-
         return new Response(
             $this->templating->render(
                 '@TrogContentType/ContentType/default.html.twig', [

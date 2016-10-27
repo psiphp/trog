@@ -1,3 +1,0 @@
-twig:
-    paths: 
-        - %kernel.root_dir%/../vendor/psiphp/content-type/bridge/twig/templates

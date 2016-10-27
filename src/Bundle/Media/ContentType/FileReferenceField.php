@@ -6,9 +6,9 @@ use Psi\Component\ContentType\FieldInterface;
 use Psi\Component\ContentType\Standard\View\ScalarType;
 use Trog\Bundle\Media\Form\FileReferenceType;
 use Psi\Component\ContentType\OptionsResolver\FieldOptionsResolver;
-use Psi\Component\ContentType\Storage\TypeFactory;
 use Psi\Component\ContentType\Storage\ConfiguredType;
 use Trog\Bundle\ContentType\View\DescriptionType;
+use Psi\Component\ContentType\Standard\Storage\ReferenceType;
 
 class FileReferenceField implements FieldInterface
 {
@@ -22,9 +22,9 @@ class FileReferenceField implements FieldInterface
         return FileReferenceType::class;
     }
 
-    public function getStorageType(TypeFactory $factory): ConfiguredType
+    public function getStorageType(): string
     {
-        return $factory->create('reference');
+        return ReferenceType::class;
     }
 
     public function configureOptions(FieldOptionsResolver $options)

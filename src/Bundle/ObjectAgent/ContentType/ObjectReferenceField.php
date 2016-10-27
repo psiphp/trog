@@ -9,6 +9,7 @@ use Psi\Component\ContentType\OptionsResolver\FieldOptionsResolver;
 use Psi\Component\ContentType\Storage\TypeFactory;
 use Psi\Component\ContentType\Storage\ConfiguredType;
 use Trog\Bundle\ContentType\View\DescriptionType;
+use Psi\Component\ContentType\Standard\Storage\ReferenceType;
 
 class ObjectReferenceField implements FieldInterface
 {
@@ -22,9 +23,9 @@ class ObjectReferenceField implements FieldInterface
         return ObjectReferenceType::class;
     }
 
-    public function getStorageType(TypeFactory $factory): ConfiguredType
+    public function getStorageType(): string
     {
-        return $factory->create('reference');
+        return ReferenceType::class;
     }
 
     public function configureOptions(FieldOptionsResolver $options)

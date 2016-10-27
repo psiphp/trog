@@ -32,6 +32,7 @@ class AppKernel extends Kernel
 
             new Psi\Bundle\ContentType\PsiContentTypeBundle(),
             new Psi\Bundle\Description\PsiDescriptionBundle(),
+            new Psi\Bundle\ObjectRender\PsiObjectRenderBundle(),
 
             new Liip\ImagineBundle\LiipImagineBundle()
         ];

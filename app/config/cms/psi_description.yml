@@ -25,4 +25,3 @@ services:
             - 
                 name: psi_description.subject_resolver
                 alias: cmf_resource
-

@@ -28,6 +28,13 @@ class Page implements RouteReferrersReadInterface
     private $state = 'published';
 
     /**
+     * @ContentType\Field(type="choice", group="content", options={
+     *     "choices": {"Group 1": "one", "Group 2": "two"}
+     * })
+     */
+    private $choices;
+
+    /**
      * @ContentType\Field(type="markdown", options={"editor_height": "50px"}, group="meta")
      */
     private $teaser = '';
@@ -243,4 +250,15 @@ class Page implements RouteReferrersReadInterface
     {
         $this->files = $files;
     }
+
+    public function getChoices() 
+    {
+        return $this->choices;
+    }
+    
+    public function setChoices($choices)
+    {
+        $this->choices = $choices;
+    }
+    
 }

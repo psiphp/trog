@@ -1,0 +1,6 @@
+{% if object.value %}
+    {% set description = psi_describe(object.value) %}
+    {% if description.has('std.image') %}
+        <img src="{{ description.get('std.image').value }}" />
+    {% endif %}
+{% endif %}

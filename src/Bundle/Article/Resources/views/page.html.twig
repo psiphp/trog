@@ -1,0 +1,10 @@
+{% extends view.layout %}
+{% block body %}
+
+    <h1>{{ view.content.title }}</h1>
+
+    {{ view.content }}
+
+    {{ psi_content_render(view.content, [ foo: "bar" ]) }}
+
+{% endblock %}
