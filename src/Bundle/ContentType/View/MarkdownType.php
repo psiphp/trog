@@ -25,7 +25,7 @@ class MarkdownType implements TypeInterface
     {
         $output = $this->parser->parse($data);
 
-        return new ScalarView($options['template'], $output, null, true);
+        return new ScalarView($output, null, true);
     }
 
     public function configureOptions(OptionsResolver $options)
@@ -33,5 +33,7 @@ class MarkdownType implements TypeInterface
         $options->setDefault('template', '@TrogContentType/ContentType/scalar_raw.html.twig');
     }
 }
+
+
 
 

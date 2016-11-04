@@ -34,7 +34,6 @@ class ResourceReferenceField implements FieldInterface
                 'class' => ResourceReference::class
             ];
         });
-        $options->setRequired(['browser']);
         $options->setFormMapper(function ($options) {
             return [
                 'browser' => $options['browser'],

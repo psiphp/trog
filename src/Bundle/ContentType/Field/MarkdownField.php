@@ -29,12 +29,5 @@ class MarkdownField implements FieldInterface
 
     public function configureOptions(FieldOptionsResolver $options)
     {
-        // we should not define form options here
-        $options->setDefault('editor_height', null);
-        $options->setFormMapper(function ($options) {
-            return [
-                'editor_height' => $options['editor_height'],
-            ];
-        });
     }
 }

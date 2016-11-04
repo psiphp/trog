@@ -35,13 +35,5 @@ class FileField implements FieldInterface
                 'class' => File::class
             ];
         });
-        $options->setDefaults([
-            'file_constraints' => [],
-        ]);
-        $options->setFormMapper(function ($options) {
-            return [
-                'file_constraints' => $options['file_constraints'],
-            ];
-        });
     }
 }

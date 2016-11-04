@@ -6,10 +6,6 @@
 
     <services>
 
-        <service id="trog_content_type.field.textarea" class="Trog\Bundle\ContentType\Field\TextareaField">
-            <tag name="psi_content_type.field" alias="textarea" />
-        </service>
-
         <service id="trog_content_type.field.markdown" class="Trog\Bundle\ContentType\Field\MarkdownField">
             <tag name="psi_content_type.field" alias="markdown" />
         </service>

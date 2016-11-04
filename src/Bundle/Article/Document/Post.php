@@ -15,7 +15,7 @@ use Symfony\Cmf\Component\Routing\RouteReferrersReadInterface;
 class Post implements RouteReferrersReadInterface
 {
     /**
-     * @ContentType\Field(type="text", options={"tag": "h1"}, role="title", group="content")
+     * @ContentType\Field(type="text", view={"tag": "h1"}, role="title", group="content")
      */
     protected $title;
 
@@ -25,7 +25,7 @@ class Post implements RouteReferrersReadInterface
     protected $name;
 
     /**
-     * @ContentType\Field(type="markdown", options={"editor_height": "400px"}, group="content")
+     * @ContentType\Field(type="markdown", form={"editor_height": "400px"}, group="content")
      */
     protected $content;
 
@@ -35,7 +35,7 @@ class Post implements RouteReferrersReadInterface
     protected $state;
 
     /**
-     * @ContentType\Field(type="object_reference", options={
+     * @ContentType\Field(type="object_reference", form={
      *     "class": "Trog\Bundle\Media\Document\File",
      *     "browser": "image_selector",
      *     "show_properties": true,

@@ -30,9 +30,6 @@ class ObjectReferenceField implements FieldInterface
 
     public function configureOptions(FieldOptionsResolver $options)
     {
-        $options->setDefault('browser', 'default');
-        $options->setRequired('class');
-        $options->setDefault('show_properties', false);
         $options->setFormMapper(function ($options) {
             return [
                 'browser' => $options['browser'],

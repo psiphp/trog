@@ -14,13 +14,20 @@ use Trog\Bundle\ContentType\Document\PublishPeriod;
  *         "Trog\Bundle\Article\Document\Page",
  *     }
  * )
+ * @Grid\View(name="main", page-size=100, columns={
+ *     @Grid\Column(name="title", expr=h
  */
 class Page implements RouteReferrersReadInterface
 {
     /**
-     * @ContentType\Field(type="text", options={"tag": "h1"}, role="title", group="content")
+     * @ContentType\Field(type="text", view={"tag": "h1"}, role="title", group="content")
      */
     private $title;
+
+    /**
+     * @ContentType\Field(type="text", form={"attr": {"placeholder": "Hello"}}, view={"tag": "h1"}, group="content")
+     */
+    private $placeholder;
 
     /**
      * @ContentType\Field(type="workflow", group="sidebar")
@@ -28,14 +35,7 @@ class Page implements RouteReferrersReadInterface
     private $state = 'published';
 
     /**
-     * @ContentType\Field(type="choice", group="content", options={
-     *     "choices": {"Group 1": "one", "Group 2": "two"}
-     * })
-     */
-    private $choices;
-
-    /**
-     * @ContentType\Field(type="markdown", options={"editor_height": "50px"}, group="meta")
+     * @ContentType\Field(type="markdown", form={"editor_height": "50px"}, group="meta")
      */
     private $teaser = '';
 
@@ -45,12 +45,12 @@ class Page implements RouteReferrersReadInterface
     private $publishPeriod;
 
     /**
-     * @ContentType\Field(type="markdown", options={"editor_height": "400px"}, group="content")
+     * @ContentType\Field(type="markdown", form={"editor_height": "400px"}, group="content")
      */
     private $content = '';
 
     /**
-     * @ContentType\Field(type="object_reference", options={
+     * @ContentType\Field(type="object_reference", form={
      *     "class": "Trog\Bundle\Media\Document\File",
      *     "browser": "image_selector",
      *     "show_properties": false,
@@ -59,36 +59,40 @@ class Page implements RouteReferrersReadInterface
     private $image;
 
     /**
-     * @ContentType\Field(type="collection", options={
+     * @ContentType\Field(type="collection", shared={
      *     "field_type": "file"
      * }, group="files")
      */
     private $files;
 
     /**
-     * @ContentType\Field(type="collection", options={
+     * @ContentType\Field(type="collection", shared={
      *     "field_type": "markdown",
      *     "field_options": { 
-     *         "editor_height": "100px",
+     *         "form": {
+         *         "editor_height": "100px"
+     *         }
      *     }
      * }, group="main")
      */
     private $paragraphs;
 
     /**
-     * @ContentType\Field(type="collection", options={
+     * @ContentType\Field(type="collection", shared={
      *     "field_type": "object_reference",
      *     "field_options": {
-     *         "class": "Trog\Bundle\Media\Document\File",
-     *         "browser": "image_selector",
-     *         "show_properties": true,
+     *         "form": {
+     *             "class": "Trog\Bundle\Media\Document\File",
+     *             "browser": "image_selector",
+     *             "show_properties": true,
+     *         }
      *     }
      * }, group="slideshow")
      */
     private $slideshow;
 
     /**
-     * @ContentType\Field(type="resource_reference", options={"browser": "selector"}, group="misc")
+     * @ContentType\Field(type="resource_reference", form={"browser": "selector"}, group="misc")
      */
     private $resource;
 
@@ -259,6 +263,16 @@ class Page implements RouteReferrersReadInterface
     public function setChoices($choices)
     {
         $this->choices = $choices;
+    }
+
+    public function getPlaceholder() 
+    {
+        return $this->placeholder;
+    }
+    
+    public function setPlaceholder($placeholder)
+    {
+        $this->placeholder = $placeholder;
     }
     
 }
