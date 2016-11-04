@@ -2,12 +2,12 @@
 
 namespace Trog\Bundle\ObjectAgent\Controller;
 
-use Trog\Component\ObjectAgent\AgentFinder;
 use Psi\Component\Description\DescriptionFactory;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Psi\Component\Description\Subject;
 use Symfony\Component\HttpFoundation\Response;
+use Psi\Component\ObjectAgent\AgentFinder;
 
 class ContentTypeController
 {

@@ -5,7 +5,6 @@ namespace Trog\Bundle\ContentType\Resource;
 use Symfony\Cmf\Bundle\ResourceBundle\Registry\RepositoryRegistry;
 use Metadata\MetadataFactoryInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Trog\Component\ObjectAgent\AgentFinder;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
 use Psi\Component\Description\DescriptionInterface;
 use Psi\Component\Description\Descriptor\UriDescriptor;
@@ -15,6 +14,7 @@ use Psi\Component\Description\Descriptor\UriCollectionDescriptor;
 use Psi\Component\Description\Descriptor\StringDescriptor;
 use Trog\Bundle\Media\Util\PathResolver;
 use Trog\Bundle\Media\Document\File;
+use Psi\Component\ObjectAgent\AgentFinder;
 
 class ContentTypeEnhancer implements EnhancerInterface
 {
@@ -52,7 +52,7 @@ class ContentTypeEnhancer implements EnhancerInterface
                 $this->urlGenerator->generate(
                     'trog_content_type_crud_edit',
                     [
-                        'agent' => $agent->getAlias(),
+                        'agent' => $this->agentFinder->getName($agent),
                         'identifier' => $identifier,
                     ]
                 )
@@ -93,7 +93,7 @@ class ContentTypeEnhancer implements EnhancerInterface
                 $types[$childType] = $this->urlGenerator->generate(
                     'trog_content_type_crud_create_as_child',
                     [
-                        'agent' => $agent->getAlias(),
+                        'agent' => $this->agentFinder->getName($agent),
                         'parent_identifier' => $identifier,
                         'type' => $childType,
                     ]

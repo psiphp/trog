@@ -14,8 +14,6 @@ use Trog\Bundle\ContentType\Document\PublishPeriod;
  *         "Trog\Bundle\Article\Document\Page",
  *     }
  * )
- * @Grid\View(name="main", page-size=100, columns={
- *     @Grid\Column(name="title", expr=h
  */
 class Page implements RouteReferrersReadInterface
 {

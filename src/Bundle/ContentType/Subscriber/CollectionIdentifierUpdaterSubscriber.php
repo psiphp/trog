@@ -3,9 +3,8 @@
 namespace Trog\Bundle\ContentType\Subscriber;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Trog\Component\ObjectAgent\Events;
-use Trog\Component\ObjectAgent\Agent\Doctrine\Event\ObjectEvent;
-use Trog\Component\ObjectAgent\Event\AbstractObjectEvent;
+use Psi\Component\ObjectAgent\Events;
+use Psi\Component\ObjectAgent\Event\ObjectEvent;
 use Psi\Bridge\ContentType\Doctrine\PhpcrOdm\CollectionIdentifierUpdater;
 
 class CollectionIdentifierUpdaterSubscriber implements EventSubscriberInterface
@@ -24,12 +23,12 @@ class CollectionIdentifierUpdaterSubscriber implements EventSubscriberInterface
         ];
     }
 
-    public function handlePreSave(AbstractObjectEvent $event)
+    public function handlePreSave(ObjectEvent $event)
     {
         if (!$event instanceof ObjectEvent) {
             return;
         }
 
-        $this->updater->update($event->getDocumentManager(), $event->getObject());
+        $this->updater->update($event->getAgent()->getDocumentManager(), $event->getObject());
     }
 }

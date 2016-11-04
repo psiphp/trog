@@ -6,12 +6,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Templating\EngineInterface;
 use Symfony\Component\Form\FormFactoryInterface;
-use Trog\Component\ObjectAgent\AgentFinder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Trog\Bundle\ContentType\Form\Event\ValidFormEvent;
 use Trog\Bundle\ContentType\Form\Event\PropagateValidFormEventSubscriber;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
+use Psi\Component\ObjectAgent\AgentFinder;
 
 class CRUDController
 {
@@ -35,10 +35,10 @@ class CRUDController
     public function edit(Request $request)
     {
         $template = $request->attributes->get('template');
-        $agent = $request->attributes->get('agent');
+        $agentName = $request->attributes->get('agent');
         $identifier = $request->attributes->get('identifier');
 
-        $agent = $this->agentFinder->getAgent($agent);
+        $agent = $this->agentFinder->getAgent($agentName);
         $object = $agent->find($identifier);
         $objectFqn = get_class($object);
         $form = $this->formFactory->createBuilder($objectFqn, $object);
@@ -55,7 +55,7 @@ class CRUDController
             return new RedirectResponse($this->urlGenerator->generate(
                 $request->attributes->get('_route'),
                 [
-                    'agent' => $agent->getAlias(),
+                    'agent' => $agentName,
                     'identifier' => $identifier,
                 ]
             ));

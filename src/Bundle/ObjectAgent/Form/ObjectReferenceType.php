@@ -9,8 +9,8 @@ use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormInterface;
-use Trog\Component\ObjectAgent\AgentFinder;
-use Trog\Component\ObjectAgent\AgentInterface;
+use Psi\Component\ObjectAgent\AgentFinder;
+use Psi\Component\ObjectAgent\AgentInterface;
 
 class ObjectReferenceType extends AbstractType
 {
